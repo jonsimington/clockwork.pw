@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% block title %}
+  User Profiles
+{% endblock %}
+
+{% block content %}
+  <table class="table">
+    <thead>
+      <tr>
+	Name
+      </tr>
+      <tr>
+	Rank
+      </tr>
+    </thead>
+
+    <tbody>
+      {% for profile in userprofiles %}
+        <tr>
+	  <td>
+	    <a href="{{ profile.get_absolute_url }}">
+	      {{ profile.user.username }}
+	    </a>
+	  </td>
+	</tr>
+      {% endfor %}
+    </tbody>
+  </table>
+{% endblock %}
+	  
+  

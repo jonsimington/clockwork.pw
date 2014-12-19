@@ -1,9 +1,23 @@
 import os
 
-from secret_settings import SECRET_KEY
-
 SETTINGS_DIR = os.path.dirname(os.path.dirname(__file__))
 PROJECT_DIR = os.path.dirname(SETTINGS_DIR)
+
+##################################################################
+#
+# SECRET SETTINGS
+#
+##################################################################
+try:
+    from secret_settings import *
+except ImportError:
+    print "Couldn't find secret_settings file. Creating a new one."
+    secret_settings_loc = os.path.join(SETTINGS_DIR, "secret_settings.py")
+    with open(secret_settings_loc, 'w') as secret_settings:
+        secret_key = ''.join([chr(ord(x) % 90 + 33) for x in os.urandom(40)])
+        secret_settings.write("SECRET_KEY = '''%s'''\n" % secret_key)
+    from secret_settings import *    
+
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -20,6 +34,24 @@ TEMPLATE_DIRS = (
     os.path.join(PROJECT_DIR, "templates"),
 )
 
+TEMPLATE_CONTEXT_PROCESSORS = (
+    'django.contrib.auth.context_processors.auth',
+    'django.core.context_processors.debug',
+    'django.core.context_processors.i18n',
+    'django.core.context_processors.media',
+    'django.core.context_processors.static',
+    'django.core.context_processors.tz',
+    'django.contrib.messages.context_processors.messages',
+
+    # for django-admin-tools
+    'django.core.context_processors.request',
+
+    'allauth.account.context_processors.account',
+    'allauth.socialaccount.context_processors.socialaccount',
+)
+
+CRISPY_TEMPLATE_PACK = 'bootstrap3'
+
 ALLOWED_HOSTS = []
 
 ####################################################################
@@ -35,9 +67,19 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.sites',
 
+    # django crispy forms
+    'crispy_forms',    
+
+    # site apps
     'clockwork',
     'clockwork.home',
+    'clockwork.profiles',
+
+    # Django Allauth
+    'allauth',
+    'allauth.account',
 )
 
 ###################################################################
@@ -88,9 +130,9 @@ DATABASES = {
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'America/Chicago'
 
-USE_I18N = True
+USE_I18N = False
 
 USE_L10N = True
 
@@ -103,3 +145,48 @@ USE_TZ = True
 ###################################################################
 
 STATIC_URL = '/static/'
+
+###################################################################
+#
+# BLEACH SETTINGS
+#
+##################################################################
+import bleach
+
+ALLOWED_HTML_TAGS = bleach.ALLOWED_TAGS + ['h1', 'h2', 'h3', 'p', 'img']
+
+ALLOWED_HTML_ATTRS = bleach.ALLOWED_ATTRIBUTES
+ALLOWED_HTML_ATTRS.update({'img': ['src', 'alt'],})
+
+##################################################################
+#
+# AUTHENTICATION SETTINGS
+#
+##################################################################
+
+# Redirect to / upon login
+LOGIN_REDIRECT_URL = "/"
+
+# Users don't have to provide an email address when registering
+ACCOUNT_EMAIL_REQUIRED = False
+
+# Users don't need to verify their email address since it's not required
+ACCOUNT_EMAIL_VERIFICATION = False
+
+# Email settings
+ACCOUNT_EMAIL_SUBJECT_PREFIX = "<Clockwork>"
+
+ACCOUNT_AUTHENTICATION_METHOD = "username"
+
+AUTHENTICATION_BACKENDS = (
+    'django.contrib.auth.backends.ModelBackend', # default
+    'allauth.account.auth_backends.AuthenticationBackend',
+)
+
+ANONYMOUS_USER_ID = -1
+
+ABSOLUTE_URL_OVERRIDES = {
+    'auth.user': lambda u: "/profile/%s/" % u.username,
+}
+
+SITE_ID = 1

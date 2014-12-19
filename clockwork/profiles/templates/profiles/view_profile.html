@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+{% load profile_tags %}
+
+{% block title %}
+  My Profile
+{% endblock %}
+
+{% block content %}
+
+  <div class="row">
+    <div class="col-md-9">
+      <div class="well">
+        <h2>
+          {% filter force_escape %}
+            {% firstof userprofile.user.get_full_name userprofile.user.username %}
+          {% endfilter %}
+        </h2>
+
+        <h4 class="muted"><i>{{ userprofile.user.username }}</i></h4>
+        <p>
+          {{ userprofile.rendered_about_me|safe }}
+        </p>
+      </div>
+    </div>
+    <div class="col-md-3">
+      <a id="profilepic" class="thumbnail" href="https://en.gravatar.com/site/login"   data-toggle="tooltip" title="Set your gravatar at gravatar.com!">
+        <img src="{% gravatar_url userprofile.user.email %}" class="img-responsive" />
+      </a>
+    </div>
+  </div>
+
+{% endblock %}
+
+
+{% block script %}
+  <script>
+    $(function(){
+      $(".invitation-tooltip").tooltip();
+      $("#profilepic").tooltip();
+    });
+  </script>
+{% endblock %}
