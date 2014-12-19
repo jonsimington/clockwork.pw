@@ -2,9 +2,11 @@ from django.conf.urls import patterns, include, url
 from django.contrib import admin
 
 urlpatterns = patterns('',
-    # Examples:
-    # url(r'^$', 'clockwork.views.home', name='home'),
-    # url(r'^blog/', include('blog.urls')),
-
     url(r'^admin/', include(admin.site.urls)),
+
+    # home app
+    url(r'^', include('clockwork.home.urls'),
+
+    # user profiles
+    url(r'^', include('clockwork.profiles.urls'),
 )
