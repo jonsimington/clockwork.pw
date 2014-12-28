@@ -1,0 +1,13 @@
+django-crispy-forms
+django
+markdown
+bleach
+django-allauth
+postmarkup
+pygments
+django-haystack==1.1.0
+django-mailer
+django-messages
+whoosh
+django-registration==0.7
+django-blog-zinnia
