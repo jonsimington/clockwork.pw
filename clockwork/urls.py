@@ -20,4 +20,7 @@ urlpatterns = patterns(
     url(r'^accounts/logout/$', logout_then_login),
     url(r'^accounts/', include('allauth.urls')),
 
+    # blog
+    url(r'^blog/', include('zinnia.urls', namespace='zinnia')),
+    url(r'^comments/', include('django_comments.urls')),
 )

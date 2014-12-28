@@ -46,8 +46,18 @@ TEMPLATE_CONTEXT_PROCESSORS = (
     # for django-admin-tools
     'django.core.context_processors.request',
 
+    # django allauth
     'allauth.account.context_processors.account',
     'allauth.socialaccount.context_processors.socialaccount',
+
+    # blog
+    'zinnia.context_processors.version',
+)
+
+TEMPLATE_LOADERS = (
+    'django.template.loaders.filesystem.Loader',
+    'django.template.loaders.app_directories.Loader',
+    'django.template.loaders.eggs.Loader',
 )
 
 CRISPY_TEMPLATE_PACK = 'bootstrap3'
@@ -80,6 +90,13 @@ INSTALLED_APPS = (
     # Django Allauth
     'allauth',
     'allauth.account',
+
+    # Blog
+    'zinnia',
+    'tagging',
+    'mptt',
+    'django_comments',
+
 )
 
 ###################################################################
