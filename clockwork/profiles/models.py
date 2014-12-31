@@ -8,8 +8,9 @@ from django.core.validators import MaxLengthValidator
 import markdown
 import bleach
 
+from pybb.profiles import PybbProfile
 
-class UserProfile(models.Model):
+class UserProfile(PybbProfile):
     user = models.OneToOneField(User, related_name="profile")
 
     about_me = models.TextField(validators=[MaxLengthValidator(500)])

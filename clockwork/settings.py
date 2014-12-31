@@ -52,6 +52,9 @@ TEMPLATE_CONTEXT_PROCESSORS = (
 
     # blog
     'zinnia.context_processors.version',
+
+    # forums
+    'pybb.context_processors.processor',
 )
 
 TEMPLATE_LOADERS = (
@@ -97,6 +100,8 @@ INSTALLED_APPS = (
     'mptt',
     'django_comments',
 
+    # forums
+    'pybb',
 )
 
 ###################################################################
@@ -113,6 +118,9 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.auth.middleware.SessionAuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+
+    #forums
+    'pybb.middleware.PybbMiddleware',
 )
 
 ###################################################################
@@ -207,3 +215,10 @@ ABSOLUTE_URL_OVERRIDES = {
 }
 
 SITE_ID = 1
+
+###################################################################
+#
+# FORUM SETTINGS
+#
+###################################################################
+PYBB_PROFILE_RELATED_NAME = 'profile'
