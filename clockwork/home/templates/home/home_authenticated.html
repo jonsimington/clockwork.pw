@@ -1,0 +1,12 @@
+<h1> Latest &lt;Clockwork&gt; News:</h1>
+
+{% for entry in entries %}
+  <h2>{{ entry.title }}</h2>
+  Published by {{ entry.authors.first }} on {{ entry.creation_date }}
+  <hr id="blog-hr">
+  <p>{{ entry.content }}</p>
+{% empty %}
+  <h2>No entries, yet.</h2>
+{% endfor %}
+
+{# include "home/home_sidebar_authenticated.html" #}

@@ -1,3 +1,6 @@
+# pip installs
+/src/
+
 # db files
 db*
 
