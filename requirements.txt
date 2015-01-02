@@ -14,3 +14,4 @@ django-blog-zinnia
 bbcode
 -e git+https://github.com/hovel/pybbm.git#egg=pybb
 pillow
+django-bootstrap-form
