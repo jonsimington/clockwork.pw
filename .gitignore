@@ -1,5 +1,8 @@
+# emacs temp files
+\#*
+
 # pip installs
-/src/
+src/
 
 # db files
 db*
