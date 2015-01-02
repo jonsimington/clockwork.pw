@@ -13,3 +13,4 @@ django-registration==0.7
 django-blog-zinnia
 bbcode
 -e git+https://github.com/hovel/pybbm.git#egg=pybb
+pillow
