@@ -4,6 +4,7 @@ from django.dispatch import receiver
 from django.contrib.auth.models import User
 from django.conf import settings
 from django.core.validators import MaxLengthValidator
+from django.contrib.auth.models import Group
 
 import markdown
 import bleach
@@ -25,7 +26,7 @@ class UserProfile(PybbProfile):
 @receiver(post_save, sender=User)
 def create_user_profile(sender, instance, created, **kwargs):
     if created:
-        UserProfile.objects.create(user=instance)
+        instance.groups.add(Group.objects.get(name='Applicant'))
 
 
 @receiver(pre_save, sender=UserProfile)
