@@ -209,6 +209,8 @@ AUTHENTICATION_BACKENDS = (
     'allauth.account.auth_backends.AuthenticationBackend',
 )
 
+AUTH_PROFILE_MODEL = 'profiles.models.UserProfile'
+
 ANONYMOUS_USER_ID = -1
 
 ABSOLUTE_URL_OVERRIDES = {

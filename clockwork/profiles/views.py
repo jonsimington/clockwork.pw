@@ -1,15 +1,16 @@
 from django.views.generic.detail import DetailView
 from django.views.generic.list import ListView
 from django.views.generic.edit import UpdateView
-
+from django.views.generic.base import TemplateView
 from django.http import Http404
-from django.contrib.auth.decorators import login_required
+from django.contrib.auth.decorators import login_required, user_passes_test
 from django.utils.decorators import method_decorator
 from django.contrib import messages
+from django.contrib.auth import models
+from django.contrib.auth.models import User
 
 from .models import UserProfile
 from .forms import UserProfileForm, ApplicationForm
-
 class ProfileListView(ListView):
     template_name = "profiles/list_profile.html"
     model = UserProfile
@@ -82,19 +83,24 @@ class ProfileUpdateView(UpdateView):
         messages.success(self.request, "Profile updated")
         return super(ProfileUpdateView, self).form_valid(form)
 
+def applicant_check(user):
+    return user.groups.filter(name='Applicant').exists()
 
+def staff_check(user):
+    return user.is_staff
+    
 class ApplicationSubmitView(UpdateView):
     """
         A view that displays the application form to be submitted or updated
     """
-
+    
     template_name = "profiles/application_form.html"
     form_class = ApplicationForm
     context_object_name = "application"
 
-    @method_decorator(login_required)
+    @method_decorator(user_passes_test(applicant_check, login_url="application/access-denied/"))
     def dispatch(self, request, *args, **kwargs):
-        """ Only authenticated users can make an app """
+        """ Only applicants can make an app """
         return super(ApplicationSubmitView, self).dispatch(request, *args, **kwargs)
 
     def get_object(self):
@@ -102,4 +108,26 @@ class ApplicationSubmitView(UpdateView):
 
     def form_valid(self, form):
         return super(ApplicationSubmitView, self).form_valid(form)
+
+class ApplicationsView(TemplateView):
+    """
+    A view that displays all open applications to admins
+    """
+
+    template_name = "profiles/applications.html"
+    
+    @method_decorator(user_passes_test(staff_check, login_url="application/access-denied/"))
+    def dispatch(self, *args, **kwargs):
+        return super(ApplicationsView, self).dispatch(*args, **kwargs)
+
+    def get_context_data(self, **kwargs):
+        context = super(ApplicationsView, self).get_context_data(**kwargs)
+        group = models.Group.objects.get(name='Applicant')
+        users = group.user_set.all()
+        print users
+        context['applicants'] = users
+        return context
         
+class ApplicationFailView(TemplateView):
+    template_name = "profiles/app_denied.html"
+

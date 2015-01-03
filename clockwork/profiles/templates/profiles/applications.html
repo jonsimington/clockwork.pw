@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <h1>Open Applications:</h1>
+
+  <div class="panel-group" id="accordion">
+    {% for user in applicants %}
+      <div class="panel panel-default">
+	<div class="panel-heading" data-toggle="collapse" data-target="#{{ user }}"
+	     href="#{{ user }}" >
+	  <h4 class="panel-title">
+	    {{ user }}
+	    <span class="pull-right">(open)</span>
+	  </h4>
+	</div>
+	<div id="{{ user }}" class="panel-collapse collapse">
+	  <div class="panel-body">
+	    {% include "profiles/application_view.html" %}
+	  </div>
+	</div>
+      </div>
+      {% endfor %}
+  </div>
+
+{% endblock %}
+
+
+
+
+
+
+    
