@@ -1,7 +1,8 @@
 from django.conf.urls import patterns, url
 
 from .views import (ProfileListView, ProfileView, 
-                    MyProfileView, ProfileUpdateView)
+                    MyProfileView, ProfileUpdateView,
+                    ApplicationSubmitView,)
 
 urlpatterns = patterns(
     '',
@@ -20,4 +21,12 @@ urlpatterns = patterns(
     url(r'^profile/edit/$',
         ProfileUpdateView.as_view(),
         name="update_profile"),
+
+    url(r'application/submit/$',
+        ApplicationSubmitView.as_view(),
+        name='submit_app'),
+
+    url(r'application/update/$',                                                       
+        ApplicationSubmitView.as_view(),                                              
+        name='update_app'), 
 )

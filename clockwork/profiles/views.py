@@ -8,7 +8,7 @@ from django.utils.decorators import method_decorator
 from django.contrib import messages
 
 from .models import UserProfile
-from .forms import UserProfileForm
+from .forms import UserProfileForm, ApplicationForm
 
 class ProfileListView(ListView):
     template_name = "profiles/list_profile.html"
@@ -81,3 +81,25 @@ class ProfileUpdateView(UpdateView):
     def form_valid(self, form):
         messages.success(self.request, "Profile updated")
         return super(ProfileUpdateView, self).form_valid(form)
+
+
+class ApplicationSubmitView(UpdateView):
+    """
+        A view that displays the application form to be submitted or updated
+    """
+
+    template_name = "profiles/application_form.html"
+    form_class = ApplicationForm
+    context_object_name = "application"
+
+    @method_decorator(login_required)
+    def dispatch(self, request, *args, **kwargs):
+        """ Only authenticated users can make an app """
+        return super(ApplicationSubmitView, self).dispatch(request, *args, **kwargs)
+
+    def get_object(self):
+        return self.request.user.profile
+
+    def form_valid(self, form):
+        return super(ApplicationSubmitView, self).form_valid(form)
+        
