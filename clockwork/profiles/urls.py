@@ -2,7 +2,7 @@ from django.conf.urls import patterns, url
 
 from .views import (ProfileListView, ProfileView, 
                     MyProfileView, ProfileUpdateView,
-                    ApplicationSubmitView,)
+                    ApplicationSubmitView, ApplicationFailView)
 
 urlpatterns = patterns(
     '',
@@ -29,4 +29,8 @@ urlpatterns = patterns(
     url(r'application/update/$',                                                       
         ApplicationSubmitView.as_view(),                                              
         name='update_app'), 
+
+    url(r'application/access-denied/',
+        ApplicationFailView.as_view(),
+        name='application_fail'),
 )

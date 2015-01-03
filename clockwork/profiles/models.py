@@ -37,8 +37,8 @@ class UserProfile(PybbProfile):
     @models.permalink
     def get_absolute_url(self):
         return ('view_profile', (), {'username': self.user.username})
-
-
+    
+    
 @receiver(post_save, sender=User)
 def create_user_profile(sender, instance, created, **kwargs):
     if created:

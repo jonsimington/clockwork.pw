@@ -1,9 +1,9 @@
 from django.views.generic.detail import DetailView
 from django.views.generic.list import ListView
 from django.views.generic.edit import UpdateView
-
+from django.views.generic.base import TemplateView
 from django.http import Http404
-from django.contrib.auth.decorators import login_required
+from django.contrib.auth.decorators import login_required, user_passes_test
 from django.utils.decorators import method_decorator
 from django.contrib import messages
 
@@ -82,7 +82,10 @@ class ProfileUpdateView(UpdateView):
         messages.success(self.request, "Profile updated")
         return super(ProfileUpdateView, self).form_valid(form)
 
-
+def applicant_check(user):
+    return user.groups.filter(name='Applicant').exists()
+    
+    
 class ApplicationSubmitView(UpdateView):
     """
         A view that displays the application form to be submitted or updated
@@ -92,7 +95,7 @@ class ApplicationSubmitView(UpdateView):
     form_class = ApplicationForm
     context_object_name = "application"
 
-    @method_decorator(login_required)
+    @method_decorator(user_passes_test(applicant_check, login_url="application/access-denied/"))
     def dispatch(self, request, *args, **kwargs):
         """ Only authenticated users can make an app """
         return super(ApplicationSubmitView, self).dispatch(request, *args, **kwargs)
@@ -103,3 +106,6 @@ class ApplicationSubmitView(UpdateView):
     def form_valid(self, form):
         return super(ApplicationSubmitView, self).form_valid(form)
         
+
+class ApplicationFailView(TemplateView):
+    template_name = "profiles/app_denied.html"
