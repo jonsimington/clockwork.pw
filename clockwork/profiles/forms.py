@@ -97,3 +97,142 @@ class LoginForm(forms.Form):
         username = self.cleaned_data['username']
         password = self.cleaned_data['password']
         return authenticate(username=username, password=password)
+
+class ApplicationForm(forms.ModelForm):
+    class Meta:
+        model = UserProfile
+        exclude = ('user',
+                   'about_me',
+                   'avatar',
+                   'post_count',
+                   'time_zone',
+                   'language',
+                   'show_signatures',
+                   'autosubscribe',
+                   'signature',
+                   'signature_html',
+                   'submitted_app',)
+        fields = ['main_character',
+                  'armory_link',
+                  'char_race',
+                  'char_class',
+                  'age',
+                  'char_spec',
+                  'recent_parses',
+                  'computer_specs',
+                  'screenshot',
+                  'experience',
+                  'how_did_you_hear',
+                  'authenticator_check',
+                  'addons',]
+                  
+
+    race_choices = ['Draenei',
+                    'Dwarf',
+                    'Gnome',
+                    'Human',
+                    'Night Elf',
+                    'Pandaren',
+                    'Worgen',]
+
+    class_choices = ['Death Knight',
+                     'Hunter',
+                     'Mage',
+                     'Monk',
+                     'Paladin',
+                     'Priest',
+                     'Shaman',
+                     'Warrior',]
+
+    auth_choices = ['Yes', 'No',]
+
+    main_character = forms.CharField(required=True)
+    armory_link = forms.CharField(required=True)
+    char_race = forms.ChoiceField(required=True, choices=[(x, x) for x in race_choices])
+    char_class = forms.ChoiceField(required=True, choices=[(x, x) for x in class_choices])
+    age = forms.CharField(required=True)
+    char_spec = forms.CharField(required=True)
+    recent_parses = forms.CharField(required=True)
+    computer_specs = forms.CharField(required=True)
+    screenshot = forms.CharField(required=True)
+    experience = forms.CharField(required=True)
+    how_did_you_hear = forms.CharField(required=True)
+    authenticator_check = forms.ChoiceField(required=True, choices=[(x, x) for x in auth_choices])
+
+    def __init__(self, *args, **kwargs):
+        super(ApplicationForm, self).__init__(*args, **kwargs)
+        
+        self.helper = FormHelper(self)
+        self.helper.form_class = 'form-horizontal'
+        self.helper.label_class = 'col-lg-2'
+        self.helper.field_class = 'col-lg-8'
+        self.helper.layout = Layout(
+            Field('main_character'),
+            HTML('<hr>'),
+            Field('armory_link'),
+            HTML('<hr>'),
+            Field('char_race'),
+            HTML('<hr>'),
+            Field('char_class'),
+            HTML('<hr>'),
+            Field('age'),
+            HTML('<hr>'),
+            Field('char_spec'),
+            HTML('<hr>'),
+            Field('recent_parses'),
+            HTML('<hr>'),
+            Field('computer_specs'),
+            HTML('<hr>'),
+            Field('screenshot'),
+            HTML('<hr>'),
+            Field('addons'),
+            HTML('<hr>'),
+            Field('experience'),
+            HTML('<hr>'),
+            Field('how_did_you_hear'),
+            HTML('<hr>'),
+            Field('authenticator_check'),
+            HTML('<br>'),
+            FormActions(
+                Submit('save', 'Submit Application'),
+                Button('cancel', 'Cancel', onclick="window.location='/'"),
+            ),
+            HTML('<br><br>'),
+        )
+        self.fields['main_character'].label = "Main Character"
+        self.fields['armory_link'].label = "Link your Armory"
+        self.fields['char_race'].label = "Character Race"
+        self.fields['char_class'].label = "Character Class"
+        self.fields['age'].label = "How old are you?"
+        self.fields['char_spec'].label = "What is your primary raiding spec?"
+        self.fields['recent_parses'].label = "Link some recent parses"
+        self.fields['computer_specs'].label = "List your computer specs"
+        self.fields['screenshot'].label = "Link a screenshot of your UI during combat"
+        self.fields['addons'].label = "What addons do you use?"
+        self.fields['experience'].label = "List your previous raiding experience"
+        self.fields['how_did_you_hear'].label = "How did you hear about Clockwork and why do you want to be a part of it?"
+        self.fields['authenticator_check'].label = "Is your account secure with an authenticator?"
+
+        
+    def save(self, *args, **kwargs):
+        profile = super(ApplicationForm, self).save(*args, **kwargs)
+        profile.user.main_character = self.cleaned_data['main_character']
+        profile.user.armory_link = self.cleaned_data['main_character']
+        profile.user.char_race = self.cleaned_data['char_race']
+        profile.user.char_class = self.cleaned_data['char_race']
+        profile.user.age = self.cleaned_data['age']
+        profile.user.char_spec = self.cleaned_data['char_spec']
+        profile.user.recent_parses = self.cleaned_data['recent_parses']
+        profile.user.computer_specs = self.cleaned_data['computer_specs']
+        profile.user.screenshot = self.cleaned_data['screenshot']
+        profile.user.addons = self.cleaned_data['addons']
+        profile.user.experience = self.cleaned_data['experience']
+        profile.user.how_did_you_hear = self.cleaned_data['how_did_you_hear']
+        profile.user.authenticator = self.cleaned_data['authenticator_check']
+        profile.user.submitted_app = True
+        profile.user.save(*args, **kwargs)
+
+        
+        print u"{}'s profile saved".format(profile.user.username)
+        
+        return profile

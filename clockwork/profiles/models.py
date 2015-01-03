@@ -18,6 +18,22 @@ class UserProfile(PybbProfile):
     rendered_about_me = models.TextField(editable=False,
                                          null=True)
 
+    main_character = models.CharField(max_length=12, default="")
+    armory_link = models.CharField(max_length=100, default="")
+    char_race = models.CharField(max_length=15, default="")
+    char_class = models.CharField(max_length=15, default="")
+    age = models.CharField(max_length=3, default="")
+    char_spec = models.CharField(max_length=15, default="")
+    recent_parses = models.TextField(validators=[MaxLengthValidator(500)], default="")
+    computer_specs = models.TextField(validators=[MaxLengthValidator(1000)], default="")
+    screenshot = models.CharField(max_length=100, default="")
+    addons = models.TextField(validators=[MaxLengthValidator(1000)], default="")
+    experience = models.TextField(validators=[MaxLengthValidator(1000)], default="")
+    how_did_you_hear = models.CharField(max_length=100, default="")
+    authenticator = models.CharField(max_length=5, default="")
+
+    submitted_app = models.BooleanField(default=False)
+    
     @models.permalink
     def get_absolute_url(self):
         return ('view_profile', (), {'username': self.user.username})

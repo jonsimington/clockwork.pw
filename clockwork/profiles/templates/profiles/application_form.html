@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% load url from future %}
+{% load crispy_forms_tags %}
+
+{% block title %}
+  {% if user.submitted_app %}
+    Update Application
+  {% else %}
+    Submit Application
+  {% endif %}
+{% endblock %}
+
+{% block content %}
+  <h1>
+    {% if user.submitted_app %}
+      Update your Application
+    {% else %}
+      Submit Application to &lt;Clockwork&gt;
+    {% endif %}
+  </h1>
+
+  <div class="well">
+    {% crispy form %}
+  </div>
+{% endblock %}
+
+{% block sidebar %}
+
+{% endblock %}
