@@ -90,7 +90,7 @@ class ApplicationSubmitView(UpdateView):
     """
         A view that displays the application form to be submitted or updated
     """
-
+    
     template_name = "profiles/application_form.html"
     form_class = ApplicationForm
     context_object_name = "application"
@@ -105,7 +105,6 @@ class ApplicationSubmitView(UpdateView):
 
     def form_valid(self, form):
         return super(ApplicationSubmitView, self).form_valid(form)
-        
 
 class ApplicationFailView(TemplateView):
     template_name = "profiles/app_denied.html"

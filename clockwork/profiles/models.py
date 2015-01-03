@@ -32,8 +32,6 @@ class UserProfile(PybbProfile):
     how_did_you_hear = models.CharField(max_length=100, default="")
     authenticator = models.CharField(max_length=5, default="")
 
-    submitted_app = models.BooleanField(default=False)
-    
     @models.permalink
     def get_absolute_url(self):
         return ('view_profile', (), {'username': self.user.username})
