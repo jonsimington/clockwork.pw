@@ -1,8 +1,10 @@
 from django.conf.urls import patterns, url
+from django.contrib.auth.decorators import permission_required
 
 from .views import (ProfileListView, ProfileView, 
                     MyProfileView, ProfileUpdateView,
-                    ApplicationSubmitView, ApplicationFailView)
+                    ApplicationSubmitView, ApplicationFailView,
+                    ApplicationsView,)
 
 urlpatterns = patterns(
     '',
@@ -33,4 +35,8 @@ urlpatterns = patterns(
     url(r'application/access-denied/',
         ApplicationFailView.as_view(),
         name='application_fail'),
+
+    url(r'applications/',
+        ApplicationsView.as_view(),
+        name='applications'),
 )
