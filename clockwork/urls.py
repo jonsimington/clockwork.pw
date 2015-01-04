@@ -26,7 +26,4 @@ urlpatterns = patterns(
 
     #forums
     url(r'^forums/', include('pybb.urls', namespace='pybb')),
-
-    # user apps
-    url(r'^', include('clockwork.applications.urls')),
 )
