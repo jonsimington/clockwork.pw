@@ -17,7 +17,7 @@
     {% endfor %}
   {% else %}
     {% if not user.is_authenticated %}
-      <h3>You must be <a href="{% url 'account_login' %}">logged in</a> to view the forums. </h3>
+      <h2>Nothing to see here, move along.</h2>
     {% else %}
       <h2>{% trans "Forum categories are not created" %}</h2>
       {% if user.is_staff %}

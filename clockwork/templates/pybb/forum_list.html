@@ -40,7 +40,7 @@
     </tr>
     {% empty %}
       {% if not user.is_authenticated %}
-        <h3>You must be <a href="{% url 'account_login' %}">logged in</a> to view the forums. </h3>
+        <h3>Nothing to see here, move along.</h3>
       {% elif category %}
         <h3>{% trans "No forums created" %}</h3>
 	{% if user.is_staff %}
