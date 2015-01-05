@@ -27,7 +27,7 @@
 	  <h5>{{ forum.name }}{% if forum.unread %}
 	</a>
 	&nbsp;&nbsp;&nbsp;
-	<span class="label label-warning">Unread Posts</span>{% endif %}</h5>
+	<span class="label label-warning pull-right">Unread Posts</span>{% endif %}</h5>
 	{% if forum.hidden %}[{% trans "Hidden" %}]{% endif %}
 	<div class="forum-description">
 	  {{ forum.description|safe }}
