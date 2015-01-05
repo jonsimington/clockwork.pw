@@ -1,0 +1,68 @@
+<nav class="navbar navbar-default" role="navigation">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+	<span class="sr-only">Toggle navigation</span>
+	<span class="icon-bar"></span>
+	<span class="icon-bar"></span>
+	<span class="icon-bar"></span>
+      </button>
+      <a href="/" title="<Clockwork>" class="navbar-brand" rel="home">
+	Clockwork
+      </a>
+    </div>
+
+    <div class="collapse navbar-collapse" id="navbar">
+      <ul class="nav navbar-nav">
+	<li>
+	  <a href="/">
+	    Blog
+	  </a>
+	</li>
+	<li>
+	  <a href="">
+	    About Us
+	  </a>
+        </li>
+	<li>
+	  <a href="{% url 'list_profile' %}">
+	    Roster
+	  </a>
+	</li>
+	<li>
+	  <a href="forums/">
+	    Forums 
+	  </a>
+	</li>
+	{% if user.is_staff %}
+	  <li>
+	    <a href="applications/">
+	      View Applications
+	    </a>
+	  </li>
+	{% endif %}
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+	{% if user.is_authenticated %}
+	  <li>
+	    <a href="{{ user.profile.get_absolute_url }}">
+	      <strong>{{ user.username }}</strong>
+	    </a>
+	  </li>
+	  {% if user.is_staff %}
+	    <li>
+	      <a href="/admin/">
+	        Admin
+	      </a>
+	    </li>
+	  {% endif %}
+	  <li>
+	    <a href="{% url 'account_logout' %}?next={% url 'home' %}">
+	      Logout
+	    </a>
+	  </li>
+	{% endif %}
+      </ul>
+    </div>
+  </div>
+</nav>
