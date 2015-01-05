@@ -1,9 +1,12 @@
 {% extends "base.html" %}
 
 {% block content %}
+  <div class="row">
+    <div class="col-lg-{% if user.is_authenticated %}12{% else %}9{% endif %}">
+      <h1 class="text-center"> Latest &lt;Clockwork&gt; News</h1>
+    </div>
+  </div>
   <div class="col-lg-{% if user.is_authenticated %}12{% else %}9{% endif %}">
-    <h1 class="text-center"> Latest &lt;Clockwork&gt; News</h1>
-
     {% for entry in entries %}
       <div class="well">
 	<h2>{{ entry.title }}</h2>
