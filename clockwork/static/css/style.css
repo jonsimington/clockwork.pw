@@ -12,13 +12,10 @@
     width: 100%;
 }
 
-.forum-name {
+.forum-name, .topic-name {
     width: 10%;
 }
 
-.topic-name {
-    width: 10%;
-}
 
 .forum-topic-count, .forum-post-count, .topic-post-count, .topic-view-count {
     width: 1%;
