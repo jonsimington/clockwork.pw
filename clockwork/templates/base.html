@@ -76,14 +76,11 @@
     </div>
     <div class="container">
       <div class="row">
-	<div class="col-md-9">
-	  {% block content %}{% endblock %}
-	</div>
-	<div class="col-md-3">
-	  {% block sidebar %}{% endblock %}
-	</div>
+	{% block content %}{% endblock %}
+	{% block sidebar %}{% endblock %}
       </div>
     </div>
+</div>
   
      <!-- Scripts -->
     <!-- Put them at the end so the page loads faster -->
