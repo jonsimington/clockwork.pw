@@ -8,10 +8,12 @@
   <table class="table">
     <thead>
       <tr>
-	Name
-      </tr>
-      <tr>
-	Rank
+	<th>
+	  Name
+	</th>
+	<th>
+	  Guild Rank
+	</th>
       </tr>
     </thead>
 
@@ -20,13 +22,14 @@
         <tr>
 	  <td>
 	    <a href="{{ profile.get_absolute_url }}">
-	      {{ profile.user.username }}
+	      <h5>{{ profile.user.username }}</h5>
 	    </a>
+	  </td>
+	  <td>
+	    {{profile.user.groups.all.first.name}}
 	  </td>
 	</tr>
       {% endfor %}
     </tbody>
   </table>
 {% endblock %}
-	  
-  

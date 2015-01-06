@@ -22,7 +22,7 @@ class ProfileListView(ListView):
         return super(ProfileListView, self).dispatch(request, *args, **kwargs)
 
     def get_queryset(self):
-        return UserProfile.objects.exclude(user__id=-1).order_by('user__username')
+        return UserProfile.objects.exclude(user__id=-1).order_by('user__groups__id')
 
 class ProfileView(DetailView):
     """ A view that displays a user's profile.
