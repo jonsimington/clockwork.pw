@@ -24,21 +24,23 @@
       
       <tbody>
 	{% for profile in userprofiles %}
-        <tr>
-	  <td id="username">
-	    <a href="{{ profile.get_absolute_url }}">
-	      <h5>{{ profile.user.username }}</h5>
-	    </a>
-	  </td>
-	  <td align="center" id="rank">
-	    <h5>{{ profile.user.groups.all.first.name }}</h5>
-	  </td>
-	  <td align="right" id="armory_link">
-	    <a href="http://us.battle.net/wow/en/character/sargeras/{{profile.user.profile.main_character}}/advanced">
-	      <h5>{{ profile.user.profile.main_character }}</h5>
-	    </a>
-	  </td>
-	</tr>
+	  {% if not profile.user.groups.all.first.name == 'Reject' %}
+	    <tr>
+	      <td id="username">
+		<a href="{{ profile.get_absolute_url }}">
+		  <h5>{{ profile.user.username }}</h5>
+		</a>
+	      </td>
+	      <td align="center" id="rank">
+		<h5>{{ profile.user.groups.all.first.name }}</h5>
+	      </td>
+	      <td align="right" id="armory_link">
+		<a href="http://us.battle.net/wow/en/character/sargeras/{{profile.user.profile.main_character}}/advanced">
+		  <h5>{{ profile.user.profile.main_character }}</h5>
+		</a>
+	      </td>
+	    </tr>
+	  {% endif %}
 	{% endfor %}
       </tbody>
     </table>
