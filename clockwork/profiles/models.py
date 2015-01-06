@@ -5,7 +5,6 @@ from django.contrib.auth.models import User
 from django.conf import settings
 from django.core.validators import MaxLengthValidator
 from django.contrib.auth.models import Group
-
 import markdown
 import bleach
 
@@ -54,14 +53,15 @@ class UserProfile(PybbProfile):
 @receiver(post_save, sender=User)
 def create_user_profile(sender, instance, created, **kwargs):
     if created:
-        instance.groups.add(Group.objects.get(name='Applicant'))
+        try:
+            instance.groups.add(Group.objects.get(name='Applicant'))
+        except:
+            pass
 
 
 @receiver(pre_save, sender=UserProfile)
 def user_profile_pre_save(sender, instance, **kwargs):
-    # Render the about_me field as HTML instead of markdown
-    rendered = markdown.markdown(instance.about_me, safe_mode='escape')
-    clean_rendered = bleach.clean(rendered,
+    clean_rendered = bleach.clean(instance.about_me,
                                   tags=settings.ALLOWED_HTML_TAGS,
                                   attributes=settings.ALLOWED_HTML_ATTRS)
     instance.rendered_about_me = clean_rendered

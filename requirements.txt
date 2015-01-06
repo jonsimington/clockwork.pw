@@ -1,6 +1,5 @@
 django-crispy-forms
 django
-markdown
 bleach
 django-allauth
 postmarkup
@@ -15,3 +14,4 @@ bbcode
 -e git+https://github.com/jonsimington/pybbm.git#egg=pybb
 pillow
 django-bootstrap-form
+psycopg2

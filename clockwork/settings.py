@@ -170,8 +170,13 @@ USE_TZ = True
 # STATIC SETTINGS
 #
 ###################################################################
-
 STATIC_URL = '/static/'
+STATIC_ROOT = '/home/jonsimington/clockwork.pw/static/'
+
+STATICFILES_FINDERS = (
+    'django.contrib.staticfiles.finders.FileSystemFinder',
+    'django.contrib.staticfiles.finders.AppDirectoriesFinder',
+)
 
 ###################################################################
 #
@@ -227,3 +232,17 @@ SITE_ID = 1
 ###################################################################
 PYBB_PROFILE_RELATED_NAME = 'profile'
 PYBB_DEFAULT_AVATAR_URL = 'http://i.imgur.com/ytOAIRY.png'
+
+###################################################################
+#
+# PRODUCTION SETTINGS
+#
+###################################################################
+USE_X_FORWARDED_HOST = True
+DEBUG = False
+ALLOWED_HOSTS = [
+    '127.0.0.1',
+    'localhost',
+    'clockwork.pw',
+    '.clockwork.pw',
+]
