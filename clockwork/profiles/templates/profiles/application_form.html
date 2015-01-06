@@ -8,7 +8,12 @@
 {% endblock %}
 
 {% block content %}
-  <h1 class="text-center">Submit or Update Application to &lt;Clockwork&gt;</h1>
+  <h1 class="text-center">
+    {% if user.profile.has_submitted_app %}
+      Update
+    {% else %}
+      Submit
+    {% endif %} your Application to &lt;Clockwork&gt;</h1>
   <div class="well">
     {% crispy form %}
   </div>

@@ -45,6 +45,7 @@ class UserProfileForm(forms.ModelForm):
         profile = super(UserProfileForm, self).save(*args, **kwargs)
         profile.user.first_name = self.cleaned_data['first_name']
         profile.user.last_name = self.cleaned_data['last_name']
+        profile.user.profile.submitted_app = True
         profile.user.save(*args, **kwargs)
         print u"{}'s profile saved".format(profile.user.username)
         return profile
@@ -110,8 +111,7 @@ class ApplicationForm(forms.ModelForm):
                    'show_signatures',
                    'autosubscribe',
                    'signature',
-                   'signature_html',
-                   'submitted_app',)
+                   'signature_html',)
         fields = ['main_character',
                   'armory_link',
                   'char_race',
@@ -124,7 +124,8 @@ class ApplicationForm(forms.ModelForm):
                   'experience',
                   'how_did_you_hear',
                   'authenticator_check',
-                  'addons',]
+                  'addons',
+                  'submitted_app',]
                   
 
     race_choices = ['Draenei',
@@ -158,14 +159,18 @@ class ApplicationForm(forms.ModelForm):
     experience = forms.CharField(required=True)
     how_did_you_hear = forms.CharField(required=True)
     authenticator_check = forms.ChoiceField(required=True, choices=[(x, x) for x in auth_choices])
-
+    submitted_app = forms.BooleanField(required=False)
+    
     def __init__(self, *args, **kwargs):
+        initial = kwargs.get('initial', {})
+        initial['submitted_app'] = 'True'
+        kwargs['initial'] = initial
         super(ApplicationForm, self).__init__(*args, **kwargs)
         
         self.helper = FormHelper(self)
         self.helper.form_class = 'form-horizontal'
         self.helper.label_class = 'col-lg-2'
-        self.helper.field_class = 'col-lg-8'
+        self.helper.field_class = 'col-lg-10'
         self.helper.layout = Layout(
             Field('main_character'),
             HTML('<hr>'),
@@ -192,6 +197,7 @@ class ApplicationForm(forms.ModelForm):
             Field('how_did_you_hear'),
             HTML('<hr>'),
             Field('authenticator_check'),
+            Field('submitted_app', type="hidden"),
             HTML('<br>'),
             FormActions(
                 Submit('save', 'Submit Application'),
@@ -199,6 +205,7 @@ class ApplicationForm(forms.ModelForm):
             ),
             HTML('<br><br>'),
         )
+        
         self.fields['main_character'].label = "Main Character"
         self.fields['armory_link'].label = "Link your Armory"
         self.fields['char_race'].label = "Character Race"
@@ -212,10 +219,11 @@ class ApplicationForm(forms.ModelForm):
         self.fields['experience'].label = "List your previous raiding experience"
         self.fields['how_did_you_hear'].label = "How did you hear about Clockwork and why do you want to be a part of it?"
         self.fields['authenticator_check'].label = "Is your account secure with an authenticator?"
-
+        self.fields['submitted_app'].label = "Check this box if "
         
     def save(self, *args, **kwargs):
         profile = super(ApplicationForm, self).save(*args, **kwargs)
+        print profile.user.username
         profile.user.main_character = self.cleaned_data['main_character']
         profile.user.armory_link = self.cleaned_data['main_character']
         profile.user.char_race = self.cleaned_data['char_race']
@@ -229,10 +237,10 @@ class ApplicationForm(forms.ModelForm):
         profile.user.experience = self.cleaned_data['experience']
         profile.user.how_did_you_hear = self.cleaned_data['how_did_you_hear']
         profile.user.authenticator = self.cleaned_data['authenticator_check']
-        profile.user.submitted_app = True
+        profile.user.submitted_app = self.cleaned_data['submitted_app']
         profile.user.save(*args, **kwargs)
 
         
         print u"{}'s profile saved".format(profile.user.username)
-        
+        print "submitted_app = {}".format(profile.user.submitted_app)
         return profile

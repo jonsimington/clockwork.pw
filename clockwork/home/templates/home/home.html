@@ -1,6 +1,11 @@
 {% extends "base.html" %}
 
 {% block content %}
+  {% if not user.profile.has_submitted_app and user.is_authenticated %}
+    <div class="alert alert-warning text-center" role="alert">
+      <h5>It appears you haven't submitted an application yet.  Do that <a href="/application/submit/">here</a>!</h5>
+    </div>
+  {% endif %}
   <div class="row">
     <div class="col-lg-{% if user.is_authenticated %}12{% else %}9{% endif %}">
       <h1 class="text-center"> Latest &lt;Clockwork&gt; News</h1>

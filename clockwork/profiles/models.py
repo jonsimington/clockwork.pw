@@ -31,11 +31,25 @@ class UserProfile(PybbProfile):
     experience = models.TextField(validators=[MaxLengthValidator(1000)], default="")
     how_did_you_hear = models.CharField(max_length=100, default="")
     authenticator = models.CharField(max_length=5, default="")
-
+    submitted_app = models.BooleanField(default=False)
+    
     @models.permalink
     def get_absolute_url(self):
         return ('view_profile', (), {'username': self.user.username})
+
+    @property
+    def is_applicant(self):
+        return self.groups.filter(name="Applicant").exists()
+
+    @property
+    def can_view_applications(self):
+        groups = ['Member', 'Officer']
+        return self.groups.filter(name__in=groups).exists()
     
+    @property
+    def has_submitted_app(self):
+        print "{}'s submitted_app = {}".format(self, self.submitted_app)
+        return self.submitted_app
     
 @receiver(post_save, sender=User)
 def create_user_profile(sender, instance, created, **kwargs):
