@@ -6,9 +6,9 @@
     {% if page_obj.has_previous %}    
       <li class="prev {% if not page_obj.has_previous %}disabled{% endif %}">
 	<h5>
-	  <span class="label label-default">
-	    <a href="{% if page_obj.has_previous %}?page={{ page_obj.previous_page_number }}{% endif %}">← {% trans "previous page" %}</a>
-	  </span>
+	  <a href="{% if page_obj.has_previous %}?page={{ page_obj.previous_page_number }}{% endif %}" class="label label-default">
+	      <span class="fa fa-arrow-left"></span>&nbsp;&nbsp;{% trans "previous page" %}
+	  </a>
 	</h5>
       </li>
     {% endif %}
@@ -16,9 +16,9 @@
       {% if page %}
         <li {% ifequal page page_obj.number %}class="disabled"{% endifequal %}>
 	  <h5>
-	    <span class="label label-{% ifequal page page_obj.number %}info{% else %}default{% endifequal %}">
-	      <a href="?{{ page.querystring }}" class="page"><strong>{{ page }}</strong></a>
-	    </span>
+	    <a href="?{{ page.querystring }}" class="page label label-{% ifequal page page_obj.number %}info{% else %}default{% endifequal %}">
+		<strong>{{ page }}</strong>
+	    </a>
 	  </h5>
 	</li>
       {% else %}
@@ -30,9 +30,9 @@
     {% if page_obj.has_next %}    
       <li class="next {% if not page_obj.has_next %}disabled{% endif %}">
 	<h5>
-	  <span class="label label-default">	    
-	    <a href="?page={{ page_obj.next_page_number }}" >{% trans "next page" %} →</a>
-	  </span>
+	  <a href="?page={{ page_obj.next_page_number }}" class="label label-default" >
+	      {% trans "next page" %}&nbsp;&nbsp;<span class="fa fa-arrow-right"></span> 
+	  </a>
 	</h5>
       </li>
     {% endif %}
