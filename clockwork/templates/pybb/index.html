@@ -11,6 +11,9 @@
 {% endblock %}
 
 {% block content %}
+  {% with extra_crumb="Forum" %}
+    {% include "pybb/breadcrumb.html" %}
+  {% endwith %}
   {% if categories %}
     {% for category in categories %}
       {% include 'pybb/category.html' %}
