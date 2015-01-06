@@ -15,10 +15,9 @@ class UserProfileForm(forms.ModelForm):
     class Meta:
         model = UserProfile
         exclude = ('user',)
+        fields = ['about_me',]
 
-    first_name = forms.CharField(required=False)
-    last_name = forms.CharField(required=False)
-    about_me = forms.CharField(required=False)
+    about_me = forms.CharField(required=False, widget=forms.Textarea)
 
     def __init__(self, *args, **kwargs):
         super(UserProfileForm, self).__init__(*args, **kwargs)
@@ -26,26 +25,18 @@ class UserProfileForm(forms.ModelForm):
         self.helper = FormHelper(self)
         self.helper.form_class = 'form-horizontal'
         self.helper.label_class = 'col-lg-2'
-        self.helper.field_class = 'col-lg-8'
+        self.helper.field_class = 'col-lg-10'
         self.helper.layout = Layout(
-            Field('first_name'),
-            Field('last_name'),
-            HTML('<hr>'),
             Field('about_me'),
             HTML('<br>'),
             FormActions(
-                Submit('save', 'Save changes',
-                       epiceditor_save_button="true"),
-                Button('cancel', 'Cancel',
-                       onclick="window.location='/profile/'")
+                Submit('save', 'Save changes'),
             ),
         )
 
     def save(self, *args, **kwargs):
         profile = super(UserProfileForm, self).save(*args, **kwargs)
-        profile.user.first_name = self.cleaned_data['first_name']
-        profile.user.last_name = self.cleaned_data['last_name']
-        profile.user.profile.submitted_app = True
+        profile.user.about_me = self.cleaned_data['about_me']
         profile.user.save(*args, **kwargs)
         print u"{}'s profile saved".format(profile.user.username)
         return profile
