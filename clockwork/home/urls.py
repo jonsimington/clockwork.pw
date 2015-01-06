@@ -6,5 +6,5 @@ urlpatterns = patterns(
     '',
     url(r'^$', HomePageView.as_view(), name="home"),
 
-    url(r'^about-us/$', AboutUsView.as_view(), name="home"),
+    url(r'^about-us/$', AboutUsView.as_view(), name="about_us"),
 )
