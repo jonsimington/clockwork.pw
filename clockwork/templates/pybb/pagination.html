@@ -13,19 +13,19 @@
       </li>
     {% endif %}
     {% for page in page_obj.pages %}
-    {% if page %}
-    <li {% ifequal page page_obj.number %}class="disabled"{% endifequal %}>
-      <h5>
-	<span class="label label-default">
-	  <a href="?{{ page.querystring }}" class="page">{{ page }}</a>
-	</span>
-      </h5>
-    </li>
-    {% else %}
-    <li class="disabled">
-      <h5><a href="#">...</a></h5>
-    </li>
-    {% endif %}
+      {% if page %}
+        <li {% ifequal page page_obj.number %}class="disabled"{% endifequal %}>
+	  <h5>
+	    <span class="label label-{% ifequal page page_obj.number %}info{% else %}default{% endifequal %}">
+	      <a href="?{{ page.querystring }}" class="page">{{ page }}</a>
+	    </span>
+	  </h5>
+	</li>
+      {% else %}
+       <li class="disabled">
+	 <h5><a href="#">...</a></h5>
+       </li>
+      {% endif %}
     {% endfor %}
     {% if page_obj.has_next %}    
       <li class="next {% if not page_obj.has_next %}disabled{% endif %}">
