@@ -36,7 +36,7 @@
 	    Forums 
 	  </a>
 	</li>
-	{% if user.is_staff %}
+	{% if user.groups.first.name == "Member" or user.groups.first.name == "Officer" %}
 	  <li class="{% active_re '^/applications' %}">
 	    <a href="/applications/">
 	      View Applications
