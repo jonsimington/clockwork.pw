@@ -74,6 +74,12 @@
 	      Logout
 	    </a>
 	  </li>
+	{% else %}
+	  <li>
+	    <a href="{% url 'account_login' %}">
+	      Login
+	    </a>
+	  </li>
 	{% endif %}
       </ul>
     </div>
