@@ -134,3 +134,9 @@
 td.username, td.armory_link, td.rank {
     width: 33%;
 }
+
+.pagination-list li {
+    display: inline;
+    list-style-type: none;
+    padding-right: 5px;
+}
