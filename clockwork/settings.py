@@ -225,3 +225,4 @@ SITE_ID = 1
 #
 ###################################################################
 PYBB_PROFILE_RELATED_NAME = 'profile'
+PYBB_DEFAULT_AVATAR_URL = 'http://i.imgur.com/ytOAIRY.png'
