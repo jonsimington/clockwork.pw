@@ -89,7 +89,8 @@ INSTALLED_APPS = (
     'clockwork',
     'clockwork.home',
     'clockwork.profiles',
-
+    'clockwork.utility',
+    
     # Django Allauth
     'allauth',
     'allauth.account',

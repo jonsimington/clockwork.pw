@@ -15,7 +15,10 @@
 {% endblock %}
 
 {% block content %}
-
-  {% crispy form %}
-
+  <h1>Update your Profile</h1>
+  <div class="col-md-9">
+    {% crispy form %}
+  </div>
+  <div class="col-md-3">
+    {% include "profiles/_profile_sidebar.html" with active="update" %}
 {% endblock %}
