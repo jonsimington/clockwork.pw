@@ -13,10 +13,10 @@
 	  <th>
 	    Name
 	  </th>
-	  <th>
+	  <th style="text-align:center">
 	    Guild Rank
 	  </th>
-	  <th>
+	  <th style="text-align:right">
 	    Armory Link
 	  </th>
 	</tr>
@@ -30,10 +30,10 @@
 	      <h5>{{ profile.user.username }}</h5>
 	    </a>
 	  </td>
-	  <td id="rank">
+	  <td align="center" id="rank">
 	    <h5>{{ profile.user.groups.all.first.name }}</h5>
 	  </td>
-	  <td id="armory_link">
+	  <td align="right" id="armory_link">
 	    <a href="{{ profile.user.profile.armory_link }}">
 	      <h5>{{ profile.user.username }}</h5>
 	    </a>
