@@ -134,7 +134,3 @@
 td.username, td.armory_link, td.rank {
     width: 33%;
 }
-
-table {
-    table-layout: fixed;
-}
