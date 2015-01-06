@@ -3,7 +3,7 @@
 {% block content %}
   {% if not user.profile.has_submitted_app and user.is_authenticated %}
     <div class="alert alert-warning text-center" role="alert">
-      <h5>It appears you haven't submitted an application yet.  Do that <a href="/application/submit/">here</a>!</h5>
+      <h5>It appears you haven't submitted an application yet.  Do that <strong><a href="/application/submit/">here</a></strong>!</h5>
     </div>
   {% endif %}
   <div class="row">
