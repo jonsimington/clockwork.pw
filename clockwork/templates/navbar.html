@@ -44,11 +44,13 @@
 	{% if not user.profile.is_applicant %}
 	  <li>
 	    <a href="/application/submit/">
-	      {% if user.profile.has_submitted_app %}
-	        Edit
-	      {% else %}
-	        Submit
-	      {% endif %} your Application
+	      {% if user.is_authenticated %}
+	        {% if user.profile.has_submitted_app %}
+	          Edit
+	        {% else %}
+	          Submit
+	        {% endif %} your Application
+	      {% endif %}
 	    </a>
 	  </li>
 	{% endif %}
