@@ -3,23 +3,39 @@
 {% if is_paginated %}
 <div class="pagination">
   <ul class="pagination-list">
-    <li class="prev {% if not page_obj.has_previous %}disabled{% endif %}">
-      <span class="label label-default"><a href="{% if page_obj.has_previous %}?page={{ page_obj.previous_page_number }}{% endif %}">← {% trans "previous page" %}</a></span>
-    </li>
+    {% if page_obj.has_previous %}    
+      <li class="prev {% if not page_obj.has_previous %}disabled{% endif %}">
+	<h5>
+	  <span class="label label-default">
+	    <a href="{% if page_obj.has_previous %}?page={{ page_obj.previous_page_number }}{% endif %}">← {% trans "previous page" %}</a>
+	  </span>
+	</h5>
+      </li>
+    {% endif %}
     {% for page in page_obj.pages %}
     {% if page %}
     <li {% ifequal page page_obj.number %}class="disabled"{% endifequal %}>
-     <span class="label label-default"><a href="?{{ page.querystring }}" class="page">{{ page }}</a></span>
+      <h5>
+	<span class="label label-default">
+	  <a href="?{{ page.querystring }}" class="page">{{ page }}</a>
+	</span>
+      </h5>
     </li>
     {% else %}
     <li class="disabled">
-      <a href="#">...</a>
+      <h5><a href="#">...</a></h5>
     </li>
     {% endif %}
     {% endfor %}
-    <li class="next {% if not page_obj.has_next %}disabled{% endif %}">
-     <span class="label label-default"><a href="{% if page_obj.has_next %}?page={{ page_obj.next_page_number }}{% endif %}" >{% trans "next page" %} →</a></span>
-    </li>
+    {% if page_obj.has_next %}    
+      <li class="next {% if not page_obj.has_next %}disabled{% endif %}">
+	<h5>
+	  <span class="label label-default">	    
+	    <a href="?page={{ page_obj.next_page_number }}" >{% trans "next page" %} →</a>
+	  </span>
+	</h5>
+      </li>
+    {% endif %}
   </ul>
 </div>
 {% endif %}

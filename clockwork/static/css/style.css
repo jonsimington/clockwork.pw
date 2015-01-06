@@ -140,3 +140,7 @@ td.username, td.armory_link, td.rank {
     list-style-type: none;
     padding-right: 5px;
 }
+
+h5 {
+    display: inline;
+}
