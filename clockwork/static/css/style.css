@@ -30,3 +30,103 @@
 			     color: @text-color;
 			     text-decoration: none;
 }
+
+.posts {
+}
+
+.post {
+    margin: 3px 0 5px 0;
+}
+
+.post-header {
+    padding: 3px 0 3px 20px;
+    font-size: @font-size-base - 2;
+    background-color: @table-bg-hover;
+}
+
+.post tbody tr:hover td {
+    background-color: inherit;
+}
+
+.post-info {
+    width: 200px;
+    padding: 10px;
+
+    .avatar {
+
+    }
+
+    .post-author {
+        font-size: @font-size-base + 1;
+        padding: 5px 0;
+    }
+
+    .post-extra-info {
+        font-size: @font-size-base - 2;
+        color: @gray-light;
+    }
+
+    .post-controls {
+        font-size: @font-size-base - 2;
+    }
+}
+
+.post-content {
+    vertical-align: top;
+    padding: 10px;
+}
+
+.post-signature {
+    color: #CCC;
+    margin-top: 15px;
+    border-top: 1px dotted #CCC;
+    display: block;
+}
+
+.post-related {
+    margin-top: 20px;
+}
+
+.forum-headline {
+    margin-top: 10px;
+}
+
+.attachments-form {
+    padding-bottom: 15px;
+}
+
+.attachment-link {
+    border-bottom: 1px dotted;
+}
+
+/* --- Unread --- */
+
+.state-indicator {
+    display: block;
+    float: left;
+    background-color: @gray-lighter;
+    height: 10px;
+    width: 10px;
+    border-radius: @border-radius-base;
+    margin: 3px 5px;
+}
+
+.topic-unread, .forum-unread {
+    a {
+	font-weight: bold;
+    }
+    .state-indicator {
+	background-color: @brand-info;
+    }
+}
+
+/* --- Moderation --- */
+.on-moderation {
+    background: #ffcccc;
+}
+
+/* --- Mini pagination --- */
+.mini-pagination {
+    padding: 3px 0 3px 10px;
+    font-size: @font-size-base - 2;
+}
