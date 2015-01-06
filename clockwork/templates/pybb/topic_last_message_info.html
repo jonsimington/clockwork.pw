@@ -1,0 +1,5 @@
+{% if topic.updated %}
+  By <a href="/profiles/{{ topic.last_post.user }}">{{ topic.last_post.user }}</a> on
+  {{ topic.updated|date:"F d Y, h:i A" }}
+{% endif %}
+

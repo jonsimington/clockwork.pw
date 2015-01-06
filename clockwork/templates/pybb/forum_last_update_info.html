@@ -1,0 +1,6 @@
+{% load pybb_tags %}
+
+{% if forum.updated %}
+  By <a href="/profiles/{{ forum.last_post.user }}">{{ forum.last_post.user }}</a> on 
+  {{ forum.updated|date:"F d Y, h:i A" }}
+{% endif %}
