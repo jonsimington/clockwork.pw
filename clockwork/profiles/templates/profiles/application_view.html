@@ -69,7 +69,7 @@
 </div>
 <div class="col-md-9">
   <div class="well">
-    {{ applicant.profile.recent_parses }}
+    {{ applicant.profile.recent_parses|linebreaks }}
   </div>
 </div>
 
@@ -80,7 +80,7 @@
 </div>
 <div class="col-md-9">
   <div class="well">
-    {{ applicant.profile.computer_specs }}
+    {{ applicant.profile.computer_specs|linebreaks }}
   </div>
 </div>
 
@@ -102,7 +102,7 @@
 </div>
 <div class="col-md-9">
   <div class="well">
-    {{ applicant.profile.addons }}
+    {{ applicant.profile.addons|linebreaks }}
   </div>
 </div>
 
@@ -113,7 +113,7 @@
 </div>
 <div class="col-md-9">
   <div class="well">
-    {{ applicant.profile.experience }}
+    {{ applicant.profile.experience|linebreaks }}
   </div>
 </div>
 
@@ -124,7 +124,7 @@
 </div>
 <div class="col-md-9">
   <div class="well">
-    {{ applicant.profile.how_did_you_hear }}
+    {{ applicant.profile.how_did_you_hear|linebreaks }}
   </div>
 </div>
 
@@ -138,6 +138,8 @@
     {{ applicant.profile.authenticator }}
   </div>
 </div>
+
+<br />
 
 {% if user.is_staff %}
   <h3>Note: Once a decision has been reached, an officer needs to head to the admin panel using the button below and change the applicant's group.</h3>
