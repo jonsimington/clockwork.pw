@@ -4,22 +4,22 @@
   <h1>Open Applications:</h1>
 
   <div class="panel-group" id="accordion">
-    {% for user in applicants %}
+    {% for applicant in applicants %}
       <div class="panel panel-default">
-	<div class="panel-heading" data-toggle="collapse" data-target="#{{ user }}"
-	     href="#{{ user }}" >
+	<div class="panel-heading" data-toggle="collapse" data-target="#{{ applicant }}"
+	     href="#{{ applicant }}" >
 	  <h4 class="panel-title">
-	    {{ user }}
+	    {{ applicant }}
 	    <span class="pull-right fa fa-angle-down"></span>
 	  </h4>
 	</div>
-	<div id="{{ user }}" class="panel-collapse collapse">
+	<div id="{{ applicant }}" class="panel-collapse collapse">
 	  <div class="panel-body">
 	    {% include "profiles/application_view.html" %}
 	  </div>
 	</div>
       </div>
-      {% endfor %}
+    {% endfor %}
   </div>
 
 {% endblock %}

@@ -88,7 +88,11 @@ def applicant_check(user):
 
 def staff_check(user):
     return user.is_staff
-    
+
+def member_check(user):
+    groups = ['Officer', 'Member']
+    return user.groups.filter(name__in=groups).exists()
+
 class ApplicationSubmitView(UpdateView):
     """
         A view that displays the application form to be submitted or updated
@@ -116,7 +120,7 @@ class ApplicationsView(TemplateView):
 
     template_name = "profiles/applications.html"
     
-    @method_decorator(user_passes_test(staff_check, login_url="application/access-denied/"))
+    @method_decorator(user_passes_test(member_check, login_url="application/access-denied/"))
     def dispatch(self, *args, **kwargs):
         return super(ApplicationsView, self).dispatch(*args, **kwargs)
 
