@@ -144,3 +144,7 @@ td.username, td.armory_link, td.rank {
 h5 {
     display: inline;
 }
+
+.roster-table {
+    table-layout: fixed;
+}

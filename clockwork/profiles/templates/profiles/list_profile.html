@@ -5,18 +5,18 @@
 {% endblock %}
 
 {% block content %}
+  <h1 class="text-center">Guild Roster</h1>
   <div class="well">
-    <h1>Guild Roster</h1>
-    <table class="table table-hover table-condensed">
+    <table class="table table-hover table-condensed roster-table">
       <thead>
 	<tr>
-	  <th>
+	  <th style="width:33%">
 	    Name
 	  </th>
-	  <th style="text-align:center">
+	  <th class="text-center">
 	    Guild Rank
 	  </th>
-	  <th style="text-align:right">
+	  <th style="text-align:right;">
 	    Armory Link
 	  </th>
 	</tr>
@@ -31,7 +31,7 @@
 		  <h5>{{ profile.user.username }}</h5>
 		</a>
 	      </td>
-	      <td align="center" id="rank">
+	      <td class="text-center" id="rank">
 		<h5>{{ profile.user.groups.all.first.name }}</h5>
 	      </td>
 	      <td align="right" id="armory_link">
