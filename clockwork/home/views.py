@@ -10,3 +10,6 @@ class HomePageView(TemplateView):
         entries = Entry.published.all()[:5]
         context["entries"] = entries
         return context
+
+class AboutUsView(TemplateView):
+    template_name = "home/about-us.html"
