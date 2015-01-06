@@ -123,7 +123,7 @@ class ApplicationForm(forms.ModelForm):
                   'screenshot',
                   'experience',
                   'how_did_you_hear',
-                  'authenticator_check',
+                  'authenticator',
                   'addons',
                   'submitted_app',]
                   
@@ -158,7 +158,7 @@ class ApplicationForm(forms.ModelForm):
     screenshot = forms.CharField(required=True)
     experience = forms.CharField(required=True)
     how_did_you_hear = forms.CharField(required=True)
-    authenticator_check = forms.ChoiceField(required=True, choices=[(x, x) for x in auth_choices])
+    authenticator = forms.CharField(required=True)
     submitted_app = forms.BooleanField(required=False)
     
     def __init__(self, *args, **kwargs):
@@ -196,7 +196,7 @@ class ApplicationForm(forms.ModelForm):
             HTML('<hr>'),
             Field('how_did_you_hear'),
             HTML('<hr>'),
-            Field('authenticator_check'),
+            Field('authenticator'),
             Field('submitted_app', type="hidden"),
             HTML('<br>'),
             FormActions(
@@ -218,7 +218,7 @@ class ApplicationForm(forms.ModelForm):
         self.fields['addons'].label = "What addons do you use?"
         self.fields['experience'].label = "List your previous raiding experience"
         self.fields['how_did_you_hear'].label = "How did you hear about Clockwork and why do you want to be a part of it?"
-        self.fields['authenticator_check'].label = "Is your account secure with an authenticator?"
+        self.fields['authenticator'].label = "Is your account secure with an authenticator?"
         self.fields['submitted_app'].label = "Check this box if "
         
     def save(self, *args, **kwargs):
@@ -236,7 +236,7 @@ class ApplicationForm(forms.ModelForm):
         profile.user.addons = self.cleaned_data['addons']
         profile.user.experience = self.cleaned_data['experience']
         profile.user.how_did_you_hear = self.cleaned_data['how_did_you_hear']
-        profile.user.authenticator = self.cleaned_data['authenticator_check']
+        profile.user.authenticator = self.cleaned_data['authenticator']
         profile.user.submitted_app = self.cleaned_data['submitted_app']
         profile.user.save(*args, **kwargs)
 
