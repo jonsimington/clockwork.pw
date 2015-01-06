@@ -20,18 +20,18 @@ class UserProfile(PybbProfile):
 
     main_character = models.CharField(max_length=12, default="", blank=True, null=True)
     armory_link = models.CharField(max_length=100, default="", blank=True, null=True)
-    char_race = models.CharField(max_length=15, default="", blank=True, null=True)
     char_class = models.CharField(max_length=15, default="", blank=True, null=True)
-    age = models.CharField(max_length=3, default="", blank=True, null=True)
+    over_18 = models.CharField(max_length=4, default="", blank=True, null=True)
     char_spec = models.CharField(max_length=15, default="", blank=True, null=True)
     recent_parses = models.TextField(validators=[MaxLengthValidator(500)], default="", blank=True, null=True)
     computer_specs = models.TextField(validators=[MaxLengthValidator(1000)], default="", blank=True, null=True)
-    screenshot = models.CharField(max_length=100, default="", blank=True, null=True)
+    screenshot = models.TextField(max_length=200, default="", blank=True, null=True)
     addons = models.TextField(validators=[MaxLengthValidator(1000)], default="", blank=True, null=True)
     experience = models.TextField(validators=[MaxLengthValidator(1000)], default="", blank=True, null=True)
     how_did_you_hear = models.TextField(validators=[MaxLengthValidator(500)], default="", blank=True, null=True)
     authenticator = models.CharField(max_length=5, default="", blank=True, null=True)
     submitted_app = models.NullBooleanField(default=False, blank=True, null=True)
+    previous_guild = models.TextField(validators=[MaxLengthValidator(500)], default="", blank=True, null=True)
     
     @models.permalink
     def get_absolute_url(self):
