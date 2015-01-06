@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 
 {% block title %}
-  User Profiles
+  Guild Roster
 {% endblock %}
 
 {% block content %}
@@ -34,7 +34,9 @@
 	    {{ profile.user.groups.all.first.name }}
 	  </td>
 	  <td>
-	    {{ profile.user.profile.armory_link }}
+	    <a href="{{ profile.user.profile.armory_link }}">
+	      {{ profile.user.profile.armory_link }}
+	    </a>
 	  </td>
 	</tr>
 	{% endfor %}

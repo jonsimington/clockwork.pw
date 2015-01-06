@@ -14,7 +14,7 @@ from pybb.profiles import PybbProfile
 class UserProfile(PybbProfile):
     user = models.OneToOneField(User, related_name="profile")
 
-    about_me = models.TextField(validators=[MaxLengthValidator(500)])
+    about_me = models.TextField(validators=[MaxLengthValidator(500)], null=True, blank=True)
     rendered_about_me = models.TextField(editable=False,
                                          null=True)
 

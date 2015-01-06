@@ -148,7 +148,7 @@ class ApplicationForm(forms.ModelForm):
     auth_choices = ['Yes', 'No',]
 
     main_character = forms.CharField(required=True)
-    armory_link = forms.CharField(required=True)
+    armory_link = forms.URLField(required=True)
     char_race = forms.ChoiceField(required=True, choices=[(x, x) for x in race_choices])
     char_class = forms.ChoiceField(required=True, choices=[(x, x) for x in class_choices])
     age = forms.CharField(required=True)
