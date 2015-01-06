@@ -11,3 +11,8 @@ function quote_selected(user) {
     
     document.getElementById("id_body").focus()
 }
+
+function add_color_tag() {
+    document.getElementById("id_body").value += "[color=" + '"<color>"'+ "]your_text_here[/color]"
+    document.getElementById("id_body").focus()
+}
