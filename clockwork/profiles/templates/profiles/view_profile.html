@@ -6,7 +6,7 @@
 {% endblock %}
 
 {% block content %}
-
+<div class="col-md-9">
   <div class="row">
     <div class="col-md-9">
       <div class="well">
@@ -20,6 +20,16 @@
         <p>
           {{ userprofile.rendered_about_me|safe }}
         </p>
+	<hr>
+	<h4>{{ userprofile.user.username }}'s Main Character:
+	  <a href="http://us.battle.net/wow/en/character/sargeras/{{userprofile.user.profile.main_character}}/advanced"> {{ userprofile.user.profile.main_character }}</a>
+	</h4>
+	<hr>
+	<h4>{{ userprofile.user.username }}'s Computer Specs: <p>{{ userprofile.user.profile.computer_specs }}</p></h4>
+	<hr>
+	<h4>{{ userprofile.user.username }}'s Addons: <p>{{ userprofile.user.profile.addons }}</p></h4>
+	<hr>
+	<h4>{{ userprofile.user.username }}'s Previous raiding experience: <p>{{ userprofile.user.profile.experience }}</p></h4>
       </div>
     </div>
     <div class="col-md-3">
@@ -28,6 +38,11 @@
       </a>
     </div>
   </div>
+</div>
+<div class="col-md-3">
+  POOP
+</div>
+
 
 {% endblock %}
 
