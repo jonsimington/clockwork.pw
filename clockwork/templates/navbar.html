@@ -1,3 +1,5 @@
+{% load active_tags %}
+
 <nav class="navbar navbar-default" role="navigation">
   <div class="container-fluid">
     <div class="navbar-header">
@@ -14,17 +16,17 @@
 
     <div class="collapse navbar-collapse" id="navbar">
       <ul class="nav navbar-nav">
-	<li>
+	<li class="{% active 'home' %}">
 	  <a href="/">
 	    Blog
 	  </a>
 	</li>
-	<li>
+	<li class="{% active 'about_us' %}">
 	  <a href="/about-us/">
 	    About Us
 	  </a>
         </li>
-	<li>
+	<li class="{% active_re '^/roster' %}">
 	  <a href="{% url 'list_profile' %}">
 	    Roster
 	  </a>
@@ -35,14 +37,14 @@
 	  </a>
 	</li>
 	{% if user.is_staff %}
-	  <li>
+	  <li class="{% active_re '^/applications' %}">
 	    <a href="/applications/">
 	      View Applications
 	    </a>
 	  </li>
 	{% endif %}
 	{% if user.groups.first.name == "Applicant" %}
-	  <li>
+	  <li class="{% active_re '^/application/(submit|update)' %}">
 	    <a href="/application/submit/">
 	      {% if user.is_authenticated %}
 	        {% if user.profile.has_submitted_app %}
