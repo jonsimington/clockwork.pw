@@ -17,7 +17,7 @@
 	<h2>{{ entry.title }}</h2>
 	<h6>Published by <a href="profiles/{{entry.authors.first}}/">{{ entry.authors.first }}</a> on {{ entry.creation_date }}</h6>
 	<hr id="blog-hr">
-	<h4>{{ entry.content }}</h4>
+	<h4>{{ entry.content|linebreaks }}</h4>
       </div>
     {% empty %}
       <h2>No entries, yet.</h2>
