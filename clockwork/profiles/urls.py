@@ -8,7 +8,7 @@ from .views import (ProfileListView, ProfileView,
 
 urlpatterns = patterns(
     '',
-    url(r'^profiles/$',
+    url(r'^roster/$',
         ProfileListView.as_view(),
         name="list_profile"),
 
