@@ -232,14 +232,14 @@ SITE_ID = 1
 ###################################################################
 PYBB_PROFILE_RELATED_NAME = 'profile'
 PYBB_DEFAULT_AVATAR_URL = 'http://i.imgur.com/ytOAIRY.png'
-
+PYBB_DEFAULT_TITLE = "<Clockwork> Forums"
 ###################################################################
 #
 # PRODUCTION SETTINGS
 #
 ###################################################################
 USE_X_FORWARDED_HOST = True
-DEBUG = False
+DEBUG = True
 ALLOWED_HOSTS = [
     '127.0.0.1',
     'localhost',
