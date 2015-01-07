@@ -141,7 +141,7 @@ td.username, td.armory_link, td.rank {
     padding-right: 5px;
 }
 
-h5 {
+h5, h4 {
     display: inline;
 }
 
