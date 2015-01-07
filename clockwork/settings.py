@@ -224,3 +224,4 @@ SITE_ID = 1
 #
 ###################################################################
 PYBB_PROFILE_RELATED_NAME = 'profile'
+PYBB_DEFAULT_TITLE = "<Clockwork> Forums"
