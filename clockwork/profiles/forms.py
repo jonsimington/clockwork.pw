@@ -30,8 +30,8 @@ class UserProfileForm(forms.ModelForm):
         self.helper.layout = Layout(
             Field('about_me'),
             HTML('<br>'),
-            Field('avatar'),
-            HTML('<br>'),
+            #Field('avatar'),
+            #HTML('<br>'),
             Field('main_character'),
             HTML('<br>'),
             Field('computer_specs'),
