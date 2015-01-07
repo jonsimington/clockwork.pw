@@ -24,10 +24,10 @@
       <td class="forum-name {% if forum.unread %} forum-unread{% endif %}">
 	<div class="state-indicator"></div>
 	<a href="{{ forum.get_absolute_url }}">
-	  <h5>{{ forum.name }}{% if forum.unread %}
+	  <h5>{{ forum.name }}</h5>
 	</a>
 	&nbsp;&nbsp;&nbsp;
-	<span class="label label-warning pull-right">Unread Posts</span>{% endif %}</h5>
+	{% if forum.unread %}<h5><span class="label label-warning pull-right">Unread Posts</span></h5>{% endif %}
 	{% if forum.hidden %}[{% trans "Hidden" %}]{% endif %}
 	<div class="forum-description">
 	  {{ forum.description|safe }}
