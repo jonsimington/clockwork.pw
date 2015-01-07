@@ -6,6 +6,9 @@
       <th class="topic-name">
 	{% trans "Topic" %}
       </th>
+      <th class="topic-author">
+	{% trans "Created by" %}
+      </th>
       <th class="topic-post-count">
 	{% trans "Posts" %}
       </th>
@@ -46,6 +49,15 @@
 	</span>
 	{% endif %}
 	{% endwith %}
+      </td>
+      <td class="topic-author">
+	<h4>
+	  <a href="{{ topic.user.profile.get_absolute_url }}">
+	    <span class="label label-default">
+	      {{ topic.user.username }}
+	    </span>
+	  </a>
+	</h4>
       </td>
       <td class="topic-post-count">
 	<h5>{{ topic.post_count }}</h5>
