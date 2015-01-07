@@ -7,16 +7,15 @@
   {% with forum as object %}
     {% include "pybb/breadcrumb.html" %}
   {% endwith %}
+
+  <h1>{{ forum.name }}</h1>
+  {% if forum.headline %}
+    <div class="forum-headline alert alert-block">
+     <h4> <span class="label label-default">{{ forum.headline|safe }}</span></h4>
+    </div>
+  {% endif %}
   <div class="forum well">
-    <h1>{{ forum.name }}</h1>
-    {% if forum.headline %}
-      <div class="forum-headline alert alert-block">
-	{{ forum.headline|safe }}
-      </div>
-    {% endif %}
-    
     {% include "pybb/pagination.html" %}
-    
     {% include 'pybb/forum_list.html' with forum_list=forum.forums_accessed category='' parent_forum=forum %}
       
     {% include "pybb/topic_list.html" %}

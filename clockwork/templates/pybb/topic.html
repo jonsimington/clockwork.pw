@@ -20,8 +20,8 @@
   {% with object=topic %}
     {% include "pybb/breadcrumb.html" %}
   {% endwith %}
+  <h1>{{ topic.name }}</h1>
   <div class="topic well">
-    <h1>{{ topic.name }}</h1>
     {% with _('Posts') as label %}
       {% include "pybb/pagination.html" %}
     {% endwith %}
