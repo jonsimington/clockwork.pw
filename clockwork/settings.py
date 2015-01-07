@@ -233,6 +233,13 @@ SITE_ID = 1
 PYBB_PROFILE_RELATED_NAME = 'profile'
 PYBB_DEFAULT_AVATAR_URL = 'http://i.imgur.com/ytOAIRY.png'
 PYBB_DEFAULT_TITLE = "<Clockwork> Forums"
+PYBB_MARKUP = 'bbcode'
+PYBB_MARKUP_ENGINE_PATHS = {
+    'bbcode': 'pybb.markup.bbcode.BBCodeParser',
+    'markdown': 'pybb.markup.markdown.MarkdownParser',
+}
+
+
 ###################################################################
 #
 # PRODUCTION SETTINGS
