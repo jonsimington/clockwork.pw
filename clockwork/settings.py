@@ -20,7 +20,7 @@ except ImportError:
 
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ####################################################################
 #
@@ -238,6 +238,7 @@ PYBB_MARKUP_ENGINE_PATHS = {
     'bbcode': 'pybb.markup.bbcode.BBCodeParser',
     'markdown': 'pybb.markup.markdown.MarkdownParser',
 }
+AVATAR_DIR = '/home/jonsimington/clockwork.pw/pybb/avatar/'
 
 
 ###################################################################
@@ -246,7 +247,6 @@ PYBB_MARKUP_ENGINE_PATHS = {
 #
 ###################################################################
 USE_X_FORWARDED_HOST = True
-DEBUG = True
 ALLOWED_HOSTS = [
     '127.0.0.1',
     'localhost',

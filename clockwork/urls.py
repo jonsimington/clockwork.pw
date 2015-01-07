@@ -1,3 +1,4 @@
+from django.conf import settings
 from django.conf.urls import patterns, include, url
 from django.contrib import admin
 from django.contrib.auth.views import logout_then_login
@@ -26,4 +27,8 @@ urlpatterns = patterns(
 
     #forums
     url(r'^forums/', include('pybb.urls', namespace='pybb')),
+
+    # pybb avatars
+    url(r'^pybb/(?P<path>.*\.png)$', 'django.views.static.serve',
+            {'document_root': settings.AVATAR_DIR}),
 )

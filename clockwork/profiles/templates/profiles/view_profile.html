@@ -37,9 +37,14 @@
       </div>
     </div>
     <div class="col-md-3">
+      {% if userprofile.user.profile.avatar %}
+        <img src="{{ userprofile.user.profile.avatar }}">
+      {% else %}
+      
       <a id="profilepic" class="thumbnail" href="https://en.gravatar.com/site/login"   data-toggle="tooltip" title="Set your gravatar at gravatar.com!">
 	<img src="{% gravatar_url userprofile.user.email %}" class="img-responsive" />
       </a>
+      {% endif %}
     </div>
   </div>
 </div>
