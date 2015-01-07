@@ -15,3 +15,4 @@ bbcode
 pillow
 django-bootstrap-form
 psycopg2
+markdown
