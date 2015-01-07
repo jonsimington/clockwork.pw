@@ -14,6 +14,7 @@
   <fieldset>
     {% include "pybb/form_errors.html" %}
     {% if form.name %} {% include "pybb/form_field.html" with field=form.name %} {% endif %}
+    {% if form.login %} {% include "pybb/form_field.html" with field=form.login %}{% endif %}
     {% if form.body %} {% include "pybb/form_field.html" with field=form.body %}  {% endif %}
     
     <a href="javascript:void(0)" class="btn btn-primary btn-large" onclick="add_color_tag();">
@@ -25,9 +26,10 @@
     <br>
     <br>
     
-    {# if request.user|pybb_may_create_poll and form.poll_type #}
-    {# include "pybb/poll_edit_form.html" #}
-    {# endif #}
+    {% if request.user|pybb_may_create_poll and form.poll_type %}
+      <h4>Note: Polls don't work right now.</h5>
+      {% include "pybb/poll_edit_form.html" %}
+    {% endif %}
     {% include "pybb/attachments_formset.html" %}
     <p class="submit">{% include "pybb/_button_submit.html" %}</p>
   </fieldset>
