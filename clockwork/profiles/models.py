@@ -54,7 +54,7 @@ class UserProfile(PybbProfile):
 def create_user_profile(sender, instance, created, **kwargs):
     if created:
         try:
-            instance.groups.add(Group.objects.get(name='Applicant'))
+            instance.groups.add(Group.objects.get(name='Member'))
         except:
             pass
 
