@@ -1,5 +1,6 @@
 {% if topic.updated %}
-  By <a href="/profiles/{{ topic.last_post.user }}/">{{ topic.last_post.user }}</a> on
-  {{ topic.updated|date:"F d Y, h:i A" }}
+  <a href="{{ topic.last_post.get_absolute_url }}">By {{ topic.last_post.user }}</a> 
+  <br><br>
+  on {{ topic.updated|date:"F d Y, h:i A" }}
 {% endif %}
 
