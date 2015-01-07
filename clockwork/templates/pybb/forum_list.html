@@ -30,7 +30,7 @@
 	{% if forum.unread %}<h5><span class="label label-warning pull-right">Unread Posts</span></h5>{% endif %}
 	{% if forum.hidden %}[{% trans "Hidden" %}]{% endif %}
 	<div class="forum-description">
-	  {{ forum.description|safe }}
+	  <h5>{{ forum.description|safe }}</h5
 	</div>
       </td>
       <td class="forum-topic-count">
