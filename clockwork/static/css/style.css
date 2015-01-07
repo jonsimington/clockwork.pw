@@ -49,7 +49,7 @@
 }
 
 .post-info {
-    width: 200px;
+    width: 125px;
     padding: 10px;
 
     .avatar {
@@ -141,7 +141,7 @@ td.username, td.armory_link, td.rank {
     padding-right: 5px;
 }
 
-h5, h4 {
+h5, h4, h6 {
     display: inline;
 }
 
