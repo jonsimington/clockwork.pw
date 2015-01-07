@@ -90,7 +90,7 @@ INSTALLED_APPS = (
     'clockwork.home',
     'clockwork.profiles',
     'clockwork.utility',
-    
+
     # Django Allauth
     'allauth',
     'allauth.account',
@@ -170,13 +170,8 @@ USE_TZ = True
 # STATIC SETTINGS
 #
 ###################################################################
-STATIC_URL = '/static/'
-STATIC_ROOT = '/home/jonsimington/clockwork.pw/static/'
 
-STATICFILES_FINDERS = (
-    'django.contrib.staticfiles.finders.FileSystemFinder',
-    'django.contrib.staticfiles.finders.AppDirectoriesFinder',
-)
+STATIC_URL = '/static/'
 
 ###################################################################
 #
@@ -215,8 +210,6 @@ AUTHENTICATION_BACKENDS = (
     'allauth.account.auth_backends.AuthenticationBackend',
 )
 
-AUTH_PROFILE_MODEL = 'profiles.models.UserProfile'
-
 ANONYMOUS_USER_ID = -1
 
 ABSOLUTE_URL_OVERRIDES = {
@@ -231,25 +224,3 @@ SITE_ID = 1
 #
 ###################################################################
 PYBB_PROFILE_RELATED_NAME = 'profile'
-PYBB_DEFAULT_AVATAR_URL = 'http://i.imgur.com/ytOAIRY.png'
-PYBB_DEFAULT_TITLE = "<Clockwork> Forums"
-PYBB_MARKUP = 'bbcode'
-PYBB_MARKUP_ENGINE_PATHS = {
-    'bbcode': 'pybb.markup.bbcode.BBCodeParser',
-    'markdown': 'pybb.markup.markdown.MarkdownParser',
-}
-AVATAR_DIR = '/home/jonsimington/clockwork.pw/pybb/avatar/'
-
-
-###################################################################
-#
-# PRODUCTION SETTINGS
-#
-###################################################################
-USE_X_FORWARDED_HOST = True
-ALLOWED_HOSTS = [
-    '127.0.0.1',
-    'localhost',
-    'clockwork.pw',
-    '.clockwork.pw',
-]
