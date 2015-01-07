@@ -14,7 +14,6 @@
   <fieldset>
     {% include "pybb/form_errors.html" %}
     {% if form.name %} {% include "pybb/form_field.html" with field=form.name %} {% endif %}
-    {% if form.login %} {% include "pybb/form_field.html" with field=form.login %}  {% endif %}
     {% if form.body %} {% include "pybb/form_field.html" with field=form.body %}  {% endif %}
     
     <a href="javascript:void(0)" class="btn btn-primary btn-large" onclick="add_color_tag();">
