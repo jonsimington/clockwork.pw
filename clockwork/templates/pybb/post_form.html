@@ -17,17 +17,13 @@
     {% if form.login %} {% include "pybb/form_field.html" with field=form.login %}{% endif %}
     {% if form.body %} {% include "pybb/form_field.html" with field=form.body %}  {% endif %}
     
-    <a href="javascript:void(0)" class="btn btn-primary btn-large" onclick="add_color_tag();">
-      <span class="fa fa-plus">
-	<h5>Add color tag to Message box</h5>
-      </span>
-    </a>
+    {% include "available_tags.html" %}
 
     <br>
     <br>
     
     {% if request.user|pybb_may_create_poll and form.poll_type %}
-      <h4>Note: Polls don't work right now.</h5>
+      <h4>Note: Polls don't work right now.</h4>
       {% include "pybb/poll_edit_form.html" %}
     {% endif %}
     {% include "pybb/attachments_formset.html" %}

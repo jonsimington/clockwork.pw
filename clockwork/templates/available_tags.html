@@ -1,0 +1,63 @@
+<a class="btn btn-primary" data-toggle="collapse" href="#collapseTable" aria-expanded="false" aria-controls="collapseTable">
+  Show available bbcode tags
+</a>
+<br><br>
+<div class="collapse" id="collapseTable">
+  <div class="{% if forum.topic %}well{% else %}{% endif %}">
+    <h5>
+      Click a button below to add an empty tag of that variety to the message box</h5>
+    <br>
+    <h5>
+      Put your text between the tags.  Ex: [b]BOLD[/b] renders as: <strong>BOLD</strong>
+    </h5>
+    <br>
+    <h5>
+      Some tags have parameters.  Ex: [color=red]RED TEXT[/color] renders as: <span style="color:red;">RED TEXT</span>
+    </h5>
+    <br>
+    <h5>
+      You can combine tags.  Ex: [b][color=red]BOLD RED TEXT[/color][/b] renders as: <strong><span style="color:red;">BOLD RED TEXT</span></strong>
+    </h5>
+    <br>
+    <br>
+    <a class="btn btn-default" onclick="addBold()">
+      <h5>Bold</h5>
+    </a>
+    <a class="btn btn-default" onclick="addItalics()">
+      <h5>Italics</h5>
+    </a>  
+    <a class="btn btn-default" onclick="addUnderline()">
+      <h5>Underline</h5>
+    </a>  
+    <a class="btn btn-default" onclick="addStrikethrough()">
+      <h5>Strikethrough</h5>
+    </a>  
+    <a class="btn btn-default" onclick="addHR()">
+      <h5>Horizontal Line</h5>
+    </a>  
+    <a class="btn btn-default" onclick="addSubscript()">
+      <h5>Subscript</h5>
+    </a>  
+    <a class="btn btn-default" onclick="addSuperscript()">
+      <h5>Superscript</h5>
+    </a>  
+    <a class="btn btn-default" onclick="addList()">
+      <h5>List</h5>
+    </a>  
+    <a class="btn btn-default" onclick="addQuote()">
+      <h5>Quote</h5>
+    </a>  
+    <a class="btn btn-default" onclick="addCode()">
+      <h5>Code Snippet</h5>
+    </a>  
+    <a class="btn btn-default" onclick="addCenter()">
+      <h5>Center</h5>
+    </a>  
+    <a class="btn btn-default" onclick="addColor()">
+      <h5>Color</h5>
+    </a>  
+    <a class="btn btn-default" onclick="addURL()">
+      <h5>URL</h5>
+    </a>  
+  </div>
+</div>
