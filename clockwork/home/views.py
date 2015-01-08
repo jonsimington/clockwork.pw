@@ -7,9 +7,16 @@ class HomePageView(TemplateView):
 
     def get_context_data(self, **kwargs):
         context = super(HomePageView, self).get_context_data(**kwargs)
-        entries = Entry.published.all()[:5]
-        context["entries"] = entries
+        context["entries"] = Entry.published.all()[:5]
         return context
 
 class AboutUsView(TemplateView):
     template_name = "home/about-us.html"
+
+class BlogView(TemplateView):
+    template_name = "home/blog.html"
+
+    def get_context_data(self, **kwargs):
+        context = super(BlogView, self).get_context_data(**kwargs)
+        context['entries'] = Entry.published.all()
+        return context

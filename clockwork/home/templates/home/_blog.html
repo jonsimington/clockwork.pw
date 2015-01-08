@@ -24,6 +24,11 @@
 	</h4>
       {% endif %}
     </div>
+    {% if forloop.last %}
+      <a href="{% url 'blog' %}">
+	<h1 class="text-center">View all Entries</h1>
+      </a>
+    {% endif %}
   {% empty %}
     <h2>No entries, yet.</h2>
   {% endfor %}
