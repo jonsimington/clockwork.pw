@@ -29,6 +29,14 @@
 	{% if entry.image %}
 	  <img src="{{ entry.image.url }}" />
 	{% endif %}
+	{% if user.is_staff %}
+	  <br><br>
+	  <h4>
+	    <span class="label label-default">
+	      <a href="/admin/zinnia/entry/{{ entry.id }}/">Edit Entry</a>
+	    </span>
+	  </h4>
+	{% endif %}
       </div>
     {% empty %}
       <h2>No entries, yet.</h2>
