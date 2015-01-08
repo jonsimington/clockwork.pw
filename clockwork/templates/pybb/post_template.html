@@ -12,7 +12,12 @@
 	<th colspan="2">
 	  <a class="permalink" href="{{ post.get_absolute_url }}">
 	    <h4><span class="label label-default">permalink</span></a>
-	  <span class="updated pull-right">Updated {% pybb_time post.created %}</h5></span>
+	  <span class="updated pull-right">
+	    Posted {% pybb_time post.created %}
+
+	    {% if post.updated > post.created %}
+	      <span class="label label-info">Updated {% pybb_time post.updated %}</span>
+            {% endif %}</h5></span>
 	</th>
       </tr>
     </thead>
