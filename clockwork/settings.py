@@ -20,7 +20,7 @@ except ImportError:
 
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ####################################################################
 #
@@ -225,3 +225,17 @@ SITE_ID = 1
 ###################################################################
 PYBB_PROFILE_RELATED_NAME = 'profile'
 PYBB_DEFAULT_TITLE = "<Clockwork> Forums"
+PYBB_DEFAULT_AVATAR_URL = "http://i.imgur.com/ytOAIRY.png"
+
+###################################################################
+#
+# PRODUCTION SETTINGS
+#
+##################################################################
+USE_X_FORWARDED_HOST = True
+ALLOWED_HOSTS = [
+    '127.0.0.1',
+    'localhost',
+    'clockwork.pw',
+    '.clockwork.pw',
+]
