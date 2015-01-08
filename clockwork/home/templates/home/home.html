@@ -14,34 +14,9 @@
       <h5>It appears you haven't submitted an application yet.  Do that <strong><a href="/application/submit/">here</a></strong>!</h5>
     </div>
   {% endif %}
-  <div class="row">
-    <div class="col-lg-{% if user.is_authenticated %}12{% else %}9{% endif %}">
-      <h1 class="text-center"> Latest &lt;Clockwork&gt; News</h1>
-    </div>
-  </div>
-  <div class="col-lg-{% if user.is_authenticated %}12{% else %}9{% endif %}">
-    {% for entry in entries %}
-      <div class="well">
-	<h2>{{ entry.title }}</h2>
-	<h6>Published by <a href="profiles/{{entry.authors.first}}/">{{ entry.authors.first }}</a> on {{ entry.creation_date }}</h6>
-	<hr id="blog-hr">
-	<h4>{{ entry.content|safe|linebreaks }}</h4>
-	{% if entry.image %}
-	  <img src="{{ entry.image.url }}" />
-	{% endif %}
-	{% if user.is_staff %}
-	  <br><br>
-	  <h4>
-	    <span class="label label-default">
-	      <a href="/admin/zinnia/entry/{{ entry.id }}/">Edit Entry</a>
-	    </span>
-	  </h4>
-	{% endif %}
-      </div>
-    {% empty %}
-      <h2>No entries, yet.</h2>
-    {% endfor %}
-  </div>
+
+  {% include "home/_blog.html" %}
+
   {% if not user.is_authenticated %}
     <div class="col-lg-3 pull-right">
       {% include "home/_home_sidebar.html" %}
