@@ -6,6 +6,19 @@
       <h1 class="text-center">&lt;Clockwork&gt; News</h1>
     </div>
   </div>
+  
+  {% if user.is_staff %}
+    <h4 class="pull-right">
+      <span class="label label-default">
+	<a href="/admin/zinnia/entry/add/">
+	  <span>
+	    <span class="fa fa-plus"></span>  Add Entry
+	  </span>
+	</a>
+      </span>
+    </h4>
+  {% endif %}
+  
   <div class="col-lg-{% if user.is_authenticated %}12{% else %}9{% endif %}">
     {% for entry in entries %}
       <div class="well">
