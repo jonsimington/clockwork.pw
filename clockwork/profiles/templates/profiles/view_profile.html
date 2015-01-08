@@ -37,7 +37,7 @@
       </div>
     </div>
     <div class="col-md-3">
-      <a id="profilepic" class="thumbnail" data-toggle="tooltip" title="Set your gravatar at gravatar.com!">
+      <a id="profilepic" class="thumbnail">
 	<img src="{% gravatar_url userprofile.user.email %}" class="img-responsive" />
       </a>
     </div>
@@ -48,14 +48,4 @@
 </div>
 
 
-{% endblock %}
-
-
-{% block script %}
-  <script>
-    $(function(){
-      $(".invitation-tooltip").tooltip();
-      $("#profilepic").tooltip();
-    });
-  </script>
 {% endblock %}
