@@ -16,7 +16,7 @@
 	    Posted {% pybb_time post.created %}
 
 	    {% if post.updated > post.created %}
-	      <span class="label label-info">Updated {% pybb_time post.updated %}</span>
+	      <span class="label label-info">Edited {% pybb_time post.updated %}</span>
             {% endif %}</h5></span>
 	</th>
       </tr>
@@ -69,9 +69,6 @@
 	    {{ post_user_profile.signature_html|safe }}
 	  </div>
 	  {% endif %}
-	  {% endif %}
-	  {% if post.updated %}
-	  <div class="updated-message">{% trans "Edited" %} {% pybb_time post.updated %}</div>
 	  {% endif %}
 	  
 	  {% comment %}
