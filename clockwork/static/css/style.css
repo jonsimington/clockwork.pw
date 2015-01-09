@@ -148,3 +148,7 @@ h5, h4, h6 {
 .roster-table {
     table-layout: fixed;
 }
+
+#breadcrumb li {
+    display: inline;
+}

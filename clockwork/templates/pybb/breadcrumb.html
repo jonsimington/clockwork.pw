@@ -1,21 +1,22 @@
 {% load url from future %}
 {% load i18n pybb_tags %}
-<ul class='breadcrumb'>
-  {% include "pybb/breadcrumb_top_extra_crumb.html" %}
-  <li><a href="{% url 'pybb:index' %}">{% trans "Home" %}</a></li>
-  {% if object %}
-  {% if object.get_parents %}
-  {% for obj in object.get_parents %}
-  <li>{% pybb_link obj %}</li>
-  {% endfor %}
-  {% endif %}
-  {% if extra_crumb %}
-  <li>{% pybb_link object %}</li>
-  {% else %}
-  <li>{{ object }}</li>
-  {% endif %}
-  {% endif %}
-  {% if extra_crumb %}
-  <li>{% trans extra_crumb %}</li>
-  {% endif %}
-</ul>
+<h5>
+  <ul id="breadcrumb" class="list-unstyled">
+    {% include "pybb/breadcrumb_top_extra_crumb.html" %}
+    
+    <li><a href="{% url 'pybb:index' %}">{% trans "Home" %}</a></li>
+    
+    {% if object %}
+      {% if object.get_parents %}
+        {% for obj in object.get_parents %}
+          <li> > {% pybb_link obj %}</li>
+        {% endfor %}
+      {% endif %}
+      {% if extra_crumb %}
+        <li> > {% pybb_link object %}</li>
+      {% else %}
+        <li> > <h4><span class="label label-info">{{ object }}</span></h4></li>
+      {% endif %}
+    {% endif %}
+  </ul>
+</h5>
