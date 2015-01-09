@@ -23,9 +23,7 @@
     {% include "pybb/pagination.html" %}
       
   {% if user|pybb_may_create_topic:forum %}
-  <div class="controls">
-    {% include "pybb/_button_new_topic.html" %}
-  </div>
+
   {% endif %}
 </div>
 {% endblock content %}

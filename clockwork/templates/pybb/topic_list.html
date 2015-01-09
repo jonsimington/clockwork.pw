@@ -1,5 +1,19 @@
 {% load i18n pybb_tags %}
 
+{% if user.is_staff %}
+  <h4 class="pull-left">
+    <span class="label label-default">
+      <a href="{% url 'pybb:add_topic' forum.id %}">
+	<span>
+	  <span class="fa fa-plus"></span>  Add Topic
+	</span>
+      </a>
+    </span>
+  </h4>
+{% endif %}
+
+<br>
+
 <table class="table topic-list table-hover table-condensed">
   <thead>
     <tr class="topic-row head-row">

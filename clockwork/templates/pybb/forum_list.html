@@ -1,58 +1,70 @@
 {% load pybb_tags i18n %}
 
 {% if forum_list %}
-<table class="table table-hover table-condensed">
-  <thead>
-    <tr class="forum-row head-row">
-      <th class="forum-name">
-	{% trans "Forum" %}
-      </th>
-      <th class="forum-topic-count">
-	{% trans "Topics" %}
-      </th>
-      <th class="forum-post-count">
-	{% trans "Posts" %}
-      </th>
-      <th class="forum-last-post">
-	{% trans "Last post" %}
-      </th>
-    </tr>
-  </thead>
-  <tbody>
-    {% for forum in forum_list|pybb_forum_unread:user %}
-    <tr class="forum-row">
-      <td class="forum-name {% if forum.unread %} forum-unread{% endif %}">
-	<div class="state-indicator"></div>
-	<a href="{{ forum.get_absolute_url }}">
-	  <h4>{{ forum.name }}</h4>
+  {% if user.is_staff %}
+    <h4 class="pull-left">
+      <span class="label label-default">
+	<a href="/admin/pybb/forum/add/">
+	  <span>
+	    <span class="fa fa-plus"></span>  Add Forum
+	  </span>
 	</a>
-	&nbsp;&nbsp;&nbsp;
-	{% if forum.unread %}<h5><span class="label label-warning pull-right">Unread Posts</span></h5>{% endif %}
-	{% if forum.hidden %}[{% trans "Hidden" %}]{% endif %}
-	<div class="forum-description">
-	  <h5>{{ forum.description|safe }}</h5
-	</div>
-      </td>
-      <td class="forum-topic-count">
-	<h5>{{ forum.topic_count }}</h5>
-      </td>
-      <td class="forum-post-count">
-	<h5>{{ forum.post_count }}</h5>
-      </td>
-      <td class="forum-last-post">
-	<h5>{% include "pybb/forum_last_update_info.html" %}</h5>
-      </td>
-    </tr>
-    {% empty %}
+      </span>
+    </h4>
+  {% endif %}
+
+  <table class="table table-hover table-condensed">
+    <thead>
+      <tr class="forum-row head-row">
+	<th class="forum-name">
+	  {% trans "Forum" %}
+	</th>
+	<th class="forum-topic-count">
+	  {% trans "Topics" %}
+	</th>
+	<th class="forum-post-count">
+	  {% trans "Posts" %}
+	</th>
+	<th class="forum-last-post">
+	  {% trans "Last post" %}
+	</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for forum in forum_list|pybb_forum_unread:user %}
+      <tr class="forum-row">
+	<td class="forum-name {% if forum.unread %} forum-unread{% endif %}">
+	  <div class="state-indicator"></div>
+	  <a href="{{ forum.get_absolute_url }}">
+	    <h4>{{ forum.name }}</h4>
+	  </a>
+	  &nbsp;&nbsp;&nbsp;
+	  {% if forum.unread %}<h5><span class="label label-warning pull-right">Unread Posts</span></h5>{% endif %}
+	  {% if forum.hidden %}[{% trans "Hidden" %}]{% endif %}
+	  <div class="forum-description">
+	    <h5>{{ forum.description|safe }}</h5
+					       </div>
+	</td>
+	<td class="forum-topic-count">
+	  <h5>{{ forum.topic_count }}</h5>
+	</td>
+	<td class="forum-post-count">
+	  <h5>{{ forum.post_count }}</h5>
+	</td>
+	<td class="forum-last-post">
+	  <h5>{% include "pybb/forum_last_update_info.html" %}</h5>
+	</td>
+      </tr>
+      {% empty %}
       {% if not user.is_authenticated %}
-        <h3>You must be <a href="{% url 'account_login' %}">logged in</a> to view the forums. </h3>
+      <h3>You must be <a href="{% url 'account_login' %}">logged in</a> to view the forums. </h3>
       {% elif category %}
-        <h3>{% trans "No forums created" %}</h3>
-	{% if user.is_staff %}
-	  <a href="{% url 'admin:pybb_forum_add' %}">{% trans "Add forum now" %}</a>
-        {% endif %}
+      <h3>{% trans "No forums created" %}</h3>
+      {% if user.is_staff %}
+      <a href="{% url 'admin:pybb_forum_add' %}">{% trans "Add forum now" %}</a>
+      {% endif %}
       {%  endif %}
-    {% endfor %}
-  </tbody>
-</table>
-{% endif %}
+      {% endfor %}
+    </tbody>
+  </table>
+ {% endif %}
