@@ -7,13 +7,13 @@
   <a href="{{ user_profile.get_absolute_url }}">
   {% if_has_tag thumbnail %}
     {% thumbnail user_profile.avatar PYBB_AVATAR_DIMENSIONS as avatar %}
-      <img src="{{ avatar.url }}" alt="{{ user_profile.get_display_name }} avatar" />
+      <img src="/{{ avatar.url }}" alt="{{ user_profile.get_display_name }} avatar" />
     {% empty %}
       <img src="{% gravatar_url user_profile.user.email %}" class="img-responsive">
   {% endthumbnail %}
   {% else %}
     {% if user_profile.avatar %}
-      <img src="{{ user_profile.avatar.url }}" alt="{{ user_profile.get_display_name }} avatar" width="{{ PYBB_AVATAR_WIDTH }}" height="{{ PYBB_AVATAR_HEIGHT }}" />
+      <img src="/{{ user_profile.avatar.url }}" alt="{{ user_profile.get_display_name }} avatar" width="{{ PYBB_AVATAR_WIDTH }}" height="{{ PYBB_AVATAR_HEIGHT }}" />
     {% else %}
       <img src="{% gravatar_url user_profile.user.email %}" class="img-responsive">
     {% endif %}

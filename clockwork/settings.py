@@ -2,6 +2,10 @@ import os
 
 SETTINGS_DIR = os.path.dirname(os.path.dirname(__file__))
 PROJECT_DIR = os.path.dirname(SETTINGS_DIR)
+PYBB_DIR = '/home/jonsimington/clockwork.pw/pybb/'
+PYBB_AVATAR_DIR = os.path.join(PYBB_DIR, 'avatar/')
+PYBB_AVATAR_WIDTH = '125px'
+PYBB_AVATAR_HEIGHT = '125px'
 
 ##################################################################
 #

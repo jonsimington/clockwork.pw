@@ -16,7 +16,7 @@ class UserProfileForm(forms.ModelForm):
         model = UserProfile
         exclude = ('user',)
         fields = ['about_me','main_character','computer_specs','addons',
-                  'experience',]
+                  'experience','avatar']
 
     about_me = forms.CharField(required=False, widget=forms.Textarea)
 
@@ -30,8 +30,8 @@ class UserProfileForm(forms.ModelForm):
         self.helper.layout = Layout(
             Field('about_me'),
             HTML('<br>'),
-            #Field('avatar'),
-            #HTML('<br>'),
+            Field('avatar'),
+            HTML('<br>'),
             Field('main_character'),
             HTML('<br>'),
             Field('computer_specs'),
@@ -53,7 +53,7 @@ class UserProfileForm(forms.ModelForm):
         profile.user.computer_specs = self.cleaned_data['computer_specs']
         profile.user.addons = self.cleaned_data['addons']
         profile.user.experience = self.cleaned_data['experience']
-
+        profile.user.avatar = self.cleaned_data['avatar']
         profile.user.save(*args, **kwargs)
         print u"{}'s profile saved".format(profile.user.username)
         return profile
