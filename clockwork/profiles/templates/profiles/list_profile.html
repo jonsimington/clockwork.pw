@@ -24,7 +24,7 @@
       
       <tbody>
 	{% for profile in userprofiles %}
-	  {% if not profile.user.groups.all.first.name == 'Reject' %}
+	  {% if not profile.user.groups.all.first.name == 'Reject' and not profile.user.groups.all.first.name == 'Applicant' %}
 	    <tr>
 	      <td id="username">
 		<a href="{{ profile.get_absolute_url }}">
