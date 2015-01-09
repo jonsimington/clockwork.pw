@@ -143,7 +143,10 @@ class ApplicationForm(forms.ModelForm):
                      'Paladin',
                      'Priest',
                      'Shaman',
-                     'Warrior',]
+                     'Warrior',
+                     'Warlock',
+                     'Druid',
+                     'Rogue',]
 
     auth_choices = ['Yes', 'No',]
 
