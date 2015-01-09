@@ -152,3 +152,7 @@ h5, h4, h6 {
 #breadcrumb li {
     display: inline;
 }
+
+.post-content img {
+    max-width: 100%;
+}
