@@ -1,6 +1,6 @@
 {% load i18n pybb_tags %}
 
-
+{% if user.is_authenticated %}
 <h4 class="pull-left">
   <span class="label label-default">
     <a href="{% url 'pybb:add_topic' forum.id %}">
@@ -10,6 +10,7 @@
     </a>
   </span>
 </h4>
+{% endif %}
 
 
 <br>
