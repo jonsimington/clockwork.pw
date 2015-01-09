@@ -1,7 +1,7 @@
 {% load pybb_tags %}
 
 {% if forum.updated %}
-  <a href="{{ forum.last_post.get_absolute_url }}">By {{ forum.last_post.user }}</a> 
-  <br><br>
-  on {{ forum.updated|date:"F d Y, h:i A" }}
+  by <a href="{{ forum.last_post.get_absolute_url }}">{{ forum.last_post.user }}</a> 
+  <br>
+  {{ forum.updated|date:"F d Y, h:i A" }}
 {% endif %}

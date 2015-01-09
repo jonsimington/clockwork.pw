@@ -1,6 +1,6 @@
 {% if topic.updated %}
-  <a href="{{ topic.last_post.get_absolute_url }}">By {{ topic.last_post.user }}</a> 
-  <br><br>
-  on {{ topic.updated|date:"F d Y, h:i A" }}
+  by <a href="{{ topic.last_post.get_absolute_url }}">{{ topic.last_post.user }}</a> 
+  <br>
+  {{ topic.updated|date:"F d Y, h:i A" }}
 {% endif %}
 
