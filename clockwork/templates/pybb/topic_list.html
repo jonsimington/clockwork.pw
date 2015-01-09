@@ -1,16 +1,16 @@
 {% load i18n pybb_tags %}
 
-{% if user.is_staff %}
-  <h4 class="pull-left">
-    <span class="label label-default">
-      <a href="{% url 'pybb:add_topic' forum.id %}">
-	<span>
-	  <span class="fa fa-plus"></span>  Add Topic
-	</span>
-      </a>
-    </span>
-  </h4>
-{% endif %}
+
+<h4 class="pull-left">
+  <span class="label label-default">
+    <a href="{% url 'pybb:add_topic' forum.id %}">
+      <span>
+	<span class="fa fa-plus"></span>  Add Topic
+      </span>
+    </a>
+  </span>
+</h4>
+
 
 <br>
 
