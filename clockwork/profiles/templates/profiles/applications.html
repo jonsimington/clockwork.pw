@@ -5,8 +5,11 @@
 {% endblock %}
 
 {% block content %}
-  <h1>Open Applications:</h1>
-
+  {% if applicants.count %}
+    <h1 class="text-center">Open Applications:</h1>
+  {% else %}
+    <h1 class="text-center">There are no applications to view at this time.</h1>
+  {% endif %}
   <div class="panel-group" id="accordion">
     {% for applicant in applicants %}
       <div class="panel panel-default">
