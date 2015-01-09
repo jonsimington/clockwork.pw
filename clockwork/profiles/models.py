@@ -29,7 +29,7 @@ class UserProfile(PybbProfile):
     experience = models.TextField(validators=[MaxLengthValidator(1000)], default="", blank=True, null=True)
     how_did_you_hear = models.TextField(validators=[MaxLengthValidator(500)], default="", blank=True, null=True)
     authenticator = models.CharField(max_length=5, default="", blank=True, null=True)
-    submitted_app = models.NullBooleanField(default=True, blank=True, null=True)
+    submitted_app = models.NullBooleanField(default=False, blank=True, null=True)
     previous_guild = models.TextField(validators=[MaxLengthValidator(500)], default="", blank=True, null=True)
     
     @models.permalink
@@ -54,7 +54,7 @@ class UserProfile(PybbProfile):
 def create_user_profile(sender, instance, created, **kwargs):
     if created:
         try:
-            instance.groups.add(Group.objects.get(name='Member'))
+            instance.groups.add(Group.objects.get(name='Applicant'))
         except:
             pass
 
