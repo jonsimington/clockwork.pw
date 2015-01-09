@@ -16,7 +16,7 @@ class UserProfileForm(forms.ModelForm):
         model = UserProfile
         exclude = ('user',)
         fields = ['about_me','main_character','computer_specs','addons',
-                  'experience','avatar']
+                  'experience',]
 
     about_me = forms.CharField(required=False, widget=forms.Textarea)
 
@@ -43,6 +43,7 @@ class UserProfileForm(forms.ModelForm):
             FormActions(
                 Submit('save', 'Save changes'),
             ),
+            HTML('<br><br>'),
         )
 
     def save(self, *args, **kwargs):
