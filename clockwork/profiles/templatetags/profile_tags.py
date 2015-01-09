@@ -20,7 +20,8 @@ class GravatarUrlNode(template.Node):
             return ''
 
         email_hash = hashlib.md5(email.lower()).hexdigest()
-        query_str = urllib.urlencode({'d': 'http://i.imgur.com/ytOAIRY.png'})
+        query_str = urllib.urlencode({'d': 'http://i.imgur.com/ytOAIRY.png',
+                                      's': 200})
 
         url = "http://www.gravatar.com/avatar/{0}?{1}"
 

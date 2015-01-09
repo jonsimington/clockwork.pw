@@ -9,13 +9,13 @@
     {% thumbnail user_profile.avatar PYBB_AVATAR_DIMENSIONS as avatar %}
       <img src="/{{ avatar.url }}" alt="{{ user_profile.get_display_name }} avatar" />
     {% empty %}
-      <img src="{% gravatar_url user_profile.user.email %}" class="img-responsive">
+      <img src="{% gravatar_url user_profile.user.email %}" width="125px" height="125px" class="img-responsive">
   {% endthumbnail %}
   {% else %}
     {% if user_profile.avatar %}
       <img src="/{{ user_profile.avatar.url }}" alt="{{ user_profile.get_display_name }} avatar" width="{{ PYBB_AVATAR_WIDTH }}" height="{{ PYBB_AVATAR_HEIGHT }}" />
     {% else %}
-      <img src="{% gravatar_url user_profile.user.email %}" class="img-responsive">
+      <img src="{% gravatar_url user_profile.user.email %}" width="500" height="500" class="img-responsive">
     {% endif %}
   {% endif_has_tag %}
   </a>
