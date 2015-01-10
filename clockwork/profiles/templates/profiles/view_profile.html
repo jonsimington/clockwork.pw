@@ -38,7 +38,11 @@
     </div>
     <div class="col-md-3">
       <a id="profilepic" class="thumbnail">
-	<img src="{% gravatar_url userprofile.user.email %}" class="img-responsive" />
+	{% if userprofile.user.profile.avatar %}
+	  <img src="/{{ userprofile.user.profile.avatar }}" class="img-responsive" />
+	{% else %}
+	  <img src="{% gravatar_url userprofile.user.email %}" class="img-responsive" />
+	{% endif %}
       </a>
     </div>
   </div>
