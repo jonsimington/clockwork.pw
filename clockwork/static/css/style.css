@@ -156,3 +156,11 @@ h5, h4, h6 {
 .post-content img {
     max-width: 100%;
 }
+
+.blog-image {
+    max-width: 100%;
+}
+
+.blog-content img {
+    max-width: 100%;
+}
