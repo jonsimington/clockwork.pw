@@ -157,6 +157,10 @@ h5, h4, h6 {
     max-width: 100%;
 }
 
+.post-content iframe {
+    border: none;
+}
+
 .blog-image {
     max-width: 100%;
 }

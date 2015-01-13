@@ -10,7 +10,7 @@ django-messages
 whoosh
 django-registration==0.7
 django-blog-zinnia
-bbcode
+-e git+git@github.com:jonsimington/bbcode.git#egg=bbcode
 -e git+https://github.com/jonsimington/pybbm.git#egg=pybb
 pillow
 django-bootstrap-form
