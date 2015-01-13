@@ -153,8 +153,12 @@ h5, h4, h6 {
     display: inline;
 }
 
+.post-content {
+    display: table-cell;
+}
+
 .post-content img {
-    max-width: 100%;
+    max-width: 1000px;
 }
 
 .post-content iframe {
