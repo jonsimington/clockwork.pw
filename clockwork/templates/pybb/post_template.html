@@ -26,67 +26,77 @@
 	<td class="post-info">
 	  {% include "pybb/avatar.html" with user=post.user %}
 	  
-	  <div class="post-author"><a href="{{ post_user_profile.get_absolute_url }}"><span class="post-username"><h6>{{ post.user.username }}</h6></span></a></div>
-	  {% if post_user_profile.rank %}
-	  <div class='rank'>
-	    {% trans "Rank" %}: {{ post_user_profile.rank }}
-	    {% if user.is_authenticated and user != post.user %}
-	    <a href='#' class='vote' rel='{{ post_user_profile.get_vote_up_url }}'>+</a>
-	    <a href='#' class='vote' rel='{{ post_user_profile.get_vote_down_url }}'>-</a>
-	    {% endif %}
+	  <div class="post-author">
+	    <a href="{{ post_user_profile.get_absolute_url }}">
+	      <span class="post-username"><h6>{{ post.user.username }}</h6></span>
+	    </a>
 	  </div>
+          {% if post_user_profile.rank %}
+	    <div class='rank'>
+	      {% trans "Rank" %}: {{ post_user_profile.rank }}
+	      {% if user.is_authenticated and user != post.user %}
+	        <a href='#' class='vote' rel='{{ post_user_profile.get_vote_up_url }}'>+</a>
+	        <a href='#' class='vote' rel='{{ post_user_profile.get_vote_down_url }}'>-</a>
+	      {% endif %}
+	    </div>
 	  {% endif %}
 	  {% if user.is_superuser %}
-	  <h6>
-	  <div class="post-extra-info"><h6>{{ post.user_ip }}</h6></div>
+	    <div class="post-extra-info">
+	      <h6>{{ post.user_ip }}</h6>
+	    </div>
 	  {% endif %}
 	  
 	  <div class="post-controls">
 	    {% if user.is_moderator or post|pybb_posted_by:user %}
-	    <a href="{% url 'pybb:edit_post' pk=post.id %}">{% trans "Edit" %}</a>
+	      <a href="{% url 'pybb:edit_post' pk=post.id %}">{% trans "Edit" %}</a>
 	    {% endif %}
 	    {% if user.is_moderator %}
-	    <a onclick="pybb_delete_post('{% url 'pybb:delete_post' post.id %}',
-			'post-{{ post.id }}', '{% trans 'Delete post?' %}'); return false;"
-	       href="{% url 'pybb:delete_post' post.id %}">{% trans "Delete" %}</a>
-	    {% if post.on_moderation %}
-	    <a href="{% url 'pybb:moderate_post' pk=post.id %}">{% trans "Approve post" %}</a>
-	    {% endif %}
+	      <a onclick="pybb_delete_post('{% url 'pybb:delete_post' post.id %}',
+			  'post-{{ post.id }}', '{% trans 'Delete post?' %}'); return false;"
+		 href="{% url 'pybb:delete_post' post.id %}">{% trans "Delete" %}</a>
+	      {% if post.on_moderation %}
+	        <a href="{% url 'pybb:moderate_post' pk=post.id %}">{% trans "Approve post" %}</a>
+	      {% endif %}
 	    {% endif %}
 	    
 	    {% if perms.pybb.change_post and user.is_staff %}
-	    <a href="{% url 'admin:pybb_post_change' post.id %}">{% trans 'Admin' %}</a>
+	      <a href="{% url 'admin:pybb_post_change' post.id %}">{% trans 'Admin' %}</a>
 	    {% endif %}
-	    </h6>
-	  </div>
+	  </div>  
 	</td>
 	<td class="post-content">
 	  <h5>{{ post.body_html|safe }}</h5>
 	  
 	  {% if not user.is_authenticated or user_profile.show_signatures %}
-	  {% if post_user_profile.signature %}
-	  <div class="post-signature">
-	    {{ post_user_profile.signature_html|safe }}
-	  </div>
-	  {% endif %}
+	    {% if post_user_profile.signature %}
+	      <div class="post-signature">
+	        {{ post_user_profile.signature_html|safe }}
+	      </div>
+	    {% endif %}
 	  {% endif %}
 	  
 	  {% comment %}
-	  {% if post.attachment_cache %}
-	  {% for attach in post.attachment_cache %}
-	  <br/>
-	  {% trans "Attachment" %}: <a href="{{ attach.get_absolute_url }}">{{ attach.name }}</a> ({{ attach.size_display }})
-	  {% endfor %}
-	  {% endif %}
+	    {% if post.attachment_cache %}
+	      {% for attach in post.attachment_cache %}
+	        <br/>
+	        {% trans "Attachment" %}: <a href="{{ attach.get_absolute_url }}">{{ attach.name }}</a> ({{ attach.size_display }})
+	      {% endfor %}
+	    {% endif %}
 	  {% endcomment %}
 	  <div class="post-related">
 	    {% if user|pybb_may_create_post:post.topic %}
-	    <a href="{% url 'pybb:add_post' topic.id %}?quote_id={{ post.id }}" class="quote-link"><h6>{% trans "quote" %}</a>
-	    <a href="javascript:void(0)" onclick="quote_selected('{{ post.user.username }}');" class="quote-selected-link">{% trans "quote selected" %}</h6></a>
+	      <a href="{% url 'pybb:add_post' topic.id %}?quote_id={{ post.id }}" class="quote-link">
+		<h6>{% trans "quote" %}</h6>
+	      </a>
+	      <a href="javascript:void(0)" onclick="quote_selected('{{ post.user.username }}');" class="quote-selected-link">
+		<h6>{% trans "quote selected" %}</h6>
+	      </a>
 	    {% endif %}
 	    <div class='attachments'>
 	      {% for attachment in post.attachments.all %}
-	      <a href="{{ attachment.file.url }}"><img src="{{ STATIC_URL }}pybb/img/attachment.png"> {{ attachment.size_display }}</a>
+	        <a href="{{ attachment.file.url }}"><img src="{{ STATIC_URL }}pybb/img/attachment.png"> 
+		  {{ attachment.size_display }}
+		</a>
 	      {% endfor %}
 	    </div>
 	  </div>
