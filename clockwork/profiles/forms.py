@@ -16,7 +16,7 @@ class UserProfileForm(forms.ModelForm):
         model = UserProfile
         exclude = ('user',)
         fields = ['about_me','main_character','computer_specs','addons',
-                  'experience','avatar']
+                  'experience','avatar', 'signature']
 
     about_me = forms.CharField(required=False, widget=forms.Textarea)
 
@@ -32,6 +32,8 @@ class UserProfileForm(forms.ModelForm):
             HTML('<br>'),
             Field('avatar'),
             HTML('<br>'),
+            Field('signature'),
+            HTML('<br>'),
             Field('main_character'),
             HTML('<br>'),
             Field('computer_specs'),
@@ -46,6 +48,9 @@ class UserProfileForm(forms.ModelForm):
             HTML('<br><br>'),
         )
 
+        self.fields['avatar'].label = "Forum Avatar"
+        self.fields['signature'].label = "Forum Signature"
+
     def save(self, *args, **kwargs):
         profile = super(UserProfileForm, self).save(*args, **kwargs)
         profile.user.about_me = self.cleaned_data['about_me']
@@ -54,6 +59,7 @@ class UserProfileForm(forms.ModelForm):
         profile.user.addons = self.cleaned_data['addons']
         profile.user.experience = self.cleaned_data['experience']
         profile.user.avatar = self.cleaned_data['avatar']
+        profile.user.signature = self.cleaned_data['signature']
         profile.user.save(*args, **kwargs)
         print u"{}'s profile saved".format(profile.user.username)
         return profile
