@@ -26,20 +26,19 @@
 	<td class="post-info">
 	  {% include "pybb/avatar.html" with user=post.user %}
 	  
+	  <br>
+
 	  <div class="post-author">
 	    <a href="{{ post_user_profile.get_absolute_url }}">
-	      <span class="post-username"><h6>{{ post.user.username }}</h6></span>
+	      <span class="post-username"><h4>{{ post.user.username }}</h4></span>
 	    </a>
 	  </div>
-          {% if post_user_profile.rank %}
-	    <div class='rank'>
-	      {% trans "Rank" %}: {{ post_user_profile.rank }}
-	      {% if user.is_authenticated and user != post.user %}
-	        <a href='#' class='vote' rel='{{ post_user_profile.get_vote_up_url }}'>+</a>
-	        <a href='#' class='vote' rel='{{ post_user_profile.get_vote_down_url }}'>-</a>
-	      {% endif %}
-	    </div>
-	  {% endif %}
+
+          <br>
+	  <h6>{{ post.user.groups.first }}</h6>
+	  <br>
+	  <h6>Posts: {{ post_user_profile.post_count }}</h6>
+
 	  {% if user.is_superuser %}
 	    <div class="post-extra-info">
 	      <h6>{{ post.user_ip }}</h6>
