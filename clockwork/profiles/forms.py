@@ -139,7 +139,8 @@ class ApplicationForm(forms.ModelForm):
                   'authenticator',
                   'addons',
                   'previous_guild',
-                  'submitted_app',]
+                  'submitted_app',
+                  'battle_tag',]
                   
 
     class_choices = ['Death Knight',
@@ -170,6 +171,7 @@ class ApplicationForm(forms.ModelForm):
     submitted_app = forms.BooleanField(required=False)
     previous_guild = forms.CharField(required=True, widget=forms.Textarea)
     addons = forms.CharField(required=True, widget=forms.Textarea)
+    battle_tag = forms.CharField(required=True)
     
     def __init__(self, *args, **kwargs):
         initial = kwargs.get('initial', {})
@@ -207,6 +209,8 @@ class ApplicationForm(forms.ModelForm):
             Field('previous_guild'),
             HTML('<hr>'),
             Field('experience'),
+            HTML('<br>'),
+            Field('battle_tag'),
             Field('submitted_app', type="hidden"),
             HTML('<br>'),
             FormActions(
@@ -229,6 +233,7 @@ class ApplicationForm(forms.ModelForm):
         self.fields['how_did_you_hear'].label = "How did you hear about Clockwork and why do you want to join us?"
         self.fields['previous_guild'].label = "Tell us about your previous guild.  What makes us a more attractive option?"
         self.fields['authenticator'].label = "Do you use an authenticator?"
+        self.fields['battle_tag'].label = "Provide us your battle tag so we may contact you about your application."
         
     def save(self, *args, **kwargs):
         profile = super(ApplicationForm, self).save(*args, **kwargs)
@@ -246,6 +251,7 @@ class ApplicationForm(forms.ModelForm):
         profile.user.authenticator = self.cleaned_data['authenticator']
         profile.user.submitted_app = self.cleaned_data['submitted_app']
         profile.user.previous_guild = self.cleaned_data['previous_guild']
+        profile.user.battle_tag = self.cleaned_data['battle_tag']
         profile.user.save(*args, **kwargs)
 
         print u"{}'s profile saved".format(profile.user.username)

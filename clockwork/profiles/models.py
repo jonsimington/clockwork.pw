@@ -31,6 +31,7 @@ class UserProfile(PybbProfile):
     authenticator = models.CharField(max_length=5, default="", blank=True, null=True)
     submitted_app = models.NullBooleanField(default=False, blank=True, null=True)
     previous_guild = models.TextField(validators=[MaxLengthValidator(500)], default="", blank=True, null=True)
+    battle_tag = models.CharField(max_length=20, default="", blank=True, null=True)
     
     @models.permalink
     def get_absolute_url(self):
