@@ -12,20 +12,22 @@
   {% endif %}
   <div class="panel-group" id="accordion">
     {% for applicant in applicants %}
-      <div class="panel panel-default">
-	<div class="panel-heading" data-toggle="collapse" data-target="#{{ applicant }}"
-	     href="#{{ applicant }}" >
-	  <h4 class="panel-title">
-	    {{ applicant }}
-	    <span class="pull-right fa fa-angle-down"></span>
-	  </h4>
-	</div>
-	<div id="{{ applicant }}" class="panel-collapse collapse">
-	  <div class="panel-body">
-	    {% include "profiles/application_view.html" %}
+      {% if applicant.profile.main_character %}
+        <div class="panel panel-default">
+	  <div class="panel-heading" data-toggle="collapse" data-target="#{{ applicant }}"
+	       href="#{{ applicant }}" >
+	    <h4 class="panel-title">
+	      {{ applicant }}
+	      <span class="pull-right fa fa-angle-down"></span>
+	    </h4>
+	  </div>
+	  <div id="{{ applicant }}" class="panel-collapse collapse">
+	    <div class="panel-body">
+	      {% include "profiles/application_view.html" %}
+	    </div>
 	  </div>
 	</div>
-      </div>
+      {% endif %}	
     {% endfor %}
   </div>
 
