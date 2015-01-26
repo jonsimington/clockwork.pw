@@ -20,7 +20,7 @@
   {% for entry in entries %}
     <div class="well">
       <h2>{{ entry.title }}</h2>
-      <h6>Published by <a href="profiles/{{entry.authors.first}}/">{{ entry.authors.first }}</a> on {{ entry.creation_date }}</h6>
+      <h6>Published by <a href="/profiles/{{entry.authors.first}}/">{{ entry.authors.first }}</a> on {{ entry.creation_date }}</h6>
       <hr id="blog-hr">
       <div class="blog-content">
 	<h4>{{ entry.content|safe|linebreaks }}</h4>
