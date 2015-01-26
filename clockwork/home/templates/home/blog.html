@@ -25,10 +25,12 @@
 	<h2>{{ entry.title }}</h2>
 	<h6>Published by <a href="profiles/{{entry.authors.first}}/">{{ entry.authors.first }}</a> on {{ entry.creation_date }}</h6>
 	<hr id="blog-hr">
-	<h4>{{ entry.content|safe|linebreaks }}</h4>
+	<div class="blog-content">
+	  <h4>{{ entry.content|safe|linebreaks }}</h4>
+	</div>
 	
         {% if entry.image %}
-          <img src="/{{ entry.image.url }}" />
+          <img class="blog-image" src="/{{ entry.image.url }}" />
         {% endif %}
     
         {% if user.is_staff %}
