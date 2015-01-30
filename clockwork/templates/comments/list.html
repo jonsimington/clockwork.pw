@@ -1,0 +1,10 @@
+{% for comment in comment_list %}
+  <dt id="c{{ comment.id }}">
+    <a href="{{ comment.user.profile.get_absolute_url }}">
+      {{ comment.user.username }}
+    </a>
+    : {{ comment.comment }}
+  </dt>
+  
+  {% endfor %}
+

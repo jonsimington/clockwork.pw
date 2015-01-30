@@ -1,3 +1,6 @@
+{% load comments %}
+{% load application_tags %}
+
 <div class="col-md-3">
   Main Character
 </div>
@@ -164,4 +167,22 @@
   <div class="col-lg-1"></div>
   <a href="/admin/auth/user/{{ applicant.id }}" class="btn btn-warning btn-lg text-center">Change Applicant's Group</a>
   <div class="col-lg-3"></div>
+{% endif %}
+
+{% if user|has_group:"Member" or user|has_group:"Officer" %}
+  <div class="comments">
+    <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#c{{ applicant }}" aria-expanded="false" aria-controls="c{{ applicant }}">
+      Show Comments
+    </button>
+    <br><br>
+    <div class="collapse" id="c{{ applicant }}">
+      <div class="well">
+	<h1>Comments for {{ applicant.username }}'s Application:</h1>
+	{% render_comment_list for applicant.application %}
+	<hr>
+        <h1>Post a comment:</h1>
+        {% render_comment_form for applicant.application %}
+      </div>
+    </div>
+  </div>
 {% endif %}
