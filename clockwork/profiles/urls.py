@@ -25,7 +25,7 @@ urlpatterns = patterns(
         name="update_profile"),
 
     url(r'application/submit/$',
-        ApplicationSubmitView.as_view(),
+        ApplicationSubmitView.as_view(success_url="/application/submit"),
         name='submit_app'),
 
     url(r'application/update/$',                                                       

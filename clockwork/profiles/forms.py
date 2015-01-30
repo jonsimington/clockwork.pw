@@ -7,7 +7,7 @@ from crispy_forms.layout import (Layout, Fieldset, Submit, Button,
                                  HTML, Field)
 from crispy_forms.bootstrap import FormActions
 
-from .models import UserProfile
+from .models import UserProfile, Application
 
 
 # Create the form class.
@@ -15,8 +15,7 @@ class UserProfileForm(forms.ModelForm):
     class Meta:
         model = UserProfile
         exclude = ('user',)
-        fields = ['about_me','main_character','computer_specs','addons',
-                  'experience','avatar', 'signature']
+        fields = ['about_me','avatar', 'signature']
 
     about_me = forms.CharField(required=False, widget=forms.Textarea)
 
@@ -34,14 +33,6 @@ class UserProfileForm(forms.ModelForm):
             HTML('<br>'),
             Field('signature'),
             HTML('<br>'),
-            Field('main_character'),
-            HTML('<br>'),
-            Field('computer_specs'),
-            HTML('<br>'),
-            Field('addons'),
-            HTML('<br>'),
-            Field('experience'),
-            HTML('<br>'),
             FormActions(
                 Submit('save', 'Save changes'),
             ),
@@ -54,10 +45,6 @@ class UserProfileForm(forms.ModelForm):
     def save(self, *args, **kwargs):
         profile = super(UserProfileForm, self).save(*args, **kwargs)
         profile.user.about_me = self.cleaned_data['about_me']
-        profile.user.main_character = self.cleaned_data['main_character']
-        profile.user.computer_specs = self.cleaned_data['computer_specs']
-        profile.user.addons = self.cleaned_data['addons']
-        profile.user.experience = self.cleaned_data['experience']
         profile.user.avatar = self.cleaned_data['avatar']
         profile.user.signature = self.cleaned_data['signature']
         profile.user.save(*args, **kwargs)
@@ -115,17 +102,8 @@ class LoginForm(forms.Form):
 
 class ApplicationForm(forms.ModelForm):
     class Meta:
-        model = UserProfile
-        exclude = ('user',
-                   'about_me',
-                   'avatar',
-                   'post_count',
-                   'time_zone',
-                   'language',
-                   'show_signatures',
-                   'autosubscribe',
-                   'signature',
-                   'signature_html',)
+        model = Application
+        
         fields = ['main_character',
                   'armory_link',
                   'char_class',
@@ -139,10 +117,8 @@ class ApplicationForm(forms.ModelForm):
                   'authenticator',
                   'addons',
                   'previous_guild',
-                  'submitted_app',
                   'battle_tag',]
                   
-
     class_choices = ['Death Knight',
                      'Hunter',
                      'Mage',
@@ -168,15 +144,11 @@ class ApplicationForm(forms.ModelForm):
     experience = forms.CharField(required=True, widget=forms.Textarea)
     how_did_you_hear = forms.CharField(required=True, widget=forms.Textarea)
     authenticator = forms.ChoiceField(required=True, choices=[(x,x) for x in auth_choices])
-    submitted_app = forms.BooleanField(required=False)
     previous_guild = forms.CharField(required=True, widget=forms.Textarea)
     addons = forms.CharField(required=True, widget=forms.Textarea)
     battle_tag = forms.CharField(required=True)
     
     def __init__(self, *args, **kwargs):
-        initial = kwargs.get('initial', {})
-        initial['submitted_app'] = 'True'
-        kwargs['initial'] = initial
         super(ApplicationForm, self).__init__(*args, **kwargs)
         
         self.helper = FormHelper(self)
@@ -211,7 +183,6 @@ class ApplicationForm(forms.ModelForm):
             Field('experience'),
             HTML('<br>'),
             Field('battle_tag'),
-            Field('submitted_app', type="hidden"),
             HTML('<br>'),
             FormActions(
                 Submit('save', 'Submit Application'),
@@ -236,24 +207,24 @@ class ApplicationForm(forms.ModelForm):
         self.fields['battle_tag'].label = "Provide us your battle tag so we may contact you about your application."
         
     def save(self, *args, **kwargs):
-        profile = super(ApplicationForm, self).save(*args, **kwargs)
-        print profile.user.username
-        profile.user.main_character = self.cleaned_data['main_character']
-        profile.user.armory_link = self.cleaned_data['main_character']
-        profile.user.over_18 = self.cleaned_data['over_18']
-        profile.user.char_spec = self.cleaned_data['char_spec']
-        profile.user.recent_parses = self.cleaned_data['recent_parses']
-        profile.user.computer_specs = self.cleaned_data['computer_specs']
-        profile.user.screenshot = self.cleaned_data['screenshot']
-        profile.user.addons = self.cleaned_data['addons']
-        profile.user.experience = self.cleaned_data['experience']
-        profile.user.how_did_you_hear = self.cleaned_data['how_did_you_hear']
-        profile.user.authenticator = self.cleaned_data['authenticator']
-        profile.user.submitted_app = self.cleaned_data['submitted_app']
-        profile.user.previous_guild = self.cleaned_data['previous_guild']
-        profile.user.battle_tag = self.cleaned_data['battle_tag']
-        profile.user.save(*args, **kwargs)
+        app = super(ApplicationForm, self).save(*args, **kwargs)
+        
+        app.user.application.main_character = self.cleaned_data['main_character']
+        app.user.application.armory_link = self.cleaned_data['armory_link']
+        app.user.application.over_18 = self.cleaned_data['over_18']
+        app.user.application.char_spec = self.cleaned_data['char_spec']
+        app.user.application.recent_parses = self.cleaned_data['recent_parses']
+        app.user.application.computer_specs = self.cleaned_data['computer_specs']
+        app.user.application.screenshot = self.cleaned_data['screenshot']
+        app.user.application.addons = self.cleaned_data['addons']
+        app.user.application.experience = self.cleaned_data['experience']
+        app.user.application.how_did_you_hear = self.cleaned_data['how_did_you_hear']
+        app.user.application.authenticator = self.cleaned_data['authenticator']
+        app.user.application.previous_guild = self.cleaned_data['previous_guild']
+        app.user.application.battle_tag = self.cleaned_data['battle_tag']
+        app.user.application.save(*args, **kwargs)
+        app.user.profile.submitted_app = True
+        app.user.profile.save(*args, **kwargs)
+        print u"{}'s app saved".format(app.user.username)
 
-        print u"{}'s profile saved".format(profile.user.username)
-
-        return profile
+        return app
