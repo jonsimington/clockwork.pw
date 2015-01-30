@@ -175,15 +175,16 @@
 {% if user|has_group:"Member" or user|has_group:"Officer" %}
   <div class="panel-group" id="accordion">
     <div class="panel panel-default">
-      <div class="panel-heading" data-toggle="collapse" data-target="#c{{ applicant }}" href="#c{{ applicant }}">
+      <div class="panel-heading" data-toggle="collapse" data-target="#c{{ applicant }}"
+	   href="#c{{ applicant }}" >
 	<h4 class="panel-title">
 	  Post a Comment
 	  <span class="pull-right fa fa-angle-down"></span>
 	</h4>
-	<div id="c{{ applicant }}" class="panel-collapse collapse">
-	  <div class="panel-body">
-            {% render_comment_form for applicant.application %}
-	  </div>
+      </div>
+      <div id="c{{ applicant }}" class="panel-collapse collapse">
+	<div class="panel-body">
+	  {% render_comment_form for applicant.application %}
 	</div>
       </div>
     </div>
