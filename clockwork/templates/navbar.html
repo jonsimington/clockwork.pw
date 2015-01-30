@@ -40,7 +40,7 @@
 	{% if user.groups.first.name == "Member" or user.groups.first.name == "Officer" %}
 	  <li class="{% active_re '^/applications' %}">
 	    <a href="/applications/">
-	      View Applications <span class="badge">{% application_count %}</span>
+	      View Applications {% application_count %}
 	    </a>
 	  </li>
 	{% endif %}

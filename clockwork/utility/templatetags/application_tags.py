@@ -8,4 +8,7 @@ register = template.Library()
 @register.simple_tag()
 def application_count():
     open_apps = Application.objects.filter(status="open").count()
-    return open_apps
+    if open_apps > 0:
+        return '<span class="badge">' + str(open_apps) + "</span>"
+    else:
+        return ""
