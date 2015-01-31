@@ -24,7 +24,7 @@
       
       <tbody>
 	{% for profile in userprofiles %}
-	  {% if not profile.user.groups.all.first.name == 'Reject' and not profile.user.groups.all.first.name == 'Applicant' %}
+	  {% if not profile.user.groups.all.first.name == 'Declined' and not profile.user.groups.all.first.name == 'Applicant' %}
 	    <tr>
 	      <td id="username">
 		<a href="{{ profile.get_absolute_url }}">
@@ -35,8 +35,8 @@
 		<h5>{{ profile.user.groups.all.first.name }}</h5>
 	      </td>
 	      <td align="right" id="armory_link">
-		<a href="http://us.battle.net/wow/en/character/sargeras/{{profile.user.profile.main_character}}/advanced">
-		  <h5>{{ profile.user.profile.main_character }}</h5>
+		<a href="http://us.battle.net/wow/en/character/sargeras/{{profile.user.application.main_character}}/advanced">
+		  <h5>{{ profile.user.application.main_character }}</h5>
 		</a>
 	      </td>
 	    </tr>

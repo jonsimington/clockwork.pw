@@ -16,21 +16,7 @@ class UserProfile(PybbProfile):
     about_me = models.TextField(validators=[MaxLengthValidator(500)], null=True, blank=True)
     rendered_about_me = models.TextField(editable=False,
                                          null=True)
-
-    main_character = models.CharField(max_length=12, default="", blank=True, null=True)
-    armory_link = models.CharField(max_length=100, default="", blank=True, null=True)
-    char_class = models.CharField(max_length=15, default="", blank=True, null=True)
-    over_18 = models.CharField(max_length=4, default="", blank=True, null=True)
-    char_spec = models.CharField(max_length=15, default="", blank=True, null=True)
-    recent_parses = models.TextField(validators=[MaxLengthValidator(500)], default="", blank=True, null=True)
-    computer_specs = models.TextField(validators=[MaxLengthValidator(1000)], default="", blank=True, null=True)
-    screenshot = models.TextField(max_length=200, default="", blank=True, null=True)
-    addons = models.TextField(validators=[MaxLengthValidator(1000)], default="", blank=True, null=True)
-    experience = models.TextField(validators=[MaxLengthValidator(1000)], default="", blank=True, null=True)
-    how_did_you_hear = models.TextField(validators=[MaxLengthValidator(500)], default="", blank=True, null=True)
-    authenticator = models.CharField(max_length=5, default="", blank=True, null=True)
     submitted_app = models.NullBooleanField(default=False, blank=True, null=True)
-    previous_guild = models.TextField(validators=[MaxLengthValidator(500)], default="", blank=True, null=True)
     
     @models.permalink
     def get_absolute_url(self):
@@ -55,6 +41,7 @@ def create_user_profile(sender, instance, created, **kwargs):
     if created:
         try:
             instance.groups.add(Group.objects.get(name='Applicant'))
+            Application.objects.create(user=instance)
         except:
             pass
 
@@ -65,3 +52,24 @@ def user_profile_pre_save(sender, instance, **kwargs):
                                   tags=settings.ALLOWED_HTML_TAGS,
                                   attributes=settings.ALLOWED_HTML_ATTRS)
     instance.rendered_about_me = clean_rendered
+
+
+# A user's application for more access to the site
+class Application(models.Model):
+    user = models.OneToOneField(User, related_name="application")
+
+    status = models.CharField(max_length=10, default="open")
+    main_character = models.CharField(max_length=12, default="")
+    armory_link = models.CharField(max_length=100, default="")
+    char_class = models.CharField(max_length=15, default="")
+    over_18 = models.CharField(max_length=4, default="")
+    char_spec = models.CharField(max_length=15, default="")
+    recent_parses = models.TextField(validators=[MaxLengthValidator(500)], default="")
+    computer_specs = models.TextField(validators=[MaxLengthValidator(1000)], default="")
+    screenshot = models.TextField(max_length=200, default="")
+    addons = models.TextField(validators=[MaxLengthValidator(1000)], default="")
+    experience = models.TextField(validators=[MaxLengthValidator(1000)], default="")
+    how_did_you_hear = models.TextField(validators=[MaxLengthValidator(500)], default="")
+    authenticator = models.CharField(max_length=5, default="")
+    previous_guild = models.TextField(validators=[MaxLengthValidator(500)], default="")
+    battle_tag = models.CharField(max_length=20, default="")

@@ -108,7 +108,7 @@ class ApplicationSubmitView(UpdateView):
         return super(ApplicationSubmitView, self).dispatch(request, *args, **kwargs)
 
     def get_object(self):
-        return self.request.user.profile
+        return self.request.user.application
 
     def form_valid(self, form):
         return super(ApplicationSubmitView, self).form_valid(form)

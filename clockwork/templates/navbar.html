@@ -1,4 +1,5 @@
 {% load active_tags %}
+{% load application_tags %}
 
 <nav class="navbar navbar-default" role="navigation">
   <div class="container-fluid">
@@ -36,7 +37,7 @@
 	{% if user.groups.first.name == "Member" or user.groups.first.name == "Officer" %}
 	  <li class="{% active_re '^/applications' %}">
 	    <a href="/applications/">
-	      View Applications
+	      View Applications {% application_count %}
 	    </a>
 	  </li>
 	{% endif %}

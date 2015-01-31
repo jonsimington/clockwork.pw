@@ -2,6 +2,7 @@
 
 {% load url from future %}
 {% load crispy_forms_tags %}
+{% load comments %}
 
 {% block title %}
   &lt;Clockwork&gt; Application
@@ -16,6 +17,13 @@
     {% endif %} your Application to &lt;Clockwork&gt;</h1>
   <div class="well">
     {% crispy form %}
+
+    <h1> Comments about your Application:</h1>
+
+    {% render_comment_list for user.application %}
+    <hr>
+    <h1>Post a comment:</h1>
+    {% render_comment_form for user.application %}
   </div>
 {% endblock %}
 

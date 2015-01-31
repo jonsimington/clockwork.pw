@@ -23,22 +23,22 @@
       </div>
       <div class="well">
 	<h4>{{ userprofile.user.username }}'s Main Character:
-	  <a href="http://us.battle.net/wow/en/character/sargeras/{{userprofile.user.profile.main_character}}/advanced"> {{ userprofile.user.profile.main_character }}</a>
+	  <a href="http://us.battle.net/wow/en/character/sargeras/{{userprofile.user.application.profile.main_character}}/advanced"> {{ userprofile.user.application.main_character }}</a>
 	</h4>
       </div>
       <div class="well">
- 	<h4>{{ userprofile.user.username }}'s Computer Specs: <p><h5>{{ userprofile.user.profile.computer_specs|linebreaks }}</h5></p></h4>
+ 	<h4>{{ userprofile.user.username }}'s Computer Specs: <p><h5>{{ userprofile.user.application.computer_specs|linebreaks }}</h5></p></h4>
       </div>
       <div class="well">
-	<h4>{{ userprofile.user.username }}'s Addons: <p><h5>{{ userprofile.user.profile.addons|linebreaks }}</h5></p></h4>
+	<h4>{{ userprofile.user.username }}'s Addons: <p><h5>{{ userprofile.user.application.addons|linebreaks }}</h5></p></h4>
       </div>
       <div class="well">
-	<h4>{{ userprofile.user.username }}'s Previous raiding experience: <p><h5>{{ userprofile.user.profile.experience|linebreaks }}</h5></p></h4>
+	<h4>{{ userprofile.user.username }}'s Previous raiding experience: <p><h5>{{ userprofile.user.application.experience|linebreaks }}</h5></p></h4>
       </div>
     </div>
     <div class="col-md-3">
       <a id="profilepic" class="thumbnail">
-	{% if userprofile.user.profile.avatar %}
+	{% if userprofile.user.application.profile.avatar %}
 	  <img src="/{{ userprofile.user.profile.avatar }}" class="img-responsive" />
 	{% else %}
 	  <img src="{% gravatar_url userprofile.user.email %}" class="img-responsive" />
