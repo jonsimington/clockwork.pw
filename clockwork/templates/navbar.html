@@ -9,9 +9,6 @@
 	<span class="icon-bar"></span>
 	<span class="icon-bar"></span>
       </button>
-      <a href="/" title="<Clockwork>" class="navbar-brand" rel="home">
-	Clockwork
-      </a>
     </div>
 
     <div class="collapse navbar-collapse" id="navbar">
@@ -33,7 +30,7 @@
 	</li>
 	<li class="{% active_re '^/forums' %}">
 	  <a href="/forums/">
-	    Forums 
+	    Forums
 	  </a>
 	</li>
 	{% if user.groups.first.name == "Member" or user.groups.first.name == "Officer" %}
