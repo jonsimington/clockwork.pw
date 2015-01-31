@@ -1,13 +1,7 @@
-<div class="row">
-  <div class="col-lg-9">
-    <h1 class="text-center"> Latest &lt;Clockwork&gt; News</h1>
-  </div>
-</div>
-
 <div class="col-lg-9">
 
   {% if user.is_staff %}
-    <h4 class="pull-right">
+    <h4 class="pull-right add-entry">
       <span class="label label-default">
 	<a href="/admin/zinnia/entry/add/">
 	  <span>
@@ -19,17 +13,18 @@
   {% endif %}
   {% for entry in entries %}
     <div class="well">
-      <h2>{{ entry.title }}</h2>
-      <h6>Published by <a href="profiles/{{entry.authors.first}}/">{{ entry.authors.first }}</a> on {{ entry.creation_date }}</h6>
-      <hr id="blog-hr">
+      <div class="blog-title">
+        <h2>{{ entry.title }}</h2>
+        <h6>Published by <a href="profiles/{{entry.authors.first}}/">{{ entry.authors.first }}</a> on {{ entry.creation_date }}</h6>
+      </div>
       <div class="blog-content">
 	<h4>{{ entry.content|safe|linebreaks }}</h4>
       </div>
-      
+
       {% if entry.image %}
         <img class="blog-image" src="{{ entry.image.url }}" />
       {% endif %}
-    
+
       {% if user.is_staff %}
 	<br><br>
 	<h4>
