@@ -127,7 +127,7 @@ class ApplicationsView(TemplateView):
     def get_context_data(self, **kwargs):
         context = super(ApplicationsView, self).get_context_data(**kwargs)
         group = models.Group.objects.get(name='Applicant')
-        users = group.user_set.all()
+        users = group.user_set.filter(application__status="open")
         print users
         context['applicants'] = users
         return context
