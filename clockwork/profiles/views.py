@@ -1,15 +1,15 @@
 from django.views.generic.detail import DetailView
 from django.views.generic.list import ListView
 from django.views.generic.edit import UpdateView
-from django.views.generic.base import TemplateView
+from django.views.generic.base import TemplateView, View
 from django.http import Http404
 from django.contrib.auth.decorators import login_required, user_passes_test
 from django.utils.decorators import method_decorator
 from django.contrib import messages
 from django.contrib.auth import models
-from django.contrib.auth.models import User
+from django.contrib.auth.models import User, Group
 
-from .models import UserProfile
+from .models import UserProfile, Application
 from .forms import UserProfileForm, ApplicationForm
 class ProfileListView(ListView):
     template_name = "profiles/list_profile.html"
@@ -134,4 +134,35 @@ class ApplicationsView(TemplateView):
         
 class ApplicationFailView(TemplateView):
     template_name = "profiles/app_denied.html"
+
+class ApplicationUpdateView(UpdateView):
+    def get(self, request, **kwargs):
+        print kwargs
+        applicant_name = kwargs.pop('applicant_name')
+        rank = kwargs.pop('rank')
+        rank_title = rank.title()
+        print rank_title
+        applicant = User.objects.get(username=applicant_name)
+
+        if rank == 'accepted':
+            group = Group.objects.get(name="Member")
+        else:
+            group = Group.objects.get(name=rank_title)
+        
+        # Update user's application status
+        print "App Status Pre: {}".format(applicant.application.status)
+        applicant.application.status = rank
+        applicant.application.save()
+        print "App Status Post: {}".format(applicant.application.status)
+
+        # Change user's group 
+        current_group = applicant.groups.first()
+        print "User Groups Pre: {}".format(applicant.groups.all())
+        applicant.groups.remove(current_group)
+        print "User Groups Mid: {}".format(applicant.groups.all()) 
+        if group == "Accepted":
+            group = "Member"
+        applicant.groups.add(group)
+        print "User Groups Post: {}".format(applicant.groups.all())
+        applicant.save()
 

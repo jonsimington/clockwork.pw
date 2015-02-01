@@ -4,7 +4,7 @@ from django.contrib.auth.decorators import permission_required
 from .views import (ProfileListView, ProfileView, 
                     MyProfileView, ProfileUpdateView,
                     ApplicationSubmitView, ApplicationFailView,
-                    ApplicationsView,)
+                    ApplicationsView, ApplicationUpdateView,)
 
 urlpatterns = patterns(
     '',
@@ -39,4 +39,8 @@ urlpatterns = patterns(
     url(r'applications/',
         ApplicationsView.as_view(),
         name='applications'),
+
+    url(r'^application/(?P<applicant_name>[\w-]+)/(?P<rank>[\w-]+)/',
+        ApplicationUpdateView.as_view(),
+        name='update_app'),
 )
