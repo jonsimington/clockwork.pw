@@ -38,9 +38,14 @@
 	  </a>
 	</li>
 	{% if user.groups.first.name == "Member" or user.groups.first.name == "Officer" %}
-	  <li class="{% active_re '^/applications' %}">
-	    <a href="/applications/">
-	      View Applications {% application_count %}
+	  <li class="{% active_re '^/applications/open/' %}">
+	    <a href="/applications/open/">
+	      View Open Applications {% open_application_count %}
+	    </a>
+	  </li>
+	  <li class="{% active_re '^/applications/trial/' %}">
+	    <a href="/applications/trial/">
+	      View Trial Applications {% trial_application_count %}
 	    </a>
 	  </li>
 	{% endif %}

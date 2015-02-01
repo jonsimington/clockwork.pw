@@ -126,12 +126,19 @@ class ApplicationsView(TemplateView):
 
     def get_context_data(self, **kwargs):
         context = super(ApplicationsView, self).get_context_data(**kwargs)
-        group = models.Group.objects.get(name='Applicant')
-        users = group.user_set.filter(application__status="open")
+        app_type = kwargs.pop('type')
+
+        if app_type == 'open':
+            group = models.Group.objects.get(name='Applicant')
+            users = group.user_set.filter(application__status=app_type)
+        elif app_type == 'trial':
+            group = models.Group.objects.get(name='Trial')
+            users = group.user_set.filter(application__status=app_type)
         print users
         context['applicants'] = users
+        context['app_type'] = app_type
         return context
-        
+    
 class ApplicationFailView(TemplateView):
     template_name = "profiles/app_denied.html"
 

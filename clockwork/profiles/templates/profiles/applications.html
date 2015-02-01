@@ -6,13 +6,18 @@
 
 {% block content %}
   {% if applicants %}
-    <h1 class="text-center">Open Applications:</h1>
+    <h1 class="text-center">
+      {% if app_type == "open" %}
+        Open
+      {% elif app_type == "trial" %}
+        Trial
+      {% endif %} Applications:</h1>
   {% else %}
     <h1 class="text-center">There are no applications to view at this time.</h1>
   {% endif %}
   <div class="panel-group" id="accordion">
     {% for applicant in applicants %}
-      {% if applicant.application.status == "open"  %}
+      {% if applicant.application.status == app_type  %}
         <div class="panel panel-default">
 	  <div class="panel-heading" data-toggle="collapse" data-target="#{{ applicant }}"
 	       href="#{{ applicant }}" >

@@ -36,10 +36,10 @@ urlpatterns = patterns(
         ApplicationFailView.as_view(),
         name='application_fail'),
 
-    url(r'applications/',
+    url(r'applications/(?P<type>[\w-]+)/',
         ApplicationsView.as_view(),
         name='applications'),
-
+    
     url(r'^application/(?P<applicant_name>[\w-]+)/(?P<rank>[\w-]+)/',
         ApplicationUpdateView.as_view(),
         name='update_app'),
