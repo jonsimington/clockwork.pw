@@ -1,11 +1,8 @@
 # pybb avatars
 pybb/
 
-# media 
+# media
 uploads/
-
-# static files 
-static/
 
 # emacs temp files
 \#*
