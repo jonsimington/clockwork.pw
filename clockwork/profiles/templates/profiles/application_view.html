@@ -162,7 +162,9 @@
     <div class="col-md-6">
       <script src="{{ STATIC_URL }}js/applications.js"></script>
       &nbsp;
-      <a class="btn btn-warning" onclick="trial('{{ applicant.username }}')">Trial Application</a>
+      {% if app_type != "trial" %}
+        <a class="btn btn-warning" onclick="trial('{{ applicant.username }}')">Trial Application</a>
+      {% endif %}
       <a class="btn btn-success" onclick="accept('{{ applicant.username }}')">Accept Application</a>
       <a class="btn btn-danger" onclick="decline('{{ applicant.username }}')">Decline Application</a>
     </div>
