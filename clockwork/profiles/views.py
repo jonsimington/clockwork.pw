@@ -136,6 +136,10 @@ class ApplicationFailView(TemplateView):
     template_name = "profiles/app_denied.html"
 
 class ApplicationUpdateView(UpdateView):
+    @method_decorator(user_passes_test(staff_check, login_url="application/access-denied/"))
+    def dispatch(self, *args, **kwargs):
+                return super(ApplicationUpdateView, self).dispatch(*args, **kwargs)
+
     def get(self, request, **kwargs):
         print kwargs
         applicant_name = kwargs.pop('applicant_name')
