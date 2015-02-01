@@ -172,3 +172,11 @@ h5, h4, h6 {
 .blog-content img {
     max-width: 100%;
 }
+
+.app-update-form {
+    display: inline;
+}
+
+#id_comment {
+    width:100%;
+}
