@@ -4,9 +4,6 @@ pybb/
 # media 
 uploads/
 
-# static files 
-static/
-
 # emacs temp files
 \#*
 
