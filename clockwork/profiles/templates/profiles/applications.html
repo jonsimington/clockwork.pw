@@ -17,7 +17,7 @@
   {% endif %}
   <div class="panel-group" id="accordion">
     {% for applicant in applicants %}
-      {% if applicant.application.status == app_type  %}
+      {% if applicant.application.status == app_type %}
         <div class="panel panel-default">
 	  <div class="panel-heading" data-toggle="collapse" data-target="#{{ applicant }}"
 	       href="#{{ applicant }}" >

@@ -135,7 +135,7 @@ class ApplicationsView(TemplateView):
             group = models.Group.objects.get(name='Trial')
             users = group.user_set.filter(application__status=app_type)
         print users
-        context['applicants'] = users
+        context['applicants'] = users.filter(profile__submitted_app="True")
         context['app_type'] = app_type
         return context
     
