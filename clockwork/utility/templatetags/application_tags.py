@@ -1,6 +1,5 @@
 from django import template
 from django.template import Template
-from django.contrib.auth.models import Group
 
 from clockwork.profiles.models import Application
 
@@ -25,8 +24,3 @@ def trial_application_count():
         return '<span class="badge">' + str(trial_count) + "</span>"
     else:
         return ""
-    
-@register.filter(name='has_group')
-def has_group(user, group_name):
-    group = Group.objects.get(name=group_name)
-    return True if group in user.groups.all() else False

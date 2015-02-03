@@ -1,5 +1,6 @@
 {% load active_tags %}
 {% load application_tags %}
+{% load group_tags %}
 
 <nav class="navbar navbar-default" role="navigation">
   <div class="container-fluid">
@@ -37,7 +38,7 @@
 	    Forums 
 	  </a>
 	</li>
-	{% if user.groups.first.name == "Member" or user.groups.first.name == "Officer" %}
+	{% if user|has_group:"Member" or user|has_group:"Officer" %}
 	  <li class="{% active_re '^/applications/open/' %}">
 	    <a href="/applications/open/">
 	      View Open Applications {% open_application_count %}
@@ -49,7 +50,7 @@
 	    </a>
 	  </li>
 	{% endif %}
-	{% if user.groups.first.name == "Applicant" %}
+	{% if user|has_group:"Applicant" %}
 	  <li class="{% active_re '^/application/(submit|update)' %}">
 	    <a href="/application/submit/">
 	      {% if user.is_authenticated %}

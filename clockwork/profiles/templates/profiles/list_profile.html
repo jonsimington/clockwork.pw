@@ -1,4 +1,5 @@
 {% extends "base.html" %}
+{% load group_tags %}
 
 {% block title %}
   Guild Roster
@@ -24,7 +25,7 @@
       
       <tbody>
 	{% for profile in userprofiles %}
-	  {% if not profile.user.groups.all.first.name == 'Declined' and not profile.user.groups.all.first.name == 'Applicant' %}
+	  {% if not profile.user|has_group:'Declined' and not profile.user|has_group:'Applicant' %}
 	    <tr>
 	      <td id="username">
 		<a href="{{ profile.get_absolute_url }}">
