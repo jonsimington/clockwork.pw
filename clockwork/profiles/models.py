@@ -73,3 +73,6 @@ class Application(models.Model):
     authenticator = models.CharField(max_length=5, default="", blank=True)
     previous_guild = models.TextField(validators=[MaxLengthValidator(500)], default="", blank=True)
     battle_tag = models.CharField(max_length=20, default="", blank=True)
+
+    submitted = models.DateTimeField(default="2000-01-01 00:00", blank=True)
+    updated = models.DateTimeField(default="2000-01-01 00:00", blank=True)

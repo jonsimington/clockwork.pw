@@ -1,5 +1,7 @@
 {% extends "base.html" %}
 
+{% load application_tags %}
+
 {% block title %}
   Applications
 {% endblock %}
@@ -23,7 +25,10 @@
 	       href="#{{ applicant }}" >
 	    <h4 class="panel-title">
 	      {{ applicant }}
-	      <span class="pull-right fa fa-angle-down"></span>
+	      <span class="pull-right">
+		{% updated_submitted_timestamp applicant.application %}
+		<span class="pull-right fa fa-angle-down"></span>
+	      </span>
 	    </h4>
 	  </div>
 	  <div id="{{ applicant }}" class="panel-collapse collapse">

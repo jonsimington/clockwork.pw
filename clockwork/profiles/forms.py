@@ -1,6 +1,7 @@
 from django import forms
 from django.contrib.auth import authenticate
 from django.contrib.auth.models import User
+from django.utils import timezone
 
 from crispy_forms.helper import FormHelper
 from crispy_forms.layout import (Layout, Fieldset, Submit, Button,
@@ -9,6 +10,7 @@ from crispy_forms.bootstrap import FormActions
 
 from .models import UserProfile, Application
 
+import datetime
 
 # Create the form class.
 class UserProfileForm(forms.ModelForm):
@@ -100,6 +102,8 @@ class LoginForm(forms.Form):
         password = self.cleaned_data['password']
         return authenticate(username=username, password=password)
 
+default_submit_time = datetime.datetime(2000, 1, 1, 6, 0, tzinfo=timezone.utc)
+    
 class ApplicationForm(forms.ModelForm):
     class Meta:
         model = Application
@@ -222,9 +226,19 @@ class ApplicationForm(forms.ModelForm):
         app.user.application.authenticator = self.cleaned_data['authenticator']
         app.user.application.previous_guild = self.cleaned_data['previous_guild']
         app.user.application.battle_tag = self.cleaned_data['battle_tag']
+        
+        # Only update updated if submitted != default
+        if app.user.application.submitted != default_submit_time:
+            app.user.application.updated = datetime.datetime.now()
+        else:
+            app.user.application.submitted = datetime.datetime.now()
+
+
+        
         app.user.application.save(*args, **kwargs)
         app.user.profile.submitted_app = True
         app.user.profile.save(*args, **kwargs)
+
         print u"{}'s app saved".format(app.user.username)
 
         return app

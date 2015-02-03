@@ -1,5 +1,8 @@
 from django import template
 from django.template import Template
+from django.utils import timezone
+
+import datetime
 
 from clockwork.profiles.models import Application
 
@@ -22,5 +25,23 @@ def trial_application_count():
     
     if trial_apps > 0:
         return '<span class="badge">' + str(trial_count) + "</span>"
+    else:
+        return ""
+
+@register.simple_tag
+def updated_submitted_timestamp(application):
+    submitted = application.submitted
+    updated = application.updated
+    default = datetime.datetime(2000, 1, 1, 6, 0, tzinfo=timezone.utc)
+
+    submitted_strf = submitted.strftime("%B %d %Y, %I:%M %p")
+    updated_strf = updated.strftime("%B %d %Y, %I:%M %p")
+    
+    if submitted != default:
+        # Check if only submitted once (updated == submitted)
+        if updated == default:
+            return '<span class="label label-default">Submitted {}</span>'.format(submitted_strf) 
+        else:
+            return '<span class="label label-primary">Updated {}</span>&nbsp;<span class="label label-default">Submitted {}</span>'.format(updated_strf, submitted_strf) 
     else:
         return ""
