@@ -134,7 +134,6 @@ class ApplicationsView(TemplateView):
         elif app_type == 'trial':
             group = models.Group.objects.get(name='Trial')
             users = group.user_set.filter(application__status=app_type)
-        print users
         context['applicants'] = users.filter(profile__submitted_app="True")
         context['app_type'] = app_type
         return context
@@ -148,11 +147,9 @@ class ApplicationUpdateView(UpdateView):
                 return super(ApplicationUpdateView, self).dispatch(*args, **kwargs)
 
     def get(self, request, **kwargs):
-        print kwargs
         applicant_name = kwargs.pop('applicant_name')
         rank = kwargs.pop('rank')
         rank_title = rank.title()
-        print rank_title
         applicant = User.objects.get(username=applicant_name)
 
         if rank == 'accepted':
@@ -161,19 +158,14 @@ class ApplicationUpdateView(UpdateView):
             group = Group.objects.get(name=rank_title)
         
         # Update user's application status
-        print "App Status Pre: {}".format(applicant.application.status)
         applicant.application.status = rank
         applicant.application.save()
-        print "App Status Post: {}".format(applicant.application.status)
 
         # Change user's group 
         current_group = applicant.groups.first()
-        print "User Groups Pre: {}".format(applicant.groups.all())
         applicant.groups.remove(current_group)
-        print "User Groups Mid: {}".format(applicant.groups.all()) 
         if group == "Accepted":
             group = "Member"
         applicant.groups.add(group)
-        print "User Groups Post: {}".format(applicant.groups.all())
         applicant.save()
 
