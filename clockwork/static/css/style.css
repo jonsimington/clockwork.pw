@@ -178,5 +178,6 @@ h5, h4, h6 {
 }
 
 #id_comment {
-    width:100%;
+    width: 100%;
+    max-width: 100%;
 }
