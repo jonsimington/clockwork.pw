@@ -169,3 +169,5 @@ class ApplicationUpdateView(UpdateView):
         applicant.groups.add(group)
         applicant.save()
 
+class DeclinedApplicationView(TemplateView):
+    template_name="profiles/declined_application.html"
