@@ -11,6 +11,7 @@ class UserProfileInline(admin.StackedInline):
 
 class ApplicationInline(admin.StackedInline):
     model = Application
+    exclude = ("submitted", "updated")
     can_delete= False
     verbose_name_plural = "application"
     
