@@ -29,3 +29,27 @@ function decline(username) {
     request.send(null);
     alert(username + " successfully demoted  to Declined rank.");
 }
+
+// Parses URL/?<param>=<content> for param 
+function getParameterByName(name) {
+    name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
+    var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
+	results = regex.exec(location.search);
+    return results === null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
+}
+
+// Opens up a user's application after someone has posted a comment to that application
+$(document).ready(function(){
+    var anchor = getParameterByName('app');
+
+    // collapses all of the collapse modules
+    $(".collapse").collapse('hide');
+
+    // opens the anchored one
+    $('#' + anchor).collapse('toggle');
+
+    // move to comments section
+    if (anchor) {
+	window.location.hash = '#' + anchor + '-comments';
+    }
+});

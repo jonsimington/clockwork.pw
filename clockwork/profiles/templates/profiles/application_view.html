@@ -175,6 +175,11 @@
   </div>
 {% endif %}
 
+
+<script src="{{ STATIC_URL }}js/applications.js"></script>
+  
+<a id="{{ applicant.username }}-comments"></a>
+  
 <h1>Comments for {{ applicant.username }}'s Application:</h1>
 <div class="well">{% render_comment_list for applicant.application %}</div>
 
