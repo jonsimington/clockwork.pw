@@ -11,6 +11,7 @@ from crispy_forms.bootstrap import FormActions
 from .models import UserProfile, Application
 
 import datetime
+import pytz
 
 # Create the form class.
 class UserProfileForm(forms.ModelForm):
@@ -102,7 +103,7 @@ class LoginForm(forms.Form):
         password = self.cleaned_data['password']
         return authenticate(username=username, password=password)
 
-default_submit_time = datetime.datetime(2000, 1, 1, 6, 0)
+default_submit_time = datetime.datetime(2000, 1, 1, 0, 0)
     
 class ApplicationForm(forms.ModelForm):
     class Meta:
@@ -228,10 +229,11 @@ class ApplicationForm(forms.ModelForm):
         app.user.application.battle_tag = self.cleaned_data['battle_tag']
 
         # Only update updated if submitted != default
-        if app.user.application.submitted != default_submit_time:
+        if unicode(app.user.application.submitted) != unicode(default_submit_time):
             app.user.application.updated = timezone.now()
         else:
             app.user.application.submitted = timezone.now()
+            app.user.application.updated = app.user.application.submitted
         
         app.user.application.save(*args, **kwargs)
         app.user.profile.submitted_app = True

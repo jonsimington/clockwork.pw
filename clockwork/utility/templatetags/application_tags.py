@@ -3,6 +3,7 @@ from django.template import Template
 from django.utils import timezone
 
 import datetime
+import pytz
 
 from clockwork.profiles.models import Application
 
@@ -32,14 +33,19 @@ def trial_application_count():
 def updated_submitted_timestamp(application):
     submitted = application.submitted
     updated = application.updated
-    default = datetime.datetime(2000, 1, 1, 6, 0)
+    default = datetime.datetime(2000, 1, 1, 0, 0, tzinfo=pytz.utc)
+
+    default_unicode = unicode(default)
+    submitted_unicode = unicode(submitted)
+    updated_unicode = unicode(updated)
 
     submitted_strf = submitted.strftime("%B %d %Y, %I:%M %p")
     updated_strf = updated.strftime("%B %d %Y, %I:%M %p")
-    
-    if submitted != default:
+
+    # If app is submitted
+    if submitted_unicode != default_unicode:
         # Check if only submitted once (updated == submitted)
-        if updated == default:
+        if updated_unicode == submitted_unicode:
             return '<span class="label label-default">Submitted {}</span>'.format(submitted_strf) 
         else:
             return '<span class="label label-primary">Updated {}</span>&nbsp;<span class="label label-default">Submitted {}</span>'.format(updated_strf, submitted_strf) 
