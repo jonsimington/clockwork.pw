@@ -11,12 +11,12 @@ from django.contrib.auth.models import User, Group
 
 from .models import UserProfile, Application
 from .forms import UserProfileForm, ApplicationForm
+
 class ProfileListView(ListView):
     template_name = "profiles/list_profile.html"
     model = UserProfile
     context_object_name = "userprofiles"
     
-    @method_decorator(login_required)
     def dispatch(self, request, *args, **kwargs):
         # only authenticated users can access this view
         return super(ProfileListView, self).dispatch(request, *args, **kwargs)
