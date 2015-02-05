@@ -102,7 +102,7 @@ class LoginForm(forms.Form):
         password = self.cleaned_data['password']
         return authenticate(username=username, password=password)
 
-default_submit_time = datetime.datetime(2000, 1, 1, 6, 0, tzinfo=timezone.utc)
+default_submit_time = datetime.datetime(2000, 1, 1, 6, 0)
     
 class ApplicationForm(forms.ModelForm):
     class Meta:
@@ -226,14 +226,12 @@ class ApplicationForm(forms.ModelForm):
         app.user.application.authenticator = self.cleaned_data['authenticator']
         app.user.application.previous_guild = self.cleaned_data['previous_guild']
         app.user.application.battle_tag = self.cleaned_data['battle_tag']
-        
+
         # Only update updated if submitted != default
         if app.user.application.submitted != default_submit_time:
-            app.user.application.updated = datetime.datetime.now()
+            app.user.application.updated = timezone.now()
         else:
-            app.user.application.submitted = datetime.datetime.now()
-
-
+            app.user.application.submitted = timezone.now()
         
         app.user.application.save(*args, **kwargs)
         app.user.profile.submitted_app = True

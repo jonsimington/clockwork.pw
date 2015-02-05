@@ -32,7 +32,7 @@ def trial_application_count():
 def updated_submitted_timestamp(application):
     submitted = application.submitted
     updated = application.updated
-    default = datetime.datetime(2000, 1, 1, 6, 0, tzinfo=timezone.utc)
+    default = datetime.datetime(2000, 1, 1, 6, 0)
 
     submitted_strf = submitted.strftime("%B %d %Y, %I:%M %p")
     updated_strf = updated.strftime("%B %d %Y, %I:%M %p")
