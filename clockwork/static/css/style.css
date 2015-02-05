@@ -181,3 +181,7 @@ h5, h4, h6 {
     width: 100%;
     max-width: 100%;
 }
+
+.white {
+    color: white;
+}
