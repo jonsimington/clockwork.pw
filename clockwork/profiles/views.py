@@ -12,14 +12,14 @@ from django.contrib.auth.models import User, Group
 from .models import UserProfile, Application
 from .forms import UserProfileForm, ApplicationForm
 
-class ProfileListView(ListView):
-    template_name = "profiles/list_profile.html"
+class RosterView(ListView):
+    template_name = "profiles/roster.html"
     model = UserProfile
     context_object_name = "userprofiles"
     
     def dispatch(self, request, *args, **kwargs):
         # only authenticated users can access this view
-        return super(ProfileListView, self).dispatch(request, *args, **kwargs)
+        return super(RosterView, self).dispatch(request, *args, **kwargs)
 
     def get_queryset(self):
         return UserProfile.objects.exclude(user__id=-1).order_by('user__groups__id')

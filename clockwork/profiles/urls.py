@@ -1,7 +1,7 @@
 from django.conf.urls import patterns, url
 from django.contrib.auth.decorators import permission_required
 
-from .views import (ProfileListView, ProfileView, 
+from .views import (RosterView, ProfileView, 
                     MyProfileView, ProfileUpdateView,
                     ApplicationSubmitView, ApplicationFailView,
                     ApplicationsView, ApplicationUpdateView,
@@ -10,8 +10,8 @@ from .views import (ProfileListView, ProfileView,
 urlpatterns = patterns(
     '',
     url(r'^roster/$',
-        ProfileListView.as_view(),
-        name="list_profile"),
+        RosterView.as_view(),
+        name="roster"),
 
     url(r'^profile/$',
         MyProfileView.as_view(),
