@@ -1,5 +1,6 @@
 {% load active_tags %}
 {% load application_tags %}
+{% load group_tags %}
 
 <nav class="navbar navbar-default" role="navigation">
   <div class="container-fluid">
@@ -25,7 +26,7 @@
 	  </a>
         </li>
 	<li class="{% active_re '^/roster' %}">
-	  <a href="{% url 'list_profile' %}">
+	  <a href="{% url 'roster' %}">
 	    Roster
 	  </a>
 	</li>
@@ -34,14 +35,19 @@
 	    Forums
 	  </a>
 	</li>
-	{% if user.groups.first.name == "Member" or user.groups.first.name == "Officer" %}
-	  <li class="{% active_re '^/applications' %}">
-	    <a href="/applications/">
-	      View Applications {% application_count %}
+	{% if user|has_group:"Member" or user|has_group:"Officer" %}
+	  <li class="{% active_re '^/applications/open/' %}">
+	    <a href="/applications/open/">
+	      View Open Applications {% open_application_count %}
+	    </a>
+	  </li>
+	  <li class="{% active_re '^/applications/trial/' %}">
+	    <a href="/applications/trial/">
+	      View Trial Applications {% trial_application_count %}
 	    </a>
 	  </li>
 	{% endif %}
-	{% if user.groups.first.name == "Applicant" %}
+	{% if user|has_group:"Applicant" %}
 	  <li class="{% active_re '^/application/(submit|update)' %}">
 	    <a href="/application/submit/">
 	      {% if user.is_authenticated %}
@@ -51,6 +57,12 @@
 	          Submit
 	        {% endif %} your Application
 	      {% endif %}
+	    </a>
+	  </li>
+	{% elif user|has_group:"Declined" %}
+	  <li class="{% active_re '^/application/declined/' %}">
+	    <a href="{% url 'declined_app' %}">
+	      Your Application [Closed]
 	    </a>
 	  </li>
 	{% endif %}

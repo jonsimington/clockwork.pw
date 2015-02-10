@@ -1,24 +1,34 @@
 {% extends "base.html" %}
 
+{% load application_tags %}
+
 {% block title %}
   Applications
 {% endblock %}
 
 {% block content %}
-  {% if applicants.count %}
-    <h1 class="text-center">Open Applications:</h1>
+  {% if applicants %}
+    <h1 class="text-center">
+      {% if app_type == "open" %}
+        Open
+      {% elif app_type == "trial" %}
+        Trial
+      {% endif %} Applications:</h1>
   {% else %}
     <h1 class="text-center">There are no applications to view at this time.</h1>
   {% endif %}
   <div class="panel-group" id="accordion">
     {% for applicant in applicants %}
-      {% if applicant.application.status == "open"  %}
+      {% if applicant.application.status == app_type %}
         <div class="panel panel-default">
 	  <div class="panel-heading" data-toggle="collapse" data-target="#{{ applicant }}"
 	       href="#{{ applicant }}" >
 	    <h4 class="panel-title">
 	      {{ applicant }}
-	      <span class="pull-right fa fa-angle-down"></span>
+	      <span class="pull-right">
+		{% updated_submitted_timestamp applicant.application %}
+		<span class="pull-right fa fa-angle-down"></span>
+	      </span>
 	    </h4>
 	  </div>
 	  <div id="{{ applicant }}" class="panel-collapse collapse">

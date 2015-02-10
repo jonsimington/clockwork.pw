@@ -3,16 +3,29 @@
 {% if forum_list %}
   {% if user.is_staff %}
     <h4 class="pull-left">
-      <span class="label label-default">
-	<a href="/admin/pybb/forum/add/">
+      <a href="/admin/pybb/forum/add/">
+	<span class="label label-default">
 	  <span>
 	    <span class="fa fa-plus"></span>  Add Forum
 	  </span>
-	</a>
-      </span>
+	</span>
+      </a>
     </h4>
   {% endif %}
 
+  {% if user.is_authenticated %}
+    <script src="{{ STATIC_URL }}js/pybb.js"></script>
+    <h4 class="pull-right">
+      <a href="{% url 'pybb:mark_all_as_read' %}">
+	<span class="label label-warning">
+	  <span class="white">
+	    <span class="fa fa-check"></span> Mark all topics as read
+	  </span>
+	</span>
+      </a>
+    </h4>
+  {% endif %}
+    
   <table class="table table-hover table-condensed">
     <thead>
       <tr class="forum-row head-row">

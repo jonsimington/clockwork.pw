@@ -6,7 +6,7 @@
 
 <ul class="nav nav-pills nav-stacked">
   <li class="{% active 'list_profile' %}">
-    <a href="{% url 'list_profile' %}"><i class="fa fa-users"></i>  Guild Roster</a>
+    <a href="{% url 'roster' %}"><i class="fa fa-users"></i>  Guild Roster</a>
   </li>
   <li class="{% active_re '^/profile/{{request.user.username}}' %}">
     <a href="{{ user.profile.get_absolute_url }}"><i class="fa fa-user"></i>  View My Profile</a>

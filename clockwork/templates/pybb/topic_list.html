@@ -12,6 +12,18 @@
 </h4>
 {% endif %}
 
+{% if user.is_authenticated %}
+  <script src="{{ STATIC_URL }}js/pybb.js"></script>
+  <h4 class="pull-right">
+    <a href="{% url 'pybb:mark_all_as_read' %}">
+      <span class="label label-warning">
+	<span class="white">
+	  <span class="fa fa-check"></span> Mark all topics as read
+	</span>
+      </span>
+    </a>
+  </h4>
+{% endif %}
 
 <br>
 

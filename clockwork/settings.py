@@ -24,7 +24,7 @@ except ImportError:
 
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ####################################################################
 #
@@ -167,7 +167,7 @@ USE_I18N = False
 
 USE_L10N = True
 
-USE_TZ = True
+USE_TZ = False
 
 ###################################################################
 #
