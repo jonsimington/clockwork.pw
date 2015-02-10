@@ -464,5 +464,5 @@ input[type=text], input[type=password], .textarea, input[type=email], input[type
 }
 
 .forum-name h4, .topic-name h4 {
-    color: #ccc;
+    color: #C00;
 }
