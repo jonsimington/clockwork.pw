@@ -50,7 +50,7 @@ a:hover {
 .navbar-default .navbar-nav>.active>a:hover,
 .navbar-default .navbar-nav>.active>a:focus {
     background-color: transparent;
-    color: #900;
+    color: #C00;
 }
 
 .logo {
@@ -187,9 +187,11 @@ a:hover {
     text-decoration: none;
 }
 
-.btn-primary, .btn-primary:hover {
+.btn-primary, .btn-primary:hover,
+.btn-info, .btn-info:hover {
     background-color: #900;
     border-color: #900;
+    margin-bottom: 5px;
 }
 
 a:hover {
@@ -217,6 +219,11 @@ a:hover {
     background-color: #333;
     border-color: #666;
     border-top-color: #666;
+}
+
+.topic-author .label-default {
+    background-color: transparent;
+    color: #999;
 }
 
 /* --- Topic/Forum table --- */
@@ -427,7 +434,7 @@ h5, h4, h6 {
 }
 
 a {
-    color: #900;
+    color: #C00;
 }
 
 li a:hover, li fa:hover {
