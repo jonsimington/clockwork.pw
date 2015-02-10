@@ -466,3 +466,10 @@ input[type=text], input[type=password], .textarea, input[type=email], input[type
 .forum-name h4, .topic-name h4 {
     color: #ccc;
 }
+
+.badge {
+    position: absolute;
+    right: -10px;
+    top: 14px;
+    background-color: #C00;
+}
