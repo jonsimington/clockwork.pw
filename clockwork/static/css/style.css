@@ -150,10 +150,15 @@ a:hover {
 
 /* --- Override Bootstrap stuff --- */
 .well {
-    background-color: transparent;
+    background-color: #333;
     border: none;
     -webkit-box-shadow: none;
     box-shadow: none;
+}
+
+.panel-body .well {
+    background-color: #ccc;
+    color: black;
 }
 
 .alert-warning {
@@ -161,13 +166,19 @@ a:hover {
     border: none;
 }
 
-.label-default,
 .label-info {
     background-color: #333;
     padding: 10px;
     color: #fff;
 }
 
+.label-warning {
+    background-color: #900;
+}
+
+.label-default  a:hover {
+    color: #900;
+}
 .label {
     padding: 10px;
 }
@@ -176,8 +187,14 @@ a:hover {
     text-decoration: none;
 }
 
+.btn-primary, .btn-primary:hover {
+    background-color: #900;
+    border-color: #900;
+}
+
 a:hover {
     text-decoration: none;
+    color: #ccc;
 }
 
 .add-entry {
@@ -403,4 +420,34 @@ h5, h4, h6 {
 
 .white {
     color: white;
+}
+
+a {
+    color: #900;
+}
+
+li a:hover, li fa:hover {
+    color: #900;
+}
+
+.label-info {
+
+}
+
+/* input fields */
+input[type=text], input[type=password], .textarea, input[type=email], input[type=url], #id_comment, #id_body {
+    padding: 5px;
+    background-color: #ccc;
+    border: #ccc;
+    color: #900;
+}
+
+#id_body {
+    color: black;
+}
+
+/* select boxes */
+#id_authenticator, #id_over_18, #id_char_class {
+    background-color: #ccc;
+    color: #900;
 }
