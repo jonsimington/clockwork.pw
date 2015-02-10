@@ -15,7 +15,8 @@ h1, h2, h3, h4, h5, h6 {
     font-weight: 300;
 }
 
-p {
+p,
+.post-content h5 {
     line-height: 1.4em;
     margin-bottom: 22px;
 }
@@ -24,6 +25,10 @@ hr {
     border: 0;
     height: 1px;
     background-color: #333;
+}
+
+a:hover {
+    color: #47CBF7;
 }
 
 .navbar {
@@ -129,6 +134,20 @@ hr {
     clear: both;
 }
 
+.post-related h6,
+.post-controls a {
+    display: inline-block;
+    padding: 10px;
+    background-color: #333;
+    margin-right: 5px;
+}
+
+.post-controls a {
+    padding: 2px 5px;
+    margin-right: 2px;
+    margin-bottom: 5px;
+}
+
 /* --- Override Bootstrap stuff --- */
 .well {
     background-color: transparent;
@@ -142,8 +161,23 @@ hr {
     border: none;
 }
 
-.label-default {
+.label-default,
+.label-info {
     background-color: #333;
+    padding: 10px;
+    color: #fff;
+}
+
+.label {
+    padding: 10px;
+}
+
+.label:hover {
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: none;
 }
 
 .add-entry {
@@ -154,6 +188,20 @@ hr {
     margin-top: 0;
 }
 
+.label-default, {
+    color: #fff;
+}
+
+.panel-default,
+.panel-default>.panel-heading,
+.panel-body,
+.panel-default>.panel-heading+.panel-collapse>.panel-body {
+    color: #999;
+    background-color: #333;
+    border-color: #666;
+    border-top-color: #666;
+}
+
 /* --- Topic/Forum table --- */
 .forum-description {
     margin: 5px;
@@ -162,12 +210,31 @@ hr {
 
 .forum-row, .topic-row {
     width: 100%;
+    background-color: #333;
+    padding: 20px;
+}
+
+.table-hover>tbody>tr:hover {
+    background-color: #333;
+}
+
+.head-row {
+    background-color: transparent;
 }
 
 .forum-name, .topic-name {
     width: 10%;
 }
 
+.table>thead>tr>th,
+.table>tbody>tr>th,
+.table>tfoot>tr>th,
+.table>thead>tr>td,
+.table>tbody>tr>td,
+.table>tfoot>tr>td {
+    padding: 10px;
+    border-color: #222;
+}
 
 .topic-author, .forum-topic-count, .forum-post-count, .topic-post-count, .topic-view-count {
     width: 1%;

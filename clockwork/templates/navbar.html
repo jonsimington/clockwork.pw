@@ -47,25 +47,7 @@
 	    </a>
 	  </li>
 	{% endif %}
-	{% if user|has_group:"Applicant" %}
-	  <li class="{% active_re '^/application/(submit|update)' %}">
-	    <a href="/application/submit/">
-	      {% if user.is_authenticated %}
-	        {% if user.profile.has_submitted_app %}
-	          Edit
-	        {% else %}
-	          Submit
-	        {% endif %} your Application
-	      {% endif %}
-	    </a>
-	  </li>
-	{% elif user|has_group:"Declined" %}
-	  <li class="{% active_re '^/application/declined/' %}">
-	    <a href="{% url 'declined_app' %}">
-	      Your Application [Closed]
-	    </a>
-	  </li>
-	{% endif %}
+
       </ul>
       <ul class="nav navbar-nav navbar-right">
 	{% if user.is_authenticated %}
