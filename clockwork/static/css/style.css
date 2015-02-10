@@ -455,3 +455,7 @@ input[type=text], input[type=password], .textarea, input[type=email], input[type
     background-color: #ccc;
     color: #900;
 }
+
+.forum-name h4, .topic-name h4 {
+    color: #ccc;
+}
