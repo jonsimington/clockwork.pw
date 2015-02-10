@@ -385,6 +385,10 @@ h5, h4, h6 {
     table-layout: fixed;
 }
 
+.roster-table a {
+    color: #ccc;
+}
+
 #breadcrumb li {
     display: inline;
 }
