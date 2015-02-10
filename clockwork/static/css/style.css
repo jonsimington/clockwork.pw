@@ -1,5 +1,205 @@
+body {
+    font-family: Roboto, Arial, sans-serif;
+    font-weight: 300;
+    font-size: 18px;
+    background-color: #222;
+    background-image: url('/static/img/background.png');
+    background-repeat: no-repeat;
+    background-position: top center;
+    background-size: 100%;
+    color: #999;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: Roboto, Arial, sans-serif;
+    font-weight: 300;
+}
+
+p,
+.post-content h5 {
+    line-height: 1.4em;
+    margin-bottom: 22px;
+}
+
+hr {
+    border: 0;
+    height: 1px;
+    background-color: #333;
+}
+
+a:hover {
+    color: #47CBF7;
+}
+
+.navbar {
+    font-family: Oswald, Arial, sans-serif;
+    font-size: 16px;
+    text-transform: uppercase;
+    margin-bottom: 135px;
+    background-color: rgba(0,0,0,0.5);
+    padding: 5px 0;
+}
+
+.navbar-default .navbar-nav>li>a:hover,
+.navbar-default .navbar-nav>li>a:focus {
+    background-color: transparent;
+    color: #ccc;
+}
+
+.navbar-default .navbar-nav>.active>a,
+.navbar-default .navbar-nav>.active>a:hover,
+.navbar-default .navbar-nav>.active>a:focus {
+    background-color: transparent;
+    color: #900;
+}
+
+.logo {
+    text-align: center;
+    margin-bottom: 25px;
+}
+
+.blog-title,
+#recruitment h3 {
+    position: relative;
+    background-color: #333;
+    padding: 10px;
+    color: #fff;
+    background-image: url('/static/img/post-icon.png');
+    background-repeat: no-repeat;
+    background-position: -2.5% 50%;
+    padding-left: 40px;
+    margin-bottom: 20px;
+}
+
+#recruitment h3 {
+    background-image: url('/static/img/recruitment-icon.png');
+    background-position: -10% 400%;
+    margin-top: 0;
+}
+
+#recruitment h6 {
+    color: #c00;
+}
+
+#recruitment .recruitment-status-low {
+    color: green;
+}
+
+#recruitment .recruitment-status-medium {
+    color: orange;
+}
+
+#recruitment .recruitment-status-high {
+    color: #c00;
+}
+
+#recruitment td {
+    border: 0;
+    padding-left: 0;
+    background-repeat: no-repeat;
+    background-position: left center;
+    padding-left: 25px;
+}
+
+#recruitment td.deathknight { background-image: url('/static/img/deathknight-icon.png'); }
+#recruitment td.druid       { background-image: url('/static/img/druid-icon.png'); }
+#recruitment td.hunter      { background-image: url('/static/img/hunter-icon.png'); }
+#recruitment td.mage        { background-image: url('/static/img/mage-icon.png'); }
+#recruitment td.monk        { background-image: url('/static/img/monk-icon.png'); }
+#recruitment td.paladin     { background-image: url('/static/img/paladin-icon.png'); }
+#recruitment td.priest      { background-image: url('/static/img/priest-icon.png'); }
+#recruitment td.rogue       { background-image: url('/static/img/rogue-icon.png'); }
+#recruitment td.shaman      { background-image: url('/static/img/shaman-icon.png'); }
+#recruitment td.warlock     { background-image: url('/static/img/warlock-icon.png'); }
+#recruitment td.warrior     { background-image: url('/static/img/warrior-icon.png'); }
+
+.blog-title h2 {
+    display: inline-block;
+    margin: 0;
+    padding: 0;
+    font-size: 24px;
+    padding-right: 275px;
+    line-height: 1.3em;
+}
+
+.blog-title h6 {
+    display: inline-block;
+    position: absolute;
+    right: 2%;
+    top: 10%;
+    color: #666;
+}
+
+.blog-content {
+    clear: both;
+}
+
+.post-related h6,
+.post-controls a {
+    display: inline-block;
+    padding: 10px;
+    background-color: #333;
+    margin-right: 5px;
+}
+
+.post-controls a {
+    padding: 2px 5px;
+    margin-right: 2px;
+    margin-bottom: 5px;
+}
+
+/* --- Override Bootstrap stuff --- */
+.well {
+    background-color: transparent;
+    border: none;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+}
+
+.alert-warning {
+    background-color: rgba(102, 0, 0, 0.5);
+    border: none;
+}
+
+.label-default,
+.label-info {
+    background-color: #333;
+    padding: 10px;
+    color: #fff;
+}
+
+.label {
+    padding: 10px;
+}
+
+.label:hover {
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: none;
+}
+
+.add-entry {
+    float: none !important;
+}
+
 #blog-hr {
     margin-top: 0;
+}
+
+.label-default, {
+    color: #fff;
+}
+
+.panel-default,
+.panel-default>.panel-heading,
+.panel-body,
+.panel-default>.panel-heading+.panel-collapse>.panel-body {
+    color: #999;
+    background-color: #333;
+    border-color: #666;
+    border-top-color: #666;
 }
 
 /* --- Topic/Forum table --- */
@@ -10,12 +210,31 @@
 
 .forum-row, .topic-row {
     width: 100%;
+    background-color: #333;
+    padding: 20px;
+}
+
+.table-hover>tbody>tr:hover {
+    background-color: #333;
+}
+
+.head-row {
+    background-color: transparent;
 }
 
 .forum-name, .topic-name {
     width: 10%;
 }
 
+.table>thead>tr>th,
+.table>tbody>tr>th,
+.table>tfoot>tr>th,
+.table>thead>tr>td,
+.table>tbody>tr>td,
+.table>tfoot>tr>td {
+    padding: 10px;
+    border-color: #222;
+}
 
 .topic-author, .forum-topic-count, .forum-post-count, .topic-post-count, .topic-view-count {
     width: 1%;
