@@ -156,6 +156,11 @@ a:hover {
     box-shadow: none;
 }
 
+.well blockquote {
+    border-color: rgba(0, 0, 0, 1);
+    background-color: #393939;
+}
+
 .panel-body .well {
     background-color: #ccc;
     color: black;
@@ -473,3 +478,4 @@ input[type=text], input[type=password], .textarea, input[type=email], input[type
     top: 14px;
     background-color: #C00;
 }
+
