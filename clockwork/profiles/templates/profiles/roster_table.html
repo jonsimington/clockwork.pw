@@ -1,8 +1,8 @@
 
   <div class="panel panel-default">
-    <div class="panel-heading" data-toggle="collapse" data-target="#{{ class }}"
+    <div class="panel-heading {{ class }}" data-toggle="collapse" data-target="#{{ class }}"
 	 href="#{{ class }}" >
-      <h4 class="panel-title">
+      <h4 class="panel-title roster-text">
 	{{ title }}
 	<span class="pull-right fa fa-angle-down"></span>
       </h4>
@@ -12,13 +12,13 @@
 	<table class="table table-hover table-condensed roster-table">
 	  <thead>
 	    <tr>
-	      <th style="width:33%">
+	      <th class="{{ class }}-t" style="width:33%">
 		Name
 	      </th>
-	      <th class="text-center">
+	      <th class="text-center {{ class }}-t">
 		Guild Rank
 	      </th>
-	      <th style="text-align:right;">
+	      <th class="{{ class }}-t" style="text-align:right;">
 		Spec
 	      </th>
 	    </tr>
@@ -26,7 +26,7 @@
 	  <tbody>
 	    {% for char in list %}
 	      <tr>
-		<td id="username">
+		<td class="{{ class }}-t" id="username">
 		  {{ char.main_character }}
 		</td>
 		<td class="text-center" id="rank">

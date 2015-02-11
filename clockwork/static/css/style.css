@@ -479,3 +479,95 @@ input[type=text], input[type=password], .textarea, input[type=email], input[type
     background-color: #C00;
 }
 
+/* Class Colors */
+.deathknights {
+    background-color: #AF0011 !important;
+}
+
+.deathknights-t {
+    color: #AF0011 !important;
+}
+
+.druids {
+    background-color: #FF7600 !important;
+}
+
+.druids-t {
+    color: #FF7600 !important;
+}
+
+.hunters {
+    background-color: #98DB54 !important;
+}
+
+.hunters-t {
+    color: #98DB54 !important;
+}
+
+.mages {
+    background-color: #15ABDA !important;
+}
+
+.mages-t {
+    color: #15ABDA !important;
+}
+
+.monks {
+    background-color: #008A6A !important;
+}
+
+.monks-t {
+    color: #008A6A !important;
+}
+
+.paladins {
+    background-color: #E56FA4 !important;
+}
+
+.paladins-t {
+    color: #E56FA4 !important;
+}
+
+.priests {
+    background-color: #ABABAB !important;
+}
+
+.priests-t {
+    color: #ABABAB !important;
+}
+
+.rogues {
+    background-color: #D2CF00 !important;
+}
+
+.rogues-t {
+    color: #D2CF00 !important;
+}
+
+.shamans {
+    background-color: #1F66E2 !important;
+}
+
+.shamans-t {
+    color: #1F66E2 !important;
+}
+
+.warlocks {
+    background-color: #8F72BF !important;
+}
+
+.warlocks-t {
+    color: #8F72BF !important;
+}
+
+.warriors {
+    background-color: #BF925C !important;
+}
+
+.warriors-t {
+    color: #BF925C !important;
+}
+
+.roster-text {
+    color: #222;
+}
