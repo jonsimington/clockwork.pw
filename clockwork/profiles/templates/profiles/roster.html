@@ -7,44 +7,29 @@
 
 {% block content %}
   <h1 class="text-center">Guild Roster</h1>
-  <div class="well">
-    <table class="table table-hover table-condensed roster-table">
-      <thead>
-	<tr>
-	  <th style="width:33%">
-	    Name
-	  </th>
-	  <th class="text-center">
-	    Guild Rank
-	  </th>
-	  <th style="text-align:right;">
-	    Armory Link
-	  </th>
-	</tr>
-      </thead>
-      
-      <tbody>
-	{% for profile in userprofiles %}
-	  {% if not profile.user|has_group:'Declined' and not profile.user|has_group:'Applicant' %}
-	    <tr>
-	      <td id="username">
-		<a href="{{ profile.get_absolute_url }}">
-		  <h5>{{ profile.user.username }}</h5>
-		</a>
-	      </td>
-	      <td class="text-center" id="rank">
-		<h5>{{ profile.user.groups.all.first.name }}</h5>
-	      </td>
-	      <td align="right" id="armory_link">
-		<a href="http://us.battle.net/wow/en/character/sargeras/{{profile.user.application.main_character}}/advanced">
-		  <h5>{{ profile.user.application.main_character }}</h5>
-		</a>
-	      </td>
-	    </tr>
-	  {% endif %}
-	{% endfor %}
-      </tbody>
-    </table>
+
+  <div class="row">
+    <div class="col-md-6">
+      <div class="panel-group" id="accordion">
+	{% include "profiles/roster_table.html" with class="deathknights" title="Death Knights" %}
+	{% include "profiles/roster_table.html" with class="druids" list=druids title="Druids" %}
+	{% include "profiles/roster_table.html" with class="hunters" list=hunters title="Hunters" %}
+	{% include "profiles/roster_table.html" with class="mages" list=mages title="Mages" %}
+	{% include "profiles/roster_table.html" with class="monks" list=monks title="Monks" %}
+	{% include "profiles/roster_table.html" with class="paladins" list=paladins title="Paladins" %}
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="panel-group" id="accordion">
+	{% include "profiles/roster_table.html" with class="priests" list=priests title="Priests" %}
+	{% include "profiles/roster_table.html" with class="rogues" list=rogues title="Rogues" %}
+	{% include "profiles/roster_table.html" with class="shamans" list=shamans title="Shamans" %}
+	{% include "profiles/roster_table.html" with class="warlocks" list=warlocks title="Warlocks" %}
+	{% include "profiles/roster_table.html" with class="warriors" list=warriors title="Warriors" %}
+      </div>
+    </div>
   </div>
+  
+  
 {% endblock %}
     

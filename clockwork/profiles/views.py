@@ -21,6 +21,24 @@ class RosterView(ListView):
         # only authenticated users can access this view
         return super(RosterView, self).dispatch(request, *args, **kwargs)
 
+    def get_context_data(self, **kwargs):
+        context = super(RosterView, self).get_context_data(**kwargs)
+        allowed_groups = ['Trial', 'Member', 'Officer']
+        
+        context['deathknights'] = Application.objects.filter(char_class="Death Knight").filter(user__groups__name__in=allowed_groups)
+        context['druids'] = Application.objects.filter(char_class="Druid").filter(user__groups__name__in=allowed_groups)
+        context['hunters'] = Application.objects.filter(char_class="Hunter").filter(user__groups__name__in=allowed_groups)
+        context['mages'] = Application.objects.filter(char_class="Mage").filter(user__groups__name__in=allowed_groups)
+        context['monks'] = Application.objects.filter(char_class="Monk").filter(user__groups__name__in=allowed_groups)
+        context['paladins'] = Application.objects.filter(char_class="Paladin").filter(user__groups__name__in=allowed_groups)
+        context['priests'] = Application.objects.filter(char_class="Priest").filter(user__groups__name__in=allowed_groups)
+        context['rogues'] = Application.objects.filter(char_class="Rogue").filter(user__groups__name__in=allowed_groups)
+        context['shamans'] = Application.objects.filter(char_class="Shaman").filter(user__groups__name__in=allowed_groups)
+        context['warlocks'] = Application.objects.filter(char_class="Warlock").filter(user__groups__name__in=allowed_groups)
+        context['warriors'] = Application.objects.filter(char_class="Warrior").filter(user__groups__name__in=allowed_groups)
+
+        return context
+    
     def get_queryset(self):
         return UserProfile.objects.exclude(user__id=-1).order_by('user__groups__id')
     
