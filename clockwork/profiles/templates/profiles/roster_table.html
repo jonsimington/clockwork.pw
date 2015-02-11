@@ -26,13 +26,13 @@
 	  <tbody>
 	    {% for char in list %}
 	      <tr>
-		<td>
+		<td id="username">
 		  {{ char.main_character }}
 		</td>
-		<td>
+		<td class="text-center" id="rank">
 		  {{ char.user.groups.first }}
 		</td>
-		<td>
+		<td align="right" id="spec">
 		  {{ char.char_spec }}
 		</td>
 	      </tr>

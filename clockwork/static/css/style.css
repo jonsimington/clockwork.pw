@@ -379,7 +379,7 @@ a:hover {
     font-size: @font-size-base - 2;
 }
 
-td.username, td.armory_link, td.rank {
+td.username, td.spec, td.rank {
     width: 33%;
 }
 
