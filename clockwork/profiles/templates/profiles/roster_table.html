@@ -26,8 +26,10 @@
 	  <tbody>
 	    {% for char in list %}
 	      <tr>
-		<td class="{{ class }}-t" id="username">
-		  {{ char.main_character }}
+		<td id="username">
+		  <a class="{{ class }}-t" href="http://us.battle.net/wow/en/character/sargeras/{{ char.main_character }}/advanced/">
+		    {{ char.main_character }}
+		  </a>
 		</td>
 		<td class="text-center" id="rank">
 		  {{ char.user.groups.first }}
