@@ -51,3 +51,7 @@ def updated_submitted_timestamp(application):
             return '<span class="label label-primary">Updated {}</span>&nbsp;<span class="label label-default">Submitted {}</span>'.format(updated_strf, submitted_strf) 
     else:
         return ""
+
+@register.simple_tag
+def no_spaces(string):
+    return string.replace(" ", "").lower()

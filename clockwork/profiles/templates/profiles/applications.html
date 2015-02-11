@@ -21,7 +21,7 @@
     {% for applicant in applicants %}
       {% if applicant.application.status == app_type %}
         <div class="panel panel-default">
-	  <div class="panel-heading" data-toggle="collapse" data-target="#{{ applicant }}"
+	  <div class="panel-heading {% no_spaces applicant.application.char_class %}s-t" data-toggle="collapse" data-target="#{{ applicant }}"
 	       href="#{{ applicant }}" >
 	    <h4 class="panel-title">
 	      {{ applicant }}
