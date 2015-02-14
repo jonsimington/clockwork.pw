@@ -9,6 +9,7 @@
   <h1 class="text-center">Guild Roster</h1>
 
   <div class="row">
+    <div class="col-md-3"></div>
     <div class="col-md-6">
       <div class="panel-group" id="accordion">
 	{% include "profiles/roster_table.html" with class="deathknights" list=deathknights title="Death Knights" %}
@@ -17,10 +18,6 @@
 	{% include "profiles/roster_table.html" with class="mages" list=mages title="Mages" %}
 	{% include "profiles/roster_table.html" with class="monks" list=monks title="Monks" %}
 	{% include "profiles/roster_table.html" with class="paladins" list=paladins title="Paladins" %}
-      </div>
-    </div>
-    <div class="col-md-6">
-      <div class="panel-group" id="accordion">
 	{% include "profiles/roster_table.html" with class="priests" list=priests title="Priests" %}
 	{% include "profiles/roster_table.html" with class="rogues" list=rogues title="Rogues" %}
 	{% include "profiles/roster_table.html" with class="shamans" list=shamans title="Shamans" %}
@@ -28,6 +25,7 @@
 	{% include "profiles/roster_table.html" with class="warriors" list=warriors title="Warriors" %}
       </div>
     </div>
+    <div class="col-md-3"></div>
   </div>
   
   
