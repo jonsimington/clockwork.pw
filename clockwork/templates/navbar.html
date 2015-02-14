@@ -47,7 +47,18 @@
 	    </a>
 	  </li>
 	{% endif %}
-
+	{% if user|has_group:"Applicant" %}
+	  <li class="{% active_re '^/application/submit/' %}">
+	    <a href="/application/submit/">
+	      {% if user.profile.submitted_app %}
+	        Edit
+	      {% else %}
+	        Submit
+	      {% endif %}
+	        your Application
+	    </a>
+	  </li>
+	{% endif %}
       </ul>
       <ul class="nav navbar-nav navbar-right">
 	{% if user.is_authenticated %}
