@@ -18,9 +18,11 @@
   <div class="well">
     {% crispy form %}
 
-    <h1> Comments about your Application:</h1>
+    <div id="comments">
+      <h1> Comments about your Application:</h1>
 
-    {% render_comment_list for user.application %}
+      {% render_comment_list for user.application %}
+    </div>
     <hr>
     <h1>Post a comment:</h1>
     {% render_comment_form for user.application %}
