@@ -153,8 +153,10 @@ class ApplicationForm(forms.ModelForm):
     addons = forms.CharField(required=True, widget=forms.Textarea)
     battle_tag = forms.CharField(required=True)
     
-    def __init__(self, *args, **kwargs):
+    def __init__(self, user, *args, **kwargs):
         super(ApplicationForm, self).__init__(*args, **kwargs)
+        self.user = user
+        token = 'Update' if self.user.profile.submitted_app else 'Submit'
         
         self.helper = FormHelper(self)
         self.helper.form_class = 'form-horizontal'
@@ -190,7 +192,7 @@ class ApplicationForm(forms.ModelForm):
             Field('battle_tag'),
             HTML('<br>'),
             FormActions(
-                Submit('save', 'Submit Application'),
+                Submit('save', token + ' Application'),
                 Button('cancel', 'Cancel', onclick="window.location='/'"),
             ),
             HTML('<br><br>'),

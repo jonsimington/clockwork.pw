@@ -131,6 +131,11 @@ class ApplicationSubmitView(UpdateView):
     def form_valid(self, form):
         return super(ApplicationSubmitView, self).form_valid(form)
 
+    def get_form_kwargs( self ):
+        kwargs = super( ApplicationSubmitView, self ).get_form_kwargs()
+        kwargs['user'] = self.request.user
+        return kwargs
+
 class ApplicationsView(TemplateView):
     """
     A view that displays all open applications to admins
