@@ -3,9 +3,9 @@ from django.contrib.auth.decorators import permission_required
 
 from .views import (RosterView, ProfileView, 
                     MyProfileView, ProfileUpdateView,
-                    ApplicationSubmitView, ApplicationFailView,
-                    ApplicationsView, ApplicationUpdateView,
-                    DeclinedApplicationView,)
+                    ApplicationSubmitView, ApplicationSubmittedView,
+                    ApplicationFailView, ApplicationsView,
+                    ApplicationUpdateView, DeclinedApplicationView,)
 
 urlpatterns = patterns(
     '',
@@ -26,8 +26,12 @@ urlpatterns = patterns(
         name="update_profile"),
 
     url(r'^application/submit/$',
-        ApplicationSubmitView.as_view(success_url="/application/submit"),
+        ApplicationSubmitView.as_view(success_url="/application/submitted"),
         name='submit_app'),
+
+    url(r'^application/submitted/$',
+        ApplicationSubmittedView.as_view(),
+        name='submitted_app'),
 
     url(r'^application/update/$',                                                       
         ApplicationSubmitView.as_view(),                                              

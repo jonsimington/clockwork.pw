@@ -136,6 +136,9 @@ class ApplicationSubmitView(UpdateView):
         kwargs['user'] = self.request.user
         return kwargs
 
+class ApplicationSubmittedView(TemplateView):
+    template_name = "profiles/application_submitted.html"
+    
 class ApplicationsView(TemplateView):
     """
     A view that displays all open applications to admins

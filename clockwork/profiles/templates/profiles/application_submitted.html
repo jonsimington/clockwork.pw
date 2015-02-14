@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+
+{% block content %}
+  {% if user.application.updated > user.application.submitted %}
+    <h3 class="text-center">Successfully updated your application to &lt;Clockwork&gt; on {{ user.application.updated }}</h3>
+  {% else %}
+    <h3 class="text-center">Successfully submitted your application to &lt;Clockwork&gt; on {{ user.application.submitted }}</h3>
+  {% endif %}
+
+  <br><br>
+  <h3 class="text-center">Have changes to make?  You can edit your application <a href="/application/submit">here</a>.</h3>
+{% endblock %}
