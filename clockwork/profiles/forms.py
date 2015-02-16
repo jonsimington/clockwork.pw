@@ -51,7 +51,7 @@ class UserProfileForm(forms.ModelForm):
         profile.user.avatar = self.cleaned_data['avatar']
         profile.user.signature = self.cleaned_data['signature']
         profile.user.save(*args, **kwargs)
-        print u"{}'s profile saved".format(profile.user.username)
+        
         return profile
 
 
@@ -240,7 +240,5 @@ class ApplicationForm(forms.ModelForm):
         app.user.application.save(*args, **kwargs)
         app.user.profile.submitted_app = True
         app.user.profile.save(*args, **kwargs)
-
-        print u"{}'s app saved".format(app.user.username)
 
         return app

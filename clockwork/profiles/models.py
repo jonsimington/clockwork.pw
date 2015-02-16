@@ -33,7 +33,6 @@ class UserProfile(PybbProfile):
     
     @property
     def has_submitted_app(self):
-        print "{}'s submitted_app = {}".format(self, self.submitted_app)
         return self.submitted_app
     
 @receiver(post_save, sender=User)
