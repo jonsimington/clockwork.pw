@@ -3,10 +3,6 @@ body {
     font-weight: 300;
     font-size: 18px;
     background-color: #222;
-    background-image: url('/static/img/background.png');
-    background-repeat: no-repeat;
-    background-position: top center;
-    background-size: 100%;
     color: #999;
 }
 
@@ -35,7 +31,7 @@ a:hover {
     font-family: Oswald, Arial, sans-serif;
     font-size: 16px;
     text-transform: uppercase;
-    margin-bottom: 135px;
+    margin-bottom: 25px;
     background-color: rgba(0,0,0,0.5);
     padding: 5px 0;
 }
@@ -53,9 +49,18 @@ a:hover {
     color: #C00;
 }
 
-.logo {
+.background {
+    background-image: url('/static/img/background.png');
     text-align: center;
     margin-bottom: 25px;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    height: 250px;
+}
+
+.logo {
+    padding-top: 140px;
 }
 
 .blog-title,
