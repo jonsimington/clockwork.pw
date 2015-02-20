@@ -35,6 +35,11 @@
 	    Forums
 	  </a>
 	</li>
+	<li>
+	  <a href="https://www.warcraftlogs.com/guilds/7556">
+	    Logs
+	  </a>
+	</li>
 	{% if user|has_group:"Member" or user|has_group:"Officer" %}
 	  <li class="{% active_re '^/applications/open/' %}">
 	    <a href="/applications/open/">
@@ -59,11 +64,6 @@
 	    </a>
 	  </li>
 	{% endif %}
-	<li>
-	  <a href="https://www.warcraftlogs.com/guilds/7556">
-	    Warcraft Logs
-	  </a>
-	</li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
 	{% if user.is_authenticated %}
