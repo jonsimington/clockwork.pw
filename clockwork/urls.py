@@ -26,5 +26,7 @@ urlpatterns = patterns(
 
     #forums
     url(r'^forums/', include('pybb.urls', namespace='pybb')),
-    
+ 
+    # user messages
+    url(r'^messages/', include('django_messages.urls')),
 )

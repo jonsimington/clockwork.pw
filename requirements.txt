@@ -15,5 +15,6 @@ django-blog-zinnia
 -e git+https://github.com/jonsimington/django-contrib-comments.git#egg=django-comments
 pillow
 django-bootstrap-form
+django-bootstrap3
 psycopg2
 markdown

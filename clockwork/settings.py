@@ -108,6 +108,10 @@ INSTALLED_APPS = (
     # forums
     'pybb',
     'bootstrapform',
+
+    # user messages
+    'django_messages',
+    'bootstrap3',
 )
 
 ###################################################################
