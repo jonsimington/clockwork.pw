@@ -1,0 +1,36 @@
+{% extends "django_messages/base.html" %}
+
+{% load i18n %}
+{% load url from future %}
+
+{% block content %}
+  <h1>{{ user.username }}'s Deleted Messages</h1>
+
+  {% if message_list %}
+    <div class="well">
+      <table class="messages table">
+	<thead>
+	  <tr><th>{% trans "Sender" %}</th><th>{% trans "Subject" %}</th><th>{% trans "Date" %}</th><th>{% trans "Action" %}</th></tr>
+	</thead>
+	<tbody>
+          {% for message in message_list %}
+            <tr>
+	      <td>
+		<a href="/profiles/{{ message.sender }}/">{{ message.sender }}</a>
+	      </td>
+	      <td>
+		{{ message.subject }}
+	      </td>
+	      <td>{{ message.sent_at|date:_("DATETIME_FORMAT") }}</td>
+	      <td><a href="{% url 'messages_undelete' message.id %}">{% trans "undelete" %}</a></td>
+	    </tr>
+	  {% endfor %}
+	</tbody>
+      </table>
+    </div>
+  {% else %}
+    <p>{% trans "No messages." %}</p>
+  {% endif %}
+  <br />
+  <p>{% trans "Deleted Messages are removed from the trash at unregular intervals, don't rely on this feature for long-time storage." %}</p>
+{% endblock %}

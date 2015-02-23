@@ -8,5 +8,5 @@ urlpatterns = patterns(
 
     url(r'^about-us/$', AboutUsView.as_view(), name="about_us"),
 
-    url(r'blog/$', BlogView.as_view(), name="blog"),
+    url(r'^blog/$', BlogView.as_view(), name="blog"),
 )
