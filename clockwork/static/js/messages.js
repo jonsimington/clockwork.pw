@@ -8,5 +8,8 @@ function getParameterByName(name) {
 // fill in message recipient box based on URL
 $(document).ready(function(){
     var recipient_name = getParameterByName('recipient');
-    document.getElementById("id_recipient").value = recipient_name;
+    
+    if (recipient_name) {
+	document.getElementById("id_recipient").value = recipient_name;
+    }
 });
