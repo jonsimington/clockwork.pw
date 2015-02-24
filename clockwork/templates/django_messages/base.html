@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% load url from future %}
+
+{% block messages-nav %}
+<ul class="subnavilist list-unstyled">
+  <li class="label label-default">
+    <h5><a href="{% url 'messages_inbox' %} ">{% trans "Inbox" %}</a></h5>
+  </li>
+  &nbsp;
+  <li class="label label-default">
+    <h5><a href="{% url 'messages_outbox' %} ">{% trans "Sent Messages" %}</a></h5>
+  </li>
+  &nbsp;
+  <li class="label label-default">
+    <h5><a href="{% url 'messages_compose' %} ">{% trans "New Message" %}</a></h5>
+  </li>
+  &nbsp;
+  <li class="label label-default">
+    <h5><a href="{% url 'messages_trash' %} ">{% trans "Trash" %}</a></h5>
+  </li>
+</ul>
+{% endblock %}
+
+{% block content %}
+{% endblock %}
+
+
+

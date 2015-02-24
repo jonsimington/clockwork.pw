@@ -22,3 +22,11 @@
     <a href="{% url 'account_change_password' %}"><i class="fa fa-edit"></i>  Change My Password</a>
   </li>
 </ul>
+
+{% if userprofile and userprofile.user.username != user.username %}
+  <h3>
+    <a href="/messages/compose/?recipient=Qoof">
+      <span class="label label-default">Send a message to {{ userprofile.user.username }}</span>
+    </a>
+  </h3>
+{% endif %}

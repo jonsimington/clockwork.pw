@@ -576,3 +576,7 @@ input[type=text], input[type=password], .textarea, input[type=email], input[type
 .roster-text {
     color: #222;
 }
+
+.subnavilist li {
+    display: inline;
+}

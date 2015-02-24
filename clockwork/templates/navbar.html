@@ -1,6 +1,7 @@
 {% load active_tags %}
 {% load application_tags %}
 {% load group_tags %}
+{% load inbox %}
 
 <nav class="navbar navbar-default" role="navigation">
   <div class="container-fluid">
@@ -72,6 +73,11 @@
 	      <strong>{{ user.username }}</strong>
 	    </a>
 	  </li>
+	  <li>
+	    <a href="{% url 'messages_inbox' %}">
+	      {% inbox_count as messages %}
+	      Inbox {% if messages > 0 %}<span class="badge">{% inbox_count %}</span>{% endif %}
+	    </a>
 	  {% if user.is_staff %}
 	    <li>
 	      <a href="/admin/">

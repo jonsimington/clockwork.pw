@@ -24,9 +24,9 @@ urlpatterns = patterns(
     url(r'^blog/', include('zinnia.urls', namespace='zinnia')),
     url(r'^comments/', include('django_comments.urls')),
 
-    #forums
+    # forums
     url(r'^forums/', include('pybb.urls', namespace='pybb')),
- 
+
     # user messages
     url(r'^messages/', include('django_messages.urls')),
 )

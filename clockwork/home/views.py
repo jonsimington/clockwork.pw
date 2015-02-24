@@ -20,3 +20,4 @@ class BlogView(TemplateView):
         context = super(BlogView, self).get_context_data(**kwargs)
         context['entries'] = Entry.published.all()
         return context
+
