@@ -430,6 +430,11 @@ h5, h4, h6 {
     max-width: 100%;
 }
 
+.blog-content iframe {
+    max-width: 100%;
+    max-height: 450px;
+}
+
 .app-update-form {
     display: inline;
 }
