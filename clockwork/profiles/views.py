@@ -104,6 +104,11 @@ class ProfileUpdateView(UpdateView):
 def applicant_check(user):
     return user.groups.filter(name='Applicant').exists()
 
+# Returns True if user is allowed to edit their application info
+def can_edit_application(user):
+    groups = ["Applicant", "Member", "Officer"]
+    return user.groups.filter(name__in=groups).exists()
+
 def staff_check(user):
     return user.is_staff
 
@@ -120,9 +125,8 @@ class ApplicationSubmitView(UpdateView):
     form_class = ApplicationForm
     context_object_name = "application"
 
-    @method_decorator(user_passes_test(applicant_check, login_url="application/access-denied/"))
+    @method_decorator(user_passes_test(can_edit_application, login_url="application/access-denied/"))
     def dispatch(self, request, *args, **kwargs):
-        """ Only applicants can make an app """
         return super(ApplicationSubmitView, self).dispatch(request, *args, **kwargs)
 
     def get_object(self):
@@ -170,7 +174,7 @@ class ApplicationFailView(TemplateView):
 class ApplicationUpdateView(UpdateView):
     @method_decorator(user_passes_test(staff_check, login_url="application/access-denied/"))
     def dispatch(self, *args, **kwargs):
-                return super(ApplicationUpdateView, self).dispatch(*args, **kwargs)
+        return super(ApplicationUpdateView, self).dispatch(*args, **kwargs)
 
     def get(self, request, **kwargs):
         applicant_name = kwargs.pop('applicant_name')
