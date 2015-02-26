@@ -1,6 +1,6 @@
 {% load url from future %}
 {% load active_tags %}
-
+{% load group_tags %}
 
 <h4>Profiles</h4>
 
@@ -21,6 +21,11 @@
   <li class="{% active 'account_change_password' %}">
     <a href="{% url 'account_change_password' %}"><i class="fa fa-edit"></i>  Change My Password</a>
   </li>
+  {% if user|has_group:"Member" or user|has_group:"Officer" %}
+    <li>
+      <a href="/application/submit/"><i class="fa fa-edit"></i>  Update My Character Information</a>
+    </li>
+  {% endif %}
 </ul>
 
 {% if userprofile and userprofile.user.username != user.username %}

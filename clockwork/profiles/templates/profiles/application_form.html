@@ -3,6 +3,7 @@
 {% load url from future %}
 {% load crispy_forms_tags %}
 {% load comments %}
+{% load group_tags %}
 
 {% block title %}
   &lt;Clockwork&gt; Application
@@ -10,11 +11,16 @@
 
 {% block content %}
   <h1 class="text-center">
-    {% if user.profile.has_submitted_app %}
-      Update
+    {% if user|has_group:"Member" or user|has_group:"Officer" %}
+      Edit your Character Information
     {% else %}
-      Submit
-    {% endif %} your Application to &lt;Clockwork&gt;</h1>
+      {% if user.profile.has_submitted_app %}
+        Update
+      {% else %}
+        Submit
+      {% endif %} your Application to &lt;Clockwork&gt;
+    {% endif %}
+  </h1>
   <div class="well">
     {% crispy form %}
 
