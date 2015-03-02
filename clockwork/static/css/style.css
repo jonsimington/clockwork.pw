@@ -125,6 +125,12 @@ a:hover {
     cursor: pointer;
 }
 
+.panel-title.roster-text {
+    font-family: Oswald, Arial, sans-serif;
+    font-size: 16px;
+    text-transform: uppercase;
+}
+
 .blog-title h2 {
     display: inline-block;
     margin: 0;
