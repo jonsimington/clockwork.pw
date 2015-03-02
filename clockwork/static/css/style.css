@@ -118,6 +118,19 @@ a:hover {
 #recruitment td.warlock     { background-image: url('/static/img/warlock-icon.png'); }
 #recruitment td.warrior     { background-image: url('/static/img/warrior-icon.png'); }
 
+#roster-nav ul li {
+    font-family: Oswald, Arial, sans-serif;
+    font-size: 16px;
+    text-transform: uppercase;
+    cursor: pointer;
+}
+
+.panel-title.roster-text {
+    font-family: Oswald, Arial, sans-serif;
+    font-size: 16px;
+    text-transform: uppercase;
+}
+
 .blog-title h2 {
     display: inline-block;
     margin: 0;
