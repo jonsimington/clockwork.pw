@@ -6,6 +6,9 @@ function displayDiv(div) {
 		   "warriors"];
 
     var numClasses = classes.length;
+    
+    // hide help text div
+    document.getElementById('help-text').style.display = "none";
 
     // clear all other divs
     for (var i = 0; i < numClasses; i++) {
