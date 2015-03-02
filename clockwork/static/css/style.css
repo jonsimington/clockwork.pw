@@ -406,6 +406,10 @@ h5, h4, h6 {
     color: #ccc;
 }
 
+.roster-table-div {
+    display: none;
+}
+
 #breadcrumb li {
     display: inline;
 }
@@ -446,6 +450,10 @@ h5, h4, h6 {
 
 .white {
     color: white;
+}
+
+.black {
+    color: black;
 }
 
 a {

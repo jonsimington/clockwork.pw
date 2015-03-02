@@ -9,24 +9,83 @@
   <h1 class="text-center">Guild Roster</h1>
 
   <div class="row">
-    <div class="col-md-3"></div>
-    <div class="col-md-6">
-      <div class="panel-group" id="accordion">
+    <div class="col-md-3">
+      <div class="well">
+	<ul class="nav nav-pills nav-stacked">
+	  <li class="deathknights">
+	    <a class="roster-text" onclick="displayDiv('deathknights')">Death Knights</a>
+	  </li>
+	  <li class="druids">
+	    <a class="roster-text" onclick="displayDiv('druids')">Druids</a>
+	  </li>
+	  <li class="hunters">
+	    <a class="roster-text" onclick="displayDiv('hunters')">Hunters</a>
+	  </li>
+	  <li class="mages">
+	    <a class="roster-text" onclick="displayDiv('mages')">Mages</a>
+	  </li>
+	  <li class="monks">
+	    <a class="roster-text" onclick="displayDiv('monks')">Monks</a>
+	  </li>
+	  <li class="paladins">
+	    <a class="roster-text" onclick="displayDiv('paladins')">Paladins</a>
+	  </li>
+	  <li class="priests">
+	    <a class="roster-text" onclick="displayDiv('priests')">Priests</a>
+	  </li>
+	  <li class="rogues">
+	    <a class="roster-text" onclick="displayDiv('rogues')">Rogues</a>
+	  </li>
+	  <li class="shamans">
+	    <a class="roster-text" onclick="displayDiv('shamans')">Shamans</a>
+	  </li>
+	  <li class="warlocks">
+	    <a class="roster-text" onclick="displayDiv('warlocks')">Warlocks</a>
+	  </li>
+	  <li class="warriors">
+	    <a class="roster-text" onclick="displayDiv('warriors')">Warriors</a>
+	  </li>
+	</ul>
+      </div>
+    </div>
+    <div class="col-md-9">
+      <div class="roster-table-div" id="deathknights">
 	{% include "profiles/roster_table.html" with class="deathknights" list=deathknights title="Death Knights" %}
+      </div>
+      <div class="roster-table-div" id="druids">
 	{% include "profiles/roster_table.html" with class="druids" list=druids title="Druids" %}
+      </div>
+      <div class="roster-table-div" id="hunters">
 	{% include "profiles/roster_table.html" with class="hunters" list=hunters title="Hunters" %}
+      </div>
+      <div class="roster-table-div" id="mages">
 	{% include "profiles/roster_table.html" with class="mages" list=mages title="Mages" %}
+      </div>
+      <div class="roster-table-div" id="monks">
 	{% include "profiles/roster_table.html" with class="monks" list=monks title="Monks" %}
+      </div>
+      <div class="roster-table-div" id="paladins">
 	{% include "profiles/roster_table.html" with class="paladins" list=paladins title="Paladins" %}
+      </div>
+      <div class="roster-table-div" id="priests">
 	{% include "profiles/roster_table.html" with class="priests" list=priests title="Priests" %}
+      </div>
+      <div class="roster-table-div" id="rogues">
 	{% include "profiles/roster_table.html" with class="rogues" list=rogues title="Rogues" %}
+      </div>
+      <div class="roster-table-div" id="shamans">
 	{% include "profiles/roster_table.html" with class="shamans" list=shamans title="Shamans" %}
+      </div>
+      <div class="roster-table-div" id="warlocks">
 	{% include "profiles/roster_table.html" with class="warlocks" list=warlocks title="Warlocks" %}
+      </div>
+      <div class="roster-table-div" id="warriors">
 	{% include "profiles/roster_table.html" with class="warriors" list=warriors title="Warriors" %}
       </div>
     </div>
-    <div class="col-md-3"></div>
   </div>
+
+  <script src="{{ STATIC_URL }}js/roster.js"></script>
   
   
 {% endblock %}

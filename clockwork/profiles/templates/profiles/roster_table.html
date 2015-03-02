@@ -1,47 +1,44 @@
-
-  <div class="panel panel-default">
-    <div class="panel-heading {{ class }}" data-toggle="collapse" data-target="#{{ class }}"
-	 href="#{{ class }}" >
-      <h4 class="panel-title roster-text">
-	{{ title }}
-	<span class="pull-right fa fa-angle-down"></span>
-      </h4>
-    </div>
-    <div id="{{ class }}" class="panel-collapse collapse in">
-      <div class="panel-body">
-	<table class="table table-hover table-condensed roster-table">
-	  <thead>
-	    <tr>
-	      <th class="{{ class }}-t" style="width:33%">
-		Name
-	      </th>
-	      <th class="text-center {{ class }}-t">
-		Guild Rank
-	      </th>
-	      <th class="{{ class }}-t" style="text-align:right;">
-		Spec
-	      </th>
-	    </tr>
-	  </thead>
-	  <tbody>
-	    {% for char in list %}
-	      <tr>
-		<td id="username">
-		  <a class="{{ class }}-t" href="http://us.battle.net/wow/en/character/sargeras/{{ char.main_character }}/advanced">
-		    {{ char.main_character }}
-		  </a>
-		</td>
-		<td class="text-center" id="rank">
-		  {{ char.user.groups.first }}
-		</td>
-		<td align="right" id="spec">
-		  {{ char.char_spec }}
-		</td>
-	      </tr>
-	    {% endfor %}
-	  </tbody>
-	</table>
-      </div>
+<div class="panel panel-default">
+  <div class="panel-heading {{ class }}">
+    <h4 class="panel-title roster-text">
+      {{ title }}
+    </h4>
+  </div>
+  <div id="{{ class }}">
+    <div class="panel-body">
+      <table class="table table-hover table-condensed roster-table">
+	<thead>
+	  <tr>
+	    <th class="{{ class }}-t" style="width:33%">
+	      Name
+	    </th>
+	    <th class="text-center {{ class }}-t">
+	      Guild Rank
+	    </th>
+	    <th class="{{ class }}-t" style="text-align:right;">
+	      Spec
+	    </th>
+	  </tr>
+	</thead>
+	<tbody>
+	  {% for char in list %}
+	  <tr>
+	    <td id="username">
+	      <a class="{{ class }}-t" href="http://us.battle.net/wow/en/character/sargeras/{{ char.main_character }}/advanced">
+		{{ char.main_character }}
+	      </a>
+	    </td>
+	    <td class="text-center" id="rank">
+	      {{ char.user.groups.first }}
+	    </td>
+	    <td align="right" id="spec">
+	      {{ char.char_spec }}
+	    </td>
+	  </tr>
+	  {% endfor %}
+	</tbody>
+      </table>
     </div>
   </div>
+</div>
 
