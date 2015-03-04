@@ -13,9 +13,9 @@ function displayDiv(div) {
     // hide help text div
     document.getElementById('help-text').style.display = "none";
 
+    // hide all divs
     for (var i = 0; i < numDivs; i++) {
 	document.getElementById(divs[i]).style.display = "none";
-	console.log(i + divs[i]);
     }
     
 
