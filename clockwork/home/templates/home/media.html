@@ -1,0 +1,189 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <link href="{{ STATIC_URL }}css/media.css" rel="stylesheet">
+
+  <h1 class="text-center">&lt;Clockwork&gt; Media</h1>
+
+  <div class="col-md-4">
+    <div class="well">
+      <ul class="nav nav-tabs nav-stacked">
+	<!-- Blackrock Foundry -->
+	<li>
+	  <a>Blackrock Foundry<span class="pull-right fa fa-angle-down"></span></a>
+	  <ul class="nav nav-tabs nav-stacked">
+	    <li onclick="displayDiv('gruul')"><a href="#">Gruul</a></li>
+	    <li onclick="displayDiv('oregorger')"><a href="#">Oregorger</a></li>
+	    <li onclick="displayDiv('blast-furnace')"><a href="#">Blast Furnace</a></li>
+	    <li onclick="displayDiv('beastlord-darmac')"><a href="#">Beastlord Darmac</a></li>
+	    <li onclick="displayDiv('operator-thogar')"><a href="#">Operator Thogar</a></li>
+	    <li onclick="displayDiv('iron-maidens')"><a href="#">Iron Maidens</a></li>
+	    <li onclick="displayDiv('hans-and-franz')"><a href="#">Hans'gar and Franzok</a></li>
+	    <li onclick="displayDiv('flamebender-kagraz')"><a href="#">Flamebender Ka'graz</a></li>
+	    <li onclick="displayDiv('kromog')"><a href="#">Kromog</a></li>
+	    <li onclick="displayDiv('blackhand')"><a href="#">Blackhand</a></li>
+	  </ul>
+	</li>
+	<!-- Highmaul -->
+	<li>
+	  <a>Highmaul<span class="pull-right fa fa-angle-down"></span></a>
+	  <ul class="nav nav-tabs nav-stacked">
+	    <li onclick="displayDiv('tectus')"><a href="#">Mythic Tectus</a></li>
+	    <li onclick="displayDiv('butcher')"><a href="#">Mythic Butcher</a></li>
+	    <li onclick="displayDiv('twin-ogron')"><a href="#">Mythic Twin Ogron</a></li>
+	  </ul>
+	</li>
+	<!-- Siege of Orgrimmar -->
+	<li>
+	  <a>Siege of Orgrimmar<span class="pull-right fa fa-angle-down"></span></a>
+	  <ul class="nav nav-tabs nav-stacked">
+	    <li onclick="displayDiv('garrosh')"><a href="#">Heroic Garrosh Hellscream</a></li>
+	    <li onclick="displayDiv('paragons')"><a href="#">Heroic Paragons of the Klaxxi</a></li>
+	  </ul>
+	</li>
+	<!-- Challenge Modes -->
+	<li>
+	  <a>Realm Best CMs<span class="pull-right fa fa-angle-down"></span></a>
+	  <ul class="nav nav-tabs nav-stacked">
+	    <li onclick="displayDiv('gate-setting-sun')"><a href="#">Gate of the Setting Sun</a></li>
+	    <li onclick="displayDiv('niuzao-temple')"><a href="#">Siege of Niuzao Temple</a></li>
+	  </ul>
+	</li>
+	<!-- Twitch -->
+	<li>
+	  <a>Live Streams<span class="pull-right fa fa-angle-down"></span></a>
+	  <ul class="nav nav-tabs nav-stacked">
+	    <li onclick="displayDiv('adgetty-twitch')"><a href="#">Adgetty (Warlock)</a></li>
+	    <li onclick="displayDiv('apparati-twitch')"><a href="#">Apparati (DPS Warrior)</a></li>
+	    <li onclick="displayDiv('awss-twitch')"><a href="#">Awss (Ret. Paladin)</a></li>
+	    <li onclick="displayDiv('bottizelle-twitch')"><a href="#">Bottizelle (Resto. Druid)</a></li>
+	    <li onclick="displayDiv('qoof-twitch')"><a href="#">Qoof (Mage)</a></li>
+	  </ul>
+	</li>
+	    
+	<!-- Funsies -->
+	<li>
+	  <a>Et Cetera<span class="pull-right fa fa-angle-down"></span></a>
+	  <ul class="nav nav-tabs nav-stacked">
+	    <li onclick="displayDiv('yatt')"><a href="#">Yuckster and the Tryhards</a></li>
+	  </ul>
+	</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="col-md-8">
+    <div id="help-text">
+      <h3>Click on a button to the left to display media content.</h3>
+    </div>
+    <!-- Blackrock Foundry -->
+    <div class="media-content" id="gruul">
+      <h3 class="text-center">Heroic Gruul Kill Video:</h3>
+      <iframe src="https://www.youtube.com/embed/K2_qSPU0FEM" frameborder="0" allowfullscreen></iframe>
+    </div>
+    <div class="media-content" id="blast-furnace">
+      <h3 class="text-center">Heroic Blast Furnace Kill Video:</h3>
+      <iframe src="https://www.youtube.com/embed/vibc6COEbPY" frameborder="0" allowfullscreen></iframe>
+    </div>
+    <div class="media-content" id="beastlord-darmac">
+      <h3 class="text-center">Heroic Beastlord Darmac Kill Video:</h3>
+      <iframe src="https://www.youtube.com/embed/0PfjxCudo6s" frameborder="0" allowfullscreen></iframe>
+    </div>
+    <div class="media-content" id="operator-thogar">
+      <h3 class="text-center">Heroic Operator Thogar Kill Video:</h3>
+      <iframe src="https://www.youtube.com/embed/HbP4f8vZwwE" frameborder="0" allowfullscreen></iframe>
+    </div>
+    <div class="media-content" id="iron-maidens">
+      <h3 class="text-center">Heroic Iron Maidens Kill Video:</h3>
+      <iframe src="https://www.youtube.com/embed/zqoy-cT9Vng" frameborder="0" allowfullscreen></iframe>
+    </div>
+    <div class="media-content" id="hans-and-franz">
+      <h3 class="text-center">Heroic Hans'gar and Franzok Kill Video:</h3>
+      <iframe src="https://www.youtube.com/embed/VTwkTneShdI" frameborder="0" allowfullscreen></iframe>
+    </div>
+    <div class="media-content" id="flamebender-kagraz">
+      <h3 class="text-center">Heroic Flamebender Ka'graz Kill Video:</h3>
+      <iframe src="https://www.youtube.com/embed/f5cNFQSJ-0w" frameborder="0" allowfullscreen></iframe>
+    </div>
+    <div class="media-content" id="kromog">
+      <h3 class="text-center">Heroic Kromog Kill Video:</h3>
+      <iframe src="https://www.youtube.com/embed/4oQEjdyNNh0" frameborder="0" allowfullscreen></iframe>
+    </div>
+    <div class="media-content" id="blackhand">
+      <h3 class="text-center">Heroic Blackhand Kill Video:</h3>
+      <iframe src="https://www.youtube.com/embed/DpkEvBe57uc" frameborder="0" allowfullscreen></iframe>
+    </div>
+    <div class="media-content" id="oregorger">
+      <h3 class="text-center">Heroic Oregorger Kill Video:</h3>
+      <iframe src="https://www.youtube.com/embed/LAyaetuIN2o" frameborder="0" allowfullscreen></iframe>
+    </div>
+
+    <!-- Highmaul -->
+    <div class="media-content" id="tectus">
+      <h3 class="text-center">Mythic Tectus Kill Video:</h3>
+      <iframe src="https://www.youtube.com/embed/jJGJmOUiTe4" frameborder="0" allowfullscreen></iframe>
+    </div>
+    <div class="media-content" id="butcher">
+      <h3 class="text-center">Mythic Butcher Kill Video:</h3>
+      <iframe src="https://www.youtube.com/embed/k1_Nno35weI" frameborder="0" allowfullscreen></iframe>
+    </div>
+    <div class="media-content" id="twin-ogron">
+      <h3 class="text-center">Mythic Twin Ogron Kill Video:</h3>
+      <iframe src="https://www.youtube.com/embed/bPwKXlubwcE" frameborder="0" allowfullscreen></iframe>
+    </div>
+
+    <!-- Siege of Orgrimmar -->
+    <div class="media-content" id="paragons">
+      <h3 class="text-center">Heroic Paragons of the Klaxxi Kill Video:</h3>
+      <iframe src="https://www.youtube.com/embed/m20YyrGpT9w" frameborder="0" allowfullscreen></iframe>
+    </div>
+    <div class="media-content" id="garrosh">
+      <h3 class="text-center">Heroic Garrosh Hellscream Kill Video:</h3>
+      <iframe src="https://www.youtube.com/embed/jMLFIuM627s" frameborder="0" allowfullscreen></iframe>
+    </div>
+
+    <!-- Challenge Modes -->
+    <div class="media-content" id="gate-setting-sun">
+      <h3 class="text-center">Realm Best Gate of the Setting Sun Video:</h3>
+      <iframe src="https://www.youtube.com/embed/CQ3d8OQH4Fo" frameborder="0" allowfullscreen></iframe>
+    </div>
+    <div class="media-content" id="niuzao-temple">
+      <h3 class="text-center">Realm Best Siege of Niuzao Temple Video:</h3>
+      <iframe src="https://www.youtube.com/embed/fqHJd6HIrU4" frameborder="0" allowfullscreen></iframe>
+    </div>
+
+    <!-- Twitch -->
+    <div class="media-content" id="adgetty-twitch">
+      <h3 class="text-center">Adgetty's Twitch Stream:</h3>
+      <iframe id="player" type="text/html" src="http://www.twitch.tv/adgetty/embed"
+	      frameborder="0"></iframe>     
+    </div>
+    <div class="media-content" id="apparati-twitch">
+      <h3 class="text-center">Apparati's Twitch Stream:</h3>
+      <iframe id="player" type="text/html" src="http://www.twitch.tv/apparati/embed"
+	      frameborder="0"></iframe>     
+    </div>
+    <div class="media-content" id="awss-twitch">
+      <h3 class="text-center">Awss's Twitch Stream:</h3>
+      <iframe id="player" type="text/html" src="http://www.twitch.tv/naughtycrusher/embed"
+	      frameborder="0"></iframe>     
+    </div>
+    <div class="media-content" id="bottizelle-twitch">
+      <h3 class="text-center">Bottizelle's Twitch Stream:</h3>
+      <iframe id="player" type="text/html" src="http://www.twitch.tv/bottizelle/embed"
+	      frameborder="0"></iframe>     
+    </div>
+    <div class="media-content" id="qoof-twitch">
+      <h3 class="text-center">Qoof's Twitch Stream:</h3>
+      <iframe id="player" type="text/html" src="http://www.twitch.tv/qoofs/embed"
+	      frameborder="0"></iframe>     
+    </div>
+
+    <!-- Et Cetera -->
+    <div class="media-content" id="yatt">
+      <h3 class="text-center">Yuckster and the Tryhards</h3>
+    </div>
+  </div>
+
+  <script src="{{ STATIC_URL }}js/media.js"></script>
+{% endblock %}

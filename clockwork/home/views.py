@@ -21,3 +21,5 @@ class BlogView(TemplateView):
         context['entries'] = Entry.published.all()
         return context
 
+class MediaView(TemplateView):
+    template_name = "home/media.html"

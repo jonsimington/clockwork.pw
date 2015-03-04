@@ -1,6 +1,6 @@
 from django.conf.urls import patterns, url
 
-from views import HomePageView, AboutUsView, BlogView
+from views import HomePageView, AboutUsView, BlogView, MediaView
 
 urlpatterns = patterns(
     '',
@@ -9,4 +9,6 @@ urlpatterns = patterns(
     url(r'^about-us/$', AboutUsView.as_view(), name="about_us"),
 
     url(r'^blog/$', BlogView.as_view(), name="blog"),
+
+    url(r'^media/$', MediaView.as_view(), name="media"),
 )
