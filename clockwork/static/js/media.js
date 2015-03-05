@@ -1,29 +1,4 @@
-// A function to display a roster div when the nav button is pressed on the
-// roster nav menu
-function displayDiv(div) {
-    var divs = ["gruul", "blast-furnace", "beastlord-darmac", "operator-thogar",
-		"iron-maidens", "hans-and-franz", "flamebender-kagraz", "kromog",
-		"blackhand", "oregorger", "tectus", "butcher", "twin-ogron",
-	        "paragons", "garrosh", "gate-setting-sun", "niuzao-temple",
-	        "adgetty-twitch", "apparati-twitch", "awss-twitch", "bottizelle-twitch",
-	        "qoof-twitch", "yatt"];
-
-    var numDivs = divs.length;
-
-    // hide help text div
-    document.getElementById('help-text').style.display = "none";
-
-    // hide all divs
-    for (var i = 0; i < numDivs; i++) {
-	document.getElementById(divs[i]).style.display = "none";
-    }
-    
-
-    // Show the specified div
-    document.getElementById(div).style.display = "block";
-}
-
-
+// Function to handle the nested navs
 $.fn.naccordian = function () {
     
     $root = this;
@@ -64,3 +39,15 @@ $.fn.naccordian = function () {
 $(function () {
     $('.nav-stacked').naccordian();
 });
+
+// Function to load a video div
+function loadVideo(title, id, type) {
+    $('#media-content').empty()
+    console.log(title + " " + id + " " + type)
+    if (type == "youtube") {
+	$('#media-content').html("<h3 class='text-center'>" + title + "</h3><iframe src='https://www.youtube.com/embed/vidID/' frameborder='0'></iframe>".replace("vidID", id))
+    }
+    else if (type == "twitch") {
+	$('#media-content').html("<h3 class='text-center'>" + title + "</h3><iframe src='http://www.twitch.tv/channel/embed' frameborder='0'></iframe>".replace("channel", id))
+    }
+}
