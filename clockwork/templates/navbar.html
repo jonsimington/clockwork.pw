@@ -41,6 +41,11 @@
 	    Logs
 	  </a>
 	</li>
+	<li>
+	  <a href="{% url 'media' %}">
+	    Media
+	  </a>
+	</li>
 	{% if user|has_group:"Member" or user|has_group:"Officer" %}
 	  <li class="{% active_re '^/applications/open/' %}">
 	    <a href="/applications/open/">
