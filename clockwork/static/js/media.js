@@ -41,7 +41,13 @@ $(function () {
 });
 
 // Function to load a video div
-function loadVideo(title, id, type) {
+function loadVideo(e) {
+    var $target = $(e.currentTarget);
+
+    var title = $target.data('title');
+    var id = $target.data('id');
+    var type = $target.data('type');
+
     $('#media-content').empty()
     console.log(title + " " + id + " " + type)
     if (type == "youtube") {
@@ -51,3 +57,5 @@ function loadVideo(title, id, type) {
 	$('#media-content').html("<h3 class='text-center'>" + title + "</h3><iframe src='http://www.twitch.tv/channel/embed' frameborder='0'></iframe>".replace("channel", id))
     }
 }
+
+$('.videoElement').click(loadVideo);
