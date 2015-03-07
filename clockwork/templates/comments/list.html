@@ -1,7 +1,7 @@
 {% for comment in comment_list %}
   <dt id="c{{ comment.id }}">
     <a href="{{ comment.user.profile.get_absolute_url }}">
-      {{ comment.user.username }}
+      <h6 class="black">{{ comment.submit_date }}</h6>  {{ comment.user.username }}
     </a>
     : {{ comment.comment }}
   </dt>
