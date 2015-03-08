@@ -10,13 +10,13 @@
 	<thead>
 	  <tr>
 	    <th class="{{ class }}-t" style="width:33%">
-	      Name
+	      <h5>Name</h5>
 	    </th>
 	    <th class="text-center {{ class }}-t">
-	      Guild Rank
+	      <h5>Guild Rank</h5>
 	    </th>
 	    <th class="{{ class }}-t" style="text-align:right;">
-	      Spec
+	      <h5>Spec</h5>
 	    </th>
 	  </tr>
 	</thead>
@@ -25,14 +25,14 @@
 	  <tr>
 	    <td id="username">
 	      <a class="{{ class }}-t" href="http://us.battle.net/wow/en/character/sargeras/{{ char.main_character }}/advanced">
-		{{ char.main_character }}
+		<h5>{{ char.main_character }}</h5>
 	      </a>
 	    </td>
 	    <td class="text-center" id="rank">
-	      {{ char.user.groups.first }}
+	      <h5>{{ char.user.groups.first }}</h5>
 	    </td>
 	    <td align="right" id="spec">
-	      {{ char.char_spec }}
+	      <h5>{{ char.char_spec }}</h5>
 	    </td>
 	  </tr>
 	  {% endfor %}
