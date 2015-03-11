@@ -1,6 +1,9 @@
 # pybb avatars
 pybb/
 
+# migrations
+clockwork/*/migrations/
+
 # media
 uploads/
 
