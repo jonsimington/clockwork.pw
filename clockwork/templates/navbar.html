@@ -58,7 +58,7 @@
 	    </a>
 	  </li>
 	{% endif %}
-	{% if user|has_group:"Applicant" %}
+	{% if user|has_group:"Applicant" or user|has_group:"Declined" %}
 	  <li class="{% active_re '^/application/submit/' %}">
 	    <a href="/application/submit/">
 	      {% if user.profile.submitted_app %}
