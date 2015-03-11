@@ -44,18 +44,26 @@ $(function () {
 function loadVideo(e) {
     var $target = $(e.currentTarget);
 
-    var title = $target.data('title');
-    var id = $target.data('id');
+    var titles = $target.data('title');
+    var ids = $target.data('id');
     var type = $target.data('type');
 
     $('#media-content').empty()
-    console.log(title + " " + id + " " + type)
+
+    // Assumes titles, ids are a list of 1 or more elements
     if (type == "youtube") {
-	$('#media-content').html("<h3 class='text-center'>" + title + "</h3><iframe src='https://www.youtube.com/embed/vidID/' frameborder='0'></iframe>".replace("vidID", id))
+	for (var i = 0; i < titles.length; i++) {
+	    $('#media-content').append("<h3 class='text-center'>" + titles[i] + "</h3>");
+	    $('#media-content').append("<iframe src='https://www.youtube.com/embed/vidID/' frameborder='0'></iframe>".replace("vidID", ids[i]));
+	}
     }
+    // Assumes titles, ids are a list of 1 element
     else if (type == "twitch") {
-	$('#media-content').html("<h3 class='text-center'>" + title + "</h3><iframe src='http://www.twitch.tv/channel/embed' frameborder='0'></iframe>".replace("channel", id))
+	$('#media-content').append("<h3 class='text-center'>" + titles + "</h3>");
+	$('#media-content').append("<iframe src='http://www.twitch.tv/channel/embed' frameborder='0'></iframe>".replace("channel", ids[0]));
     }
+
+    
 }
 
 $('.videoElement').click(loadVideo);
