@@ -606,3 +606,29 @@ input[type=text], input[type=password], .textarea, input[type=email], input[type
 .subnavilist li {
     display: inline;
 }
+
+#recruitment td.span div .dk-blood {background-image: url('/static/img/dk-blood.png');}
+
+.dk-frost {
+    background-image: url('/static/img/dk-frost.png');
+}
+
+.dk-unholy {
+    background-image: url('/static/img/dk-unholy.png');
+}
+
+.druid-balance {
+    background-image: url('/static/img/druid-balance.png');
+}
+
+.druid-feral {
+    background-image: url('/static/img/druid-feral.png');
+}
+
+.druid-guardian {
+    background-image: url('/static/img/druid-guardian.png');
+}
+
+.druid-resto {
+    background-image: url('/static/img/druid-resto.png');
+}
