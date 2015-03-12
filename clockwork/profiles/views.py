@@ -106,7 +106,7 @@ def applicant_check(user):
 
 # Returns True if user is allowed to edit their application info
 def can_edit_application(user):
-    groups = ["Applicant", "Member", "Officer"]
+    groups = ["Declined", "Applicant", "Member", "Officer"]
     return user.groups.filter(name__in=groups).exists()
 
 def staff_check(user):
