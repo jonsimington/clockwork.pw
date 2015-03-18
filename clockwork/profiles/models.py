@@ -68,9 +68,9 @@ class Application(models.Model):
     screenshot = models.TextField(max_length=200, default="", blank=True)
     addons = models.TextField(validators=[MaxLengthValidator(1000)], default="", blank=True)
     experience = models.TextField(validators=[MaxLengthValidator(1000)], default="", blank=True)
-    how_did_you_hear = models.TextField(validators=[MaxLengthValidator(500)], default="", blank=True)
+    how_did_you_hear = models.TextField(validators=[MaxLengthValidator(1000)], default="", blank=True)
     authenticator = models.CharField(max_length=5, default="", blank=True)
-    previous_guild = models.TextField(validators=[MaxLengthValidator(500)], default="", blank=True)
+    previous_guild = models.TextField(validators=[MaxLengthValidator(1000)], default="", blank=True)
     battle_tag = models.CharField(max_length=20, default="", blank=True)
 
     submitted = models.DateTimeField(default="2000-01-01 00:00", blank=True)
